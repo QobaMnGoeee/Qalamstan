@@ -134,10 +134,17 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .sv-lbl{font-size:10px;font-weight:400;color:var(--tl);text-transform:uppercase;letter-spacing:1.5px;min-width:52px;}
 .sv-val{font-size:14px;font-weight:600;color:var(--td);letter-spacing:.5px;}
 .sv-val.na{color:#9ca3af;font-style:italic;font-size:13px;}
-.sv-status{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 36px;background:rgba(34,197,94,.07);border-top:1px solid rgba(34,197,94,.15);}
-.sv-dot{width:9px;height:9px;background:var(--g2);border-radius:50%;box-shadow:0 0 8px rgba(34,197,94,.6);animation:pd 2s ease-in-out infinite;}
+.sv-status{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 36px;background:rgba(34,197,94,.07);border-top:1px solid rgba(34,197,94,.15);transition:background .4s,border-color .4s;}
+.sv-status.offline{background:rgba(239,68,68,.07);border-top-color:rgba(239,68,68,.15);}
+.sv-dot{width:9px;height:9px;background:var(--g2);border-radius:50%;box-shadow:0 0 8px rgba(34,197,94,.6);animation:pd 2s ease-in-out infinite;flex-shrink:0;}
+.sv-dot.offline{background:#ef4444;box-shadow:0 0 8px rgba(239,68,68,.6);animation:none;}
+.sv-dot.checking{background:#f59e0b;box-shadow:0 0 8px rgba(245,158,11,.6);animation:pd 0.8s ease-in-out infinite;}
 @keyframes pd{0%,100%{transform:scale(1);box-shadow:0 0 8px rgba(34,197,94,.6);}50%{transform:scale(1.3);box-shadow:0 0 14px rgba(34,197,94,.9);}}
 .sv-stxt{font-size:13px;font-weight:700;color:var(--g1);letter-spacing:1px;text-transform:uppercase;}
+.sv-stxt.offline{color:#ef4444;}
+.sv-stxt.checking{color:#d97706;}
+.sv-players{font-size:12px;font-weight:600;color:var(--tl);background:rgba(34,197,94,.12);padding:3px 10px;border-radius:99px;margin-left:4px;}
+.sv-players.offline{display:none;}
 
 /* ═══ SECTION COMMON ═══ */
 .sh{text-align:center;padding:24px 20px 16px;flex-shrink:0;}
@@ -269,6 +276,48 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .logo-img-hero{width:110px;height:110px;border-radius:22px;box-shadow:0 12px 40px rgba(22,163,74,.35),0 0 0 4px rgba(255,255,255,.6);margin:0 auto 18px;display:block;animation:logo-float 4s ease-in-out infinite;}
 @keyframes logo-pop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
 @keyframes logo-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+/* ─── Application form modal ─── */
+.app-box{max-width:460px;padding:0;overflow:hidden;}
+.app-header{padding:28px 28px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.2);}
+.app-rank-icon{font-size:32px;margin-bottom:6px;}
+.app-rank-name{font-size:22px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
+.app-rank-price{font-size:15px;font-weight:600;opacity:.8;}
+.app-form{padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px;}
+.app-field{display:flex;flex-direction:column;gap:6px;}
+.app-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:6px;}
+.app-field label i{font-size:12px;}
+.inp-i{font-size:13px;flex-shrink:0;}
+
+/* Upload area */
+.app-upload{border:2px dashed rgba(34,197,94,.35);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:var(--tr);background:var(--g6);min-height:90px;display:flex;align-items:center;justify-content:center;}
+.app-upload:hover{border-color:var(--g2);background:var(--cream);}
+.upload-placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;}
+.upload-placeholder i{font-size:26px;color:var(--g2);}
+.upload-placeholder span{font-size:13px;font-weight:600;color:var(--tm);}
+.upload-placeholder small{font-size:11px;color:var(--tll);}
+.upload-preview{max-width:100%;max-height:160px;border-radius:8px;object-fit:contain;}
+.upload-preview.h{display:none;}
+
+.app-err{color:#ef4444;font-size:12px;text-align:center;min-height:14px;font-weight:500;}
+
+.btn-app-submit{width:100%;padding:14px;border:none;border-radius:11px;font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;}
+.btn-app-submit:hover{transform:translateY(-2px);}
+.btn-app-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+
+/* ─── Done / Final success modal ─── */
+.done-box{text-align:center;max-width:380px;background:linear-gradient(140deg,#fff 0%,var(--milk2) 100%);}
+.done-anim{display:flex;justify-content:center;margin-bottom:18px;}
+.done-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:circle-pop .5s cubic-bezier(.4,0,.2,1);}
+@keyframes circle-pop{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+.done-check{font-size:32px;color:#fff;}
+.done-title{font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;}
+.done-desc{font-size:13px;line-height:1.85;margin-bottom:16px;color:var(--tm);}
+.done-desc strong{color:var(--g1);}
+.done-note{font-size:12px;padding:12px 16px;border-radius:10px;line-height:1.7;color:var(--tm);}
+.done-note i{margin-right:5px;}
+.done-note strong{color:var(--td);}
+
 .stat-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
 .stat-row{display:flex;align-items:center;gap:10px;padding:9px 13px;background:rgba(34,197,94,.07);border-radius:10px;border:1px solid rgba(34,197,94,.15);transition:var(--tr);}
 .stat-row:hover{background:rgba(34,197,94,.14);}
@@ -367,10 +416,11 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
           <div class="sv-ed bdrk-ed"><i class="fa-solid fa-cube"></i> BEDROCK</div>
           <div class="sv-row"><i class="fa-solid fa-clock sv-ic" style="color:#9ca3af"></i><span class="sv-lbl">Күй</span><span class="sv-val na">Әзірше қосылмады</span></div>
         </div>
-        <!-- STATUS -->
-        <div class="sv-status">
-          <div class="sv-dot"></div>
-          <span class="sv-stxt">Статус: Онлайн</span>
+        <!-- STATUS (динамикалық) -->
+        <div class="sv-status" id="svStatus">
+          <div class="sv-dot" id="svDot"></div>
+          <span class="sv-stxt" id="svTxt">Тексерілуде...</span>
+          <span class="sv-players" id="svPlayers"></span>
         </div>
       </div>
     </div>
@@ -466,13 +516,77 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
   </div>
 </div>
 
-<!-- SUCCESS MODAL -->
-<div id="sMod" class="mod-ov h">
-  <div class="mod-box suc-box">
-    <div class="suc-i"><i class="fa-solid fa-triangle-exclamation"></i></div>
-    <h2 class="suc-t">Жақында қосылады!</h2>
-    <p class="suc-d">Бұл мүмкіндік әлі сайтқа қосылмады.<br>Тез арада қосылуы мүмкін!</p>
-    <button class="btn-auth" onclick="closeSuc()">Жабу</button>
+<!-- APPLICATION FORM MODAL -->
+<div id="appMod" class="mod-ov h">
+  <div class="mod-box app-box" id="appBox">
+    <button class="mod-x" id="appX" onclick="closeApp()"><i class="fa-solid fa-xmark"></i></button>
+
+    <div class="app-header" id="appHeader">
+      <div class="app-rank-icon" id="appRankIcon"></div>
+      <div class="app-rank-name" id="appRankName"></div>
+      <div class="app-rank-price" id="appRankPrice"></div>
+    </div>
+
+    <div class="app-form" id="appForm">
+      <div class="app-field">
+        <label><i class="fa-solid fa-hammer"></i> Minecraft НИК</label>
+        <div class="inp">
+          <i class="fa-solid fa-user inp-i"></i>
+          <input type="text" id="appNick" placeholder="Сіздің НИКіңіз" autocomplete="off"/>
+        </div>
+      </div>
+
+      <div class="app-field">
+        <label><i class="fa-solid fa-id-card"></i> Kaspi — Толық аты жөні</label>
+        <div class="inp">
+          <i class="fa-solid fa-user-tie inp-i"></i>
+          <input type="text" id="appName" placeholder="Иванов Иван Иванович" autocomplete="off"/>
+        </div>
+      </div>
+
+      <div class="app-field">
+        <label><i class="fa-solid fa-image"></i> Трансфер скриншоты</label>
+        <div class="app-upload" id="appUpload" onclick="document.getElementById('appFile').click()">
+          <input type="file" id="appFile" accept="image/*" style="display:none" onchange="previewFile(this)"/>
+          <div class="upload-placeholder" id="uploadPlaceholder">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <span>Скриншотты таңда немесе осыға сүйре</span>
+            <small>PNG, JPG, JPEG — макс 10MB</small>
+          </div>
+          <img id="uploadPreview" class="upload-preview h" alt="preview"/>
+        </div>
+      </div>
+
+      <p class="app-err" id="appErr"></p>
+
+      <button class="btn-app-submit" id="appSubmitBtn" onclick="submitApp()">
+        <i class="fa-solid fa-paper-plane"></i>
+        Донат үшін арыз жіберу
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL SUCCESS MODAL -->
+<div id="doneSod" class="mod-ov h">
+  <div class="mod-box done-box">
+    <div class="done-anim">
+      <div class="done-circle">
+        <i class="fa-solid fa-check done-check"></i>
+      </div>
+    </div>
+    <h2 class="done-title">Арыз жіберілді!</h2>
+    <p class="done-desc">
+      Сіздің донат алу үшін жіберген арызыңыз
+      <strong>4–6 сағат ішінде</strong> администраторлар тарапынан
+      көріп шығылады. Күтіңіз!
+    </p>
+    <div class="done-note">
+      <i class="fa-solid fa-circle-info"></i>
+      Шағымдарыңыз болса администраторларға
+      <strong>Minecraft</strong> сервері арқылы хабарласыңыз!
+    </div>
+    <button class="btn-auth" onclick="closeDone()" style="margin-top:20px">Жабу</button>
   </div>
 </div>
 
@@ -493,6 +607,55 @@ const app = initializeApp({
   databaseURL:       "https://qazyna-14965-default-rtdb.firebaseio.com"
 });
 const db = getDatabase(app);
+
+/* ═══ СЕРВЕР СТАТУСЫН ТЕКСЕРУ ═══
+   api.mcsrvstat.us — тегін public API
+   Әр 60 секунд сайын жаңартады         */
+async function checkServer() {
+  const dot  = document.getElementById("svDot");
+  const txt  = document.getElementById("svTxt");
+  const pl   = document.getElementById("svPlayers");
+  const bar  = document.getElementById("svStatus");
+
+  // Тексерілуде күйі
+  dot.className = "sv-dot checking";
+  txt.className = "sv-stxt checking";
+  txt.textContent = "Тексерілуде...";
+  pl.textContent = "";
+
+  try {
+    const res  = await fetch("https://api.mcsrvstat.us/3/7qazyna.kitpvp.su");
+    const data = await res.json();
+
+    if (data.online) {
+      const online = data.players?.online ?? 0;
+      const max    = data.players?.max    ?? 0;
+
+      dot.className  = "sv-dot";
+      txt.className  = "sv-stxt";
+      txt.textContent = "Онлайн";
+      pl.className   = "sv-players";
+      pl.textContent = `${online} / ${max} ойыншы`;
+      bar.classList.remove("offline");
+    } else {
+      dot.className  = "sv-dot offline";
+      txt.className  = "sv-stxt offline";
+      txt.textContent = "Офлайн";
+      pl.className   = "sv-players offline";
+      bar.classList.add("offline");
+    }
+  } catch {
+    dot.className  = "sv-dot offline";
+    txt.className  = "sv-stxt offline";
+    txt.textContent = "Қол жетімсіз";
+    pl.className   = "sv-players offline";
+    bar.classList.add("offline");
+  }
+}
+
+// Бірден тексер, содан кейін әр 60 секунд сайын
+checkServer();
+setInterval(checkServer, 60_000);
 
 /* ─── Stats: Firebase-тен оқу ─── */
 function rankClass(i){ return i===0?'gold-r':i===1?'silver-r':i===2?'bronze-r':''; }
@@ -689,6 +852,7 @@ const RD={
 /* modal */
 window.openMod=key=>{
   const r=RD[key]; if(!r) return;
+  _curRank = key;
   const ph=r.perks.map(p=>`
     <li style="background:${r.perkBg}">
       <i class="fa-solid ${p.i}" style="color:${r.color}"></i>
@@ -720,12 +884,137 @@ window.selPr=(el,col,sel,bg)=>{
   el.classList.add("sel");el.style.background=sel;el.style.borderColor=col;
 };
 window.closeMod=()=>document.getElementById("rMod").classList.add("h");
-window.confBuy=()=>{closeMod();setTimeout(()=>document.getElementById("sMod").classList.remove("h"),150);};
-window.closeSuc=()=>document.getElementById("sMod").classList.add("h");
 
-document.getElementById("rMod").addEventListener("click",e=>{if(e.target===e.currentTarget)closeMod();});
-document.getElementById("sMod").addEventListener("click",e=>{if(e.target===e.currentTarget)closeSuc();});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMod();closeSuc();}});
+/* ─── Current rank for application form ─── */
+let _curRank = null;
+
+/* ─── Open application form after "Сатып алу" ─── */
+window.confBuy = () => {
+  if (!_curRank) return;
+  const r = RD[_curRank];
+  closeMod();
+
+  // Apply rank theme to app modal
+  const box    = document.getElementById("appBox");
+  const header = document.getElementById("appHeader");
+  const xBtn   = document.getElementById("appX");
+  const form   = document.getElementById("appForm");
+
+  box.style.background    = "#fff";
+  header.style.background = r.btn;
+  xBtn.style.background   = "rgba(255,255,255,.25)";
+  xBtn.style.color        = "#fff";
+
+  document.getElementById("appRankIcon").innerHTML  = `<i class="fa-solid ${r.icon}" style="color:#fff"></i>`;
+  document.getElementById("appRankName").textContent  = r.title;
+  document.getElementById("appRankName").style.color  = "#fff";
+  document.getElementById("appRankPrice").textContent = r.pr[0].p + " — Шексіздік";
+  document.getElementById("appRankPrice").style.color = "rgba(255,255,255,.85)";
+
+  const submitBtn = document.getElementById("appSubmitBtn");
+  submitBtn.style.background  = r.btn;
+  submitBtn.style.boxShadow   = `0 5px 16px ${r.btnSh}`;
+
+  // Reset form
+  document.getElementById("appNick").value  = "";
+  document.getElementById("appName").value  = "";
+  document.getElementById("appFile").value  = "";
+  document.getElementById("appErr").textContent = "";
+  document.getElementById("uploadPreview").classList.add("h");
+  document.getElementById("uploadPlaceholder").style.display = "flex";
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Донат үшін арыз жіберу';
+
+  // Upload area color
+  document.getElementById("appUpload").style.borderColor = r.color + "88";
+
+  document.getElementById("appMod").classList.remove("h");
+};
+
+window.closeApp = () => document.getElementById("appMod").classList.add("h");
+
+/* ─── File preview ─── */
+window.previewFile = (input) => {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const prev = document.getElementById("uploadPreview");
+    prev.src = e.target.result;
+    prev.classList.remove("h");
+    document.getElementById("uploadPlaceholder").style.display = "none";
+  };
+  reader.readAsDataURL(file);
+};
+
+/* ─── Submit application → Telegram ─── */
+const TG_TOKEN = "8765622433:AAG_4AnEhIa3hTlWU49v2TOf6iX48vaJZvg";
+const TG_CHAT  = "1934206536";
+
+window.submitApp = async () => {
+  const nick  = document.getElementById("appNick").value.trim();
+  const name  = document.getElementById("appName").value.trim();
+  const file  = document.getElementById("appFile").files[0];
+  const errEl = document.getElementById("appErr");
+  const btn   = document.getElementById("appSubmitBtn");
+
+  if (!nick)  { errEl.textContent = "НИКті енгізіңіз."; return; }
+  if (!name)  { errEl.textContent = "Kaspi аты жөнін енгізіңіз."; return; }
+  if (!file)  { errEl.textContent = "Трансфер скриншотын таңдаңыз."; return; }
+  errEl.textContent = "";
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Жіберілуде...';
+
+  const r = RD[_curRank];
+  const caption = `🎮 <b>7QAZYNA — Донат арызы</b>\n\n` +
+    `📦 Ранг: <b>${r.title}</b> — ${r.pr[0].p}\n` +
+    `⛏ НИК: <b>${nick}</b>\n` +
+    `👤 Kaspi аты: <b>${name}</b>\n` +
+    `🕐 Уақыт: ${new Date().toLocaleString('kk-KZ')}`;
+
+  try {
+    const formData = new FormData();
+    formData.append("chat_id",    TG_CHAT);
+    formData.append("photo",      file);
+    formData.append("caption",    caption);
+    formData.append("parse_mode", "HTML");
+
+    const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, {
+      method: "POST",
+      body:   formData
+    });
+
+    const data = await res.json();
+
+    if (data.ok) {
+      closeApp();
+      setTimeout(() => {
+        const r2 = RD[_curRank];
+        // Style done modal
+        document.querySelector(".done-circle").style.background = r2.btn;
+        document.querySelector(".done-title").style.color = r2.color;
+        document.querySelector(".done-note").style.background = r2.perkBg;
+        document.getElementById("doneSod").classList.remove("h");
+      }, 150);
+    } else {
+      errEl.textContent = "Жіберу қатесі. Қайталап көріңіз.";
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Донат үшін арыз жіберу';
+    }
+  } catch {
+    errEl.textContent = "Интернет байланысы жоқ.";
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Донат үшін арыз жіберу';
+  }
+};
+
+window.closeDone = () => document.getElementById("doneSod").classList.add("h");
+
+document.getElementById("rMod").addEventListener("click",   e => { if(e.target===e.currentTarget) closeMod(); });
+document.getElementById("appMod").addEventListener("click",  e => { if(e.target===e.currentTarget) closeApp(); });
+document.getElementById("doneSod").addEventListener("click", e => { if(e.target===e.currentTarget) closeDone(); });
+document.addEventListener("keydown", e => { if(e.key==="Escape"){ closeMod(); closeApp(); closeDone(); } });
 </script>
 </body>
 </html>
