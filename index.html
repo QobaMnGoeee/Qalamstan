@@ -283,13 +283,14 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .app-rank-icon{font-size:32px;margin-bottom:6px;}
 .app-rank-name{font-size:22px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px;}
 .app-rank-price{font-size:15px;font-weight:600;opacity:.8;}
-.app-form{padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px;}
+.app-form{padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px;max-height:55vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--g3) transparent;}
+.app-form::-webkit-scrollbar{width:4px;}
+.app-form::-webkit-scrollbar-thumb{background:var(--g3);border-radius:99px;}
 .app-field{display:flex;flex-direction:column;gap:6px;}
 .app-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:6px;}
 .app-field label i{font-size:12px;}
 .inp-i{font-size:13px;flex-shrink:0;}
 
-/* Upload area */
 .app-upload{border:2px dashed rgba(34,197,94,.35);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:var(--tr);background:var(--g6);min-height:90px;display:flex;align-items:center;justify-content:center;}
 .app-upload:hover{border-color:var(--g2);background:var(--cream);}
 .upload-placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;}
@@ -301,7 +302,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 
 .app-err{color:#ef4444;font-size:12px;text-align:center;min-height:14px;font-weight:500;}
 
-.btn-app-submit{width:100%;padding:14px;border:none;border-radius:11px;font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;}
+.btn-app-submit{width:100%;padding:11px;border:none;border-radius:10px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:7px;color:#fff;}
 .btn-app-submit:hover{transform:translateY(-2px);}
 .btn-app-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 
@@ -335,7 +336,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 <div id="sbOv" class="sb-ov" onclick="closeSB()"></div>
 <aside id="sb" class="sidebar">
   <div class="sb-head">
-    <div class="sb-logo"><img src="images/logo.png" class="logo-img logo-img-sb" alt="7QAZYNA"/><span class="logo-text">7QAZYNA</span></div>
+    <div class="sb-logo"><i class="fa-solid fa-gem"></i><span class="logo-text">7QAZYNA</span></div>
     <button class="sb-x" onclick="closeSB()"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div class="sb-user">
@@ -359,9 +360,9 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
   <div class="lg-glow"></div>
   <div class="lg-card">
     <div class="lg-top">
-      <img src="images/logo.png" class="logo-img logo-img-login" alt="7QAZYNA"/>
+      <i class="fa-solid fa-gem lg-gem"></i>
+      <span class="logo-text">7QAZYNA</span>
     </div>
-    <div style="text-align:center;margin-bottom:4px"><span class="logo-text" style="font-size:22px;color:var(--g1)">7QAZYNA</span></div>
     <p class="lg-sub">7qazyna.kitpvp.su</p>
     <div class="a-tabs">
       <button class="a-tab on" id="tL" onclick="swTab('l')">Кіру</button>
@@ -387,7 +388,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 <nav class="nav">
   <div class="nav-in">
     <div class="nav-logo" onclick="go('dash')">
-      <img src="images/logo.png" class="logo-img logo-img-nav" alt="7QAZYNA"/>
+      <i class="fa-solid fa-gem"></i>
       <span class="logo-text">7QAZYNA</span>
     </div>
     <button class="hbg" onclick="openSB()"><span></span><span></span><span></span></button>
@@ -532,7 +533,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
         <label><i class="fa-solid fa-hammer"></i> Minecraft НИК</label>
         <div class="inp">
           <i class="fa-solid fa-user inp-i"></i>
-          <input type="text" id="appNick" placeholder="Сіздің НИКіңіз" autocomplete="off"/>
+          <input type="text" id="appNick" placeholder="Сіздің [НИК]" autocomplete="off"/>
         </div>
       </div>
 
@@ -540,7 +541,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
         <label><i class="fa-solid fa-id-card"></i> Kaspi — Толық аты жөні</label>
         <div class="inp">
           <i class="fa-solid fa-user-tie inp-i"></i>
-          <input type="text" id="appName" placeholder="Иванов Иван Иванович" autocomplete="off"/>
+          <input type="text" id="appName" placeholder="Мысалы - Мақсат.Д" autocomplete="off"/>
         </div>
       </div>
 
@@ -561,7 +562,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 
       <button class="btn-app-submit" id="appSubmitBtn" onclick="submitApp()">
         <i class="fa-solid fa-paper-plane"></i>
-        Донат үшін арыз жіберу
+        Арызымды жіберу
       </button>
     </div>
   </div>
@@ -710,11 +711,11 @@ async function hs(s){
   return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
 }
 
-/* session */
+/* session — localStorage: браузер жабылса да сақталады */
 const SK="7qz_u";
-const sv=n=>{sessionStorage.setItem(SK,n);};
-const lv=()=>sessionStorage.getItem(SK);
-const cv=()=>sessionStorage.removeItem(SK);
+const sv=n=>{localStorage.setItem(SK,n);};
+const lv=()=>localStorage.getItem(SK);
+const cv=()=>localStorage.removeItem(SK);
 
 /* tab */
 window.swTab=t=>{
@@ -923,7 +924,7 @@ window.confBuy = () => {
   document.getElementById("uploadPreview").classList.add("h");
   document.getElementById("uploadPlaceholder").style.display = "flex";
   submitBtn.disabled = false;
-  submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Донат үшін арыз жіберу';
+  submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';
 
   // Upload area color
   document.getElementById("appUpload").style.borderColor = r.color + "88";
@@ -1000,12 +1001,12 @@ window.submitApp = async () => {
     } else {
       errEl.textContent = "Жіберу қатесі. Қайталап көріңіз.";
       btn.disabled = false;
-      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Донат үшін арыз жіберу';
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';
     }
   } catch {
     errEl.textContent = "Интернет байланысы жоқ.";
     btn.disabled = false;
-    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Донат үшін арыз жіберу';
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';
   }
 };
 
