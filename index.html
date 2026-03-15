@@ -477,25 +477,24 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 </div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, get, set, child }
-  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { initializeApp }   from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getDatabase, ref, get, set, child, onValue }
+  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
+/* ─── Firebase конфиг (жаңа база) ─── */
 const app = initializeApp({
-  apiKey:"AIzaSyCrOOvdQDSQeLub4J1HRSuWQAnVC05Wsq4",
-  authDomain:"qalamstan-eac25.firebaseapp.com",
-  projectId:"qalamstan-eac25",
-  storageBucket:"qalamstan-eac25.firebasestorage.app",
-  messagingSenderId:"456019809682",
-  appId:"1:456019809682:web:eed4aed0183543caf1dd4b",
-  measurementId:"G-9RWWP78L4S",
-  databaseURL:"https://qalamstan-eac25-default-rtdb.firebaseio.com"
+  apiKey:            "AIzaSyDWpoojmmQk-mNRi7HCB7FAsl7eZ5UeQ2g",
+  authDomain:        "qazyna-14965.firebaseapp.com",
+  projectId:         "qazyna-14965",
+  storageBucket:     "qazyna-14965.firebasestorage.app",
+  messagingSenderId: "332841660314",
+  appId:             "1:332841660314:web:2b51f3ff9b0f25c1935423",
+  measurementId:     "G-9S538ZC9L7",
+  databaseURL:       "https://qazyna-14965-default-rtdb.firebaseio.com"
 });
 const db = getDatabase(app);
 
 /* ─── Stats: Firebase-тен оқу ─── */
-import { onValue, ref as dbRef } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
 function rankClass(i){ return i===0?'gold-r':i===1?'silver-r':i===2?'bronze-r':''; }
 
 function renderPlaytime(data) {
@@ -527,11 +526,11 @@ function renderRichest(data) {
 }
 
 // Нақты уақытта тыңдау (onValue) — деректер өзгерсе бет өзі жаңарады
-onValue(dbRef(db,'/stats/playtime'), snap => {
+onValue(ref(db,'/stats/playtime'), snap => {
   const val = snap.val();
   renderPlaytime(Array.isArray(val) ? val : (val ? Object.values(val) : []));
 });
-onValue(dbRef(db,'/stats/richest'), snap => {
+onValue(ref(db,'/stats/richest'), snap => {
   const val = snap.val();
   renderRichest(Array.isArray(val) ? val : (val ? Object.values(val) : []));
 });
@@ -691,7 +690,7 @@ const RD={
 window.openMod=key=>{
   const r=RD[key]; if(!r) return;
   const ph=r.perks.map(p=>`
-    <li style="background:${r.perkBg};color:${r.color.replace(/[^,]+(?=\))/,'0.85')}">
+    <li style="background:${r.perkBg}">
       <i class="fa-solid ${p.i}" style="color:${r.color}"></i>
       <span style="color:#1a1a1a">${p.t}</span>
       ${p.c?`<code style="background:${r.codeBg};color:${r.codeCol}">${p.c}</code>`:""}
