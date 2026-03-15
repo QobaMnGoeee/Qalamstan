@@ -950,7 +950,7 @@ window.previewFile = (input) => {
 
 /* ─── Submit application → Telegram ─── */
 const TG_TOKEN = "8765622433:AAG_4AnEhIa3hTlWU49v2TOf6iX48vaJZvg";
-const TG_CHAT  = "1934206536";
+const TG_CHATS = ["1934206536", "1130859355"];
 
 window.submitApp = async () => {
   const nick  = document.getElementById("appNick").value.trim();
@@ -975,20 +975,23 @@ window.submitApp = async () => {
     `🕐 Уақыт: ${new Date().toLocaleString('kk-KZ')}`;
 
   try {
-    const formData = new FormData();
-    formData.append("chat_id",    TG_CHAT);
-    formData.append("photo",      file);
-    formData.append("caption",    caption);
-    formData.append("parse_mode", "HTML");
-
-    const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, {
-      method: "POST",
-      body:   formData
+    const sendToAll = TG_CHATS.map(chatId => {
+      const formData = new FormData();
+      formData.append("chat_id",    chatId);
+      formData.append("photo",      file);
+      formData.append("caption",    caption);
+      formData.append("parse_mode", "HTML");
+      return fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, {
+        method: "POST",
+        body:   formData
+      });
     });
 
-    const data = await res.json();
+    const results = await Promise.all(sendToAll);
+    const allOk   = await Promise.all(results.map(r => r.json()));
+    const success = allOk.some(d => d.ok);
 
-    if (data.ok) {
+    if (success) {
       closeApp();
       setTimeout(() => {
         const r2 = RD[_curRank];
