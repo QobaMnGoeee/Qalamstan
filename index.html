@@ -266,14 +266,15 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .mem-card{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:12px;padding:14px 16px;border:2px solid rgba(34,197,94,.13);box-shadow:var(--sh);display:flex;align-items:center;gap:11px;transition:var(--tr);}
 .mem-card:hover{transform:translateY(-2px);border-color:rgba(34,197,94,.4);}
 .mem-av{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;flex-shrink:0;}
-.mem-av.adm{background:linear-gradient(135deg,#f97316,#ea580c);}
+.mem-av.founder{background:linear-gradient(135deg,#f472b6,#ec4899);}
 .mem-av.mod{background:linear-gradient(135deg,#14b8a6,#0f766e);}
 .mem-info{}
 .mem-nick{font-size:13px;font-weight:700;color:var(--td);}
-.mem-role-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px;display:inline-block;margin-top:3px;}
-.mem-role-badge.admin{background:rgba(249,115,22,.15);color:#ea580c;}
-.mem-role-badge.moder{background:rgba(20,184,166,.15);color:#0f766e;}
-.mem-role-badge.user{background:rgba(34,197,94,.12);color:var(--g1);}
+.mem-role-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:4px;margin-top:3px;}
+.mem-role-badge.founder{background:linear-gradient(135deg,rgba(244,114,182,.18),rgba(236,72,153,.18));color:#db2777;border:1px solid rgba(236,72,153,.3);}
+.mem-role-badge.moder{background:rgba(20,184,166,.15);color:#0f766e;border:1px solid rgba(20,184,166,.25);}
+.mem-card.founder-card{border-color:rgba(236,72,153,.3);}
+.mem-card.founder-card:hover{border-color:rgba(236,72,153,.6);box-shadow:0 8px 28px rgba(236,72,153,.15);}
 
 /* ═══ FAQ PAGE ═══ */
 #p-faq{background:var(--milk);}
@@ -717,12 +718,33 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
       <p class="ss">Тіркелген ойыншылар тізімі</p>
     </div>
     <div class="mem-wrap">
-      <div class="mem-count" id="memCount"></div>
-      <div class="mem-grid" id="memGrid">
-        <div style="grid-column:1/-1;text-align:center;padding:28px;color:var(--tll);font-size:13px;">
-          <i class="fa-solid fa-spinner fa-spin" style="font-size:24px;color:var(--g3);display:block;margin-bottom:8px"></i>
-          Жүктелуде...
+      <div class="mem-count">Барлығы: 3 мүше</div>
+      <div class="mem-grid">
+
+        <div class="mem-card founder-card">
+          <div class="mem-av founder">R</div>
+          <div class="mem-info">
+            <div class="mem-nick">rozikplay</div>
+            <span class="mem-role-badge founder">《FOUNDER》</span>
+          </div>
         </div>
+
+        <div class="mem-card founder-card">
+          <div class="mem-av founder">Q</div>
+          <div class="mem-info">
+            <div class="mem-nick">QobaMn</div>
+            <span class="mem-role-badge founder">《FOUNDER》</span>
+          </div>
+        </div>
+
+        <div class="mem-card">
+          <div class="mem-av mod">A</div>
+          <div class="mem-info">
+            <div class="mem-nick">azagoe</div>
+            <span class="mem-role-badge moder">《MODER》</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1074,7 +1096,7 @@ window.doOut=()=>{cv();_currentUser=null;_isAdmin=false;document.getElementById(
 function enter(n){
   document.getElementById("lgOv").classList.add("out");
   setUI(n);
-  if(document.getElementById("p-members").classList.contains("on")||true)loadMembers();
+  
 }
 
 function setUI(n){
@@ -1119,7 +1141,7 @@ window.go=id=>{
     if(page)el.classList.toggle("act",page===id);
   });
   closeSB();
-  if(id==='members')loadMembers();
+
   if(id==='admin'&&_isAdmin)loadAdminConversations();
   if(id==='admin'&&_isAdmin)loadAdminNews();
   if(id==='forum')loadNews();
@@ -1133,14 +1155,7 @@ window.toggleFaq=id=>{
   if(!wasOpen)item.classList.add("open");
 };
 
-/* ═══ MEMBERS ═══ */
-async function loadMembers(){
-  const grid=document.getElementById("memGrid");
-  const countEl=document.getElementById("memCount");
-  try{
-    const snap=await get(ref(db,"users"));
-    if(!snap.exists()){grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:28px;color:var(--tll);font-size:13px">Мүшелер жоқ</div>`;return;}
-    const users=snap.val();
+/* ═══ MEMBERS ═══ */    const users=snap.val();
     const list=Object.values(users).sort((a,b)=>{
       const ra=(a.role==='admin')?0:1,rb=(b.role==='admin')?0:1;
       return ra-rb||(a.nick||'').localeCompare(b.nick||'');
