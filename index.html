@@ -953,9 +953,9 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 </div>
 
 <script type="module">
-import { initializeApp }   from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { initializeApp }   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, get, set, push, remove, child, onValue, query, orderByChild }
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 /* ─── Firebase config ─── */
 const app = initializeApp({
@@ -1029,23 +1029,6 @@ const sv=n=>{localStorage.setItem(SK,n);};
 const lv=()=>localStorage.getItem(SK);
 const cv=()=>localStorage.removeItem(SK);
 
-/* ═══ SEED ADMINS ═══ */
-async function seedAdmins(){
-  const admins=[{nick:'rozikplay',pw:'123456'},{nick:'azagoe',pw:'123456'}];
-  for(const a of admins){
-    try{
-      const snap=await get(ref(db,`users/${a.nick}`));
-      const hashed=await hs(a.pw);
-      if(!snap.exists()){
-        await set(ref(db,`users/${a.nick}`),{password:hashed,nick:a.nick,role:'admin',createdAt:Date.now()});
-      }else{
-        const val=snap.val();
-        if(!val.role){await set(ref(db,`users/${a.nick}/role`),'admin');}
-      }
-    }catch(e){console.warn('Seed admin error:',e);}
-  }
-}
-seedAdmins();
 
 /* ═══ AUTH ═══ */
 window.swTab=t=>{
@@ -1063,14 +1046,23 @@ window.doLogin=async()=>{
   const er=document.getElementById("lEr");
   if(!nk||!pw){er.textContent="Барлық өрістерді толтырыңыз.";return;}
   try{
-    const s=await get(child(ref(db),`users/${nk}`));
-    if(!s.exists()){er.textContent="Мұндай пайдаланушы жоқ.";return;}
-    if(s.val().password!==await hs(pw)){er.textContent="Құпиясөз қате.";return;}
+    const hashed=await hs(pw);
+    const isAdminAcc=ADMIN_NICKS.includes(nk.toLowerCase());
+    const snap=await get(child(ref(db),`users/${nk}`));
+    if(!snap.exists()){
+      // Егер admin nick болса — автоматты жазамыз
+      if(isAdminAcc){
+        await set(ref(db,`users/${nk}`),{password:hashed,nick:nk,role:'admin',createdAt:Date.now()});
+        sv(nk);_currentUser=nk;_isAdmin=true;enter(nk);return;
+      }
+      er.textContent="Мұндай пайдаланушы жоқ.";return;
+    }
+    if(snap.val().password!==hashed){er.textContent="Құпиясөз қате.";return;}
     sv(nk);
     _currentUser=nk;
-    _isAdmin=(s.val().role==='admin')||ADMIN_NICKS.includes(nk.toLowerCase());
+    _isAdmin=(snap.val().role==='admin')||isAdminAcc;
     enter(nk);
-  }catch(e){er.textContent="Қате орын алды.";console.error(e);}
+  }catch(e){er.textContent="Қате орын алды: "+e.message;console.error(e);}
 };
 
 window.doReg=async()=>{
