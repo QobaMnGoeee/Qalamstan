@@ -9,29 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
-/* ═══════════════════════════════════════
-   7QAZYNA — Soft Milk White + Green Theme
-═══════════════════════════════════════ */
 :root {
-  --g1:   #16a34a;   /* green-600 */
-  --g2:   #22c55e;   /* green-500 */
-  --g3:   #4ade80;   /* green-400 */
-  --g4:   #bbf7d0;   /* green-200 */
-  --g5:   #dcfce7;   /* green-100 */
-  --g6:   #f0fdf4;   /* green-50  */
-  --milk: #fafff8;
-  --milk2:#f2fdf2;
-  --cream:#e6faea;
-  --td:   #0f2d1a;   /* dark green-text */
-  --tm:   #1e5c34;
-  --tl:   #4a9462;
-  --tll:  #86c99a;
-  --r:    16px;
-  --sh:   0 4px 24px rgba(22,163,74,.1);
-  --tr:   all .27s cubic-bezier(.4,0,.2,1);
-  --nav:  62px;
+  --g1:#16a34a;--g2:#22c55e;--g3:#4ade80;--g4:#bbf7d0;--g5:#dcfce7;--g6:#f0fdf4;
+  --milk:#fafff8;--milk2:#f2fdf2;--cream:#e6faea;
+  --td:#0f2d1a;--tm:#1e5c34;--tl:#4a9462;--tll:#86c99a;
+  --r:16px;--sh:0 4px 24px rgba(22,163,74,.1);--tr:all .27s cubic-bezier(.4,0,.2,1);--nav:62px;
 }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;overflow:hidden!important;touch-action:none;overscroll-behavior:none;}
 body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
@@ -52,15 +35,21 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .sb-av{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 4px 12px rgba(34,197,94,.35);}
 .sb-nick{font-size:15px;font-weight:700;color:var(--td);display:block;}
 .sb-role{font-size:11px;color:var(--tl);text-transform:uppercase;letter-spacing:1px;display:block;}
-.sb-nav{flex:1;padding:12px 10px;display:flex;flex-direction:column;gap:3px;}
+.sb-nav{flex:1;padding:12px 10px;display:flex;flex-direction:column;gap:3px;overflow-y:auto;scrollbar-width:none;}
 .sb-lnk{display:flex;align-items:center;gap:13px;padding:12px 14px;border-radius:11px;color:var(--tm);font-size:14px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:var(--tr);}
 .sb-lnk i{font-size:15px;width:18px;text-align:center;}
 .sb-lnk:hover{background:var(--cream);color:var(--g1);transform:translateX(4px);}
 .sb-lnk:hover i,.sb-lnk.act i{color:var(--g2);}
 .sb-lnk.act{background:var(--cream);color:var(--g1);}
+.sb-sep{height:1px;background:var(--cream);margin:6px 10px;}
+.sb-lnk.admin-lnk{display:none;color:#ea580c;}
+.sb-lnk.admin-lnk i{color:#f97316;}
+.sb-lnk.admin-lnk:hover{background:rgba(249,115,22,.1);color:#ea580c;}
+.sb-lnk.admin-lnk.act{background:rgba(249,115,22,.1);color:#ea580c;}
 .sb-foot{padding:14px 10px 20px;border-top:1px solid var(--cream);}
 .sb-out{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;padding:11px;background:var(--milk2);border:1.5px solid rgba(239,68,68,.2);border-radius:11px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;color:#ef4444;cursor:pointer;transition:var(--tr);letter-spacing:.5px;}
 .sb-out:hover{background:#ef4444;color:#fff;border-color:#ef4444;}
+.admin-badge-sb{font-size:9px;font-weight:700;padding:2px 7px;border-radius:99px;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;letter-spacing:.5px;text-transform:uppercase;margin-left:auto;}
 
 /* ═══ LOGIN ═══ */
 .lg-ov{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 50%,#bbf7d0 100%);transition:opacity .5s ease,visibility .5s ease;}
@@ -119,8 +108,6 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 @keyframes fc{0%,100%{transform:translateY(0) rotate(10deg);}50%{transform:translateY(-20px) rotate(24deg);}}
 .dash-c{position:relative;text-align:center;}
 .htitle{font-family:'Cinzel Decorative',cursive!important;font-size:clamp(38px,6.5vw,70px);color:var(--g1);text-shadow:0 4px 20px rgba(22,163,74,.2);margin-bottom:28px;}
-
-/* Server card */
 .sv-card{display:inline-flex;flex-direction:column;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(22,163,74,.14);border:1px solid rgba(34,197,94,.22);min-width:320px;}
 .sv-sec{padding:18px 36px 14px;}
 .sv-sec+.sv-sec{border-top:2px dashed rgba(34,197,94,.2);padding-top:14px;}
@@ -166,28 +153,22 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .rp span{font-size:12px;font-weight:300;opacity:.65;}
 .btn-buy{width:100%;padding:10px 12px;background:linear-gradient(135deg,var(--g2) 0%,var(--g1) 100%);color:#fff;border:none;border-radius:9px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:var(--tr);box-shadow:0 4px 12px rgba(22,163,74,.3);margin-top:auto;display:flex;align-items:center;justify-content:center;gap:6px;}
 .btn-buy:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,163,74,.46);}
-
-/* rank colour vars */
 .nova{border-color:rgba(249,115,22,.35);}
 .nova .rc-glow{background:radial-gradient(circle,#f97316,transparent);}
 .nova .ri{background:rgba(249,115,22,.12);color:#f97316;}
 .nova .rn,.nova .rp{color:#ea580c;}
-
 .void{border-color:rgba(168,85,247,.35);background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(243,232,255,.5));}
 .void .rc-glow{background:radial-gradient(circle,#a855f7,transparent);}
 .void .ri{background:rgba(168,85,247,.12);color:#a855f7;}
 .void .rn,.void .rp{color:#9333ea;}
-
 .gold{border-color:rgba(234,179,8,.4);background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(254,249,195,.5));}
 .gold .rc-glow{background:radial-gradient(circle,#eab308,transparent);}
 .gold .ri{background:rgba(234,179,8,.12);color:#ca8a04;}
 .gold .rn,.gold .rp{color:#ca8a04;}
-
 .crystal{border-color:rgba(59,130,246,.35);background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(219,234,254,.5));}
 .crystal .rc-glow{background:radial-gradient(circle,#3b82f6,transparent);}
 .crystal .ri{background:rgba(59,130,246,.12);color:#3b82f6;}
 .crystal .rn,.crystal .rp{color:#2563eb;}
-
 .diamond{border-color:rgba(6,182,212,.35);background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(207,250,254,.5));}
 .diamond .rc-glow{background:radial-gradient(circle,#06b6d4,transparent);}
 .diamond .ri{background:rgba(6,182,212,.12);color:#06b6d4;}
@@ -216,9 +197,10 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 
 /* ═══ FORUM ═══ */
 #p-forum{background:var(--milk);}
-.fw{flex:1;display:flex;align-items:center;justify-content:center;padding:0 20px 20px;overflow:hidden;}
-.fl{display:flex;flex-direction:column;gap:14px;width:100%;max-width:660px;}
-.fm{position:relative;display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:var(--r);padding:18px 22px;border:2px solid transparent;box-shadow:var(--sh);transition:var(--tr);overflow:hidden;}
+.fw{flex:1;overflow-y:auto;overflow-x:hidden;padding:0 20px 24px;scrollbar-width:none;}
+.fw::-webkit-scrollbar{display:none;}
+.fl{display:flex;flex-direction:column;gap:14px;width:100%;max-width:660px;margin:0 auto;}
+.fm{position:relative;display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:var(--r);padding:18px 22px;border:2px solid transparent;box-shadow:var(--sh);transition:var(--tr);overflow:hidden;cursor:pointer;}
 .fm:hover{transform:translateX(5px);}
 .fm-gl{position:absolute;left:-45px;top:50%;transform:translateY(-50%);width:140px;height:140px;border-radius:50%;opacity:.14;pointer-events:none;}
 .fm.fo{border-color:rgba(34,197,94,.4);}
@@ -237,6 +219,153 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .ad-av{background:linear-gradient(135deg,#14b8a6,#0f766e);box-shadow:0 4px 12px rgba(20,184,166,.38);}
 .fm-nk{font-size:17px;font-weight:700;color:var(--td);margin-bottom:2px;letter-spacing:.5px;}
 .fm-rl{font-size:12px;color:var(--tl);font-weight:300;}
+.fm-msg{position:absolute;bottom:10px;right:14px;display:flex;align-items:center;gap:5px;padding:5px 11px;background:rgba(34,197,94,.1);border-radius:99px;font-size:10px;font-weight:700;color:var(--g1);letter-spacing:.3px;text-transform:uppercase;transition:var(--tr);}
+.fm:hover .fm-msg{background:var(--g2);color:#fff;}
+
+/* ═══ NEWS ═══ */
+.news-section{width:100%;max-width:660px;margin:4px auto 0;}
+.news-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px;}
+.news-hdr-txt{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--td);display:flex;align-items:center;gap:7px;}
+.news-hdr-txt i{color:var(--g2);}
+.btn-add-news{display:none;align-items:center;gap:5px;padding:7px 14px;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;border:none;border-radius:99px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:var(--tr);}
+.btn-add-news.visible{display:flex;}
+.btn-add-news:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(34,197,94,.4);}
+.news-list{display:flex;flex-direction:column;gap:10px;}
+.news-card{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:14px;padding:16px 18px;border:2px solid rgba(34,197,94,.12);box-shadow:var(--sh);}
+.news-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.news-card-author{display:flex;align-items:center;gap:7px;}
+.news-author-av{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
+.news-author-nick{font-size:12px;font-weight:700;color:var(--td);}
+.news-card-date{font-size:11px;color:var(--tll);}
+.news-card-title{font-size:15px;font-weight:700;color:var(--td);margin-bottom:5px;}
+.news-card-body{font-size:13px;color:var(--tm);line-height:1.7;}
+.news-del{background:none;border:none;color:#ef4444;cursor:pointer;font-size:12px;opacity:.6;transition:var(--tr);padding:3px 6px;border-radius:6px;}
+.news-del:hover{opacity:1;background:rgba(239,68,68,.1);}
+.news-empty{text-align:center;padding:28px 16px;color:var(--tll);font-size:13px;background:rgba(255,255,255,.7);border-radius:12px;border:2px dashed rgba(34,197,94,.2);}
+.news-sep{height:1px;background:var(--cream);margin:8px 0 16px;}
+
+/* ═══ RULES PAGE ═══ */
+#p-rules{background:var(--milk);}
+.rules-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:0 20px 20px;overflow:hidden;}
+.rules-card{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:var(--r);padding:28px;border:2px solid rgba(34,197,94,.18);box-shadow:var(--sh);width:100%;max-width:600px;}
+.rule-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--cream);}
+.rule-item:last-child{border-bottom:none;padding-bottom:0;}
+.rule-num{width:34px;height:34px;border-radius:99px;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.rule-body{}
+.rule-text{font-size:14px;font-weight:600;color:var(--td);line-height:1.6;margin-bottom:4px;}
+.rule-sub{font-size:12px;color:var(--tl);line-height:1.5;}
+.rule-warn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#dc2626;background:rgba(220,38,38,.08);padding:7px 13px;border-radius:9px;margin-top:12px;border:1.5px solid rgba(220,38,38,.18);}
+.rule-warn i{font-size:13px;}
+
+/* ═══ MEMBERS PAGE ═══ */
+#p-members{background:var(--milk);}
+.mem-wrap{flex:1;overflow-y:auto;padding:0 20px 24px;scrollbar-width:none;}
+.mem-wrap::-webkit-scrollbar{display:none;}
+.mem-count{text-align:center;font-size:12px;color:var(--tl);margin-bottom:14px;font-weight:500;}
+.mem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:11px;max-width:900px;margin:0 auto;}
+.mem-card{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:12px;padding:14px 16px;border:2px solid rgba(34,197,94,.13);box-shadow:var(--sh);display:flex;align-items:center;gap:11px;transition:var(--tr);}
+.mem-card:hover{transform:translateY(-2px);border-color:rgba(34,197,94,.4);}
+.mem-av{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;flex-shrink:0;}
+.mem-av.adm{background:linear-gradient(135deg,#f97316,#ea580c);}
+.mem-av.mod{background:linear-gradient(135deg,#14b8a6,#0f766e);}
+.mem-info{}
+.mem-nick{font-size:13px;font-weight:700;color:var(--td);}
+.mem-role-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px;display:inline-block;margin-top:3px;}
+.mem-role-badge.admin{background:rgba(249,115,22,.15);color:#ea580c;}
+.mem-role-badge.moder{background:rgba(20,184,166,.15);color:#0f766e;}
+.mem-role-badge.user{background:rgba(34,197,94,.12);color:var(--g1);}
+
+/* ═══ FAQ PAGE ═══ */
+#p-faq{background:var(--milk);}
+.faq-wrap{flex:1;overflow-y:auto;padding:0 20px 24px;scrollbar-width:none;}
+.faq-wrap::-webkit-scrollbar{display:none;}
+.faq-list{display:flex;flex-direction:column;gap:10px;max-width:700px;margin:0 auto;}
+.faq-item{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:14px;border:2px solid rgba(34,197,94,.18);box-shadow:var(--sh);overflow:hidden;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;transition:var(--tr);gap:12px;}
+.faq-q:hover{background:rgba(34,197,94,.05);}
+.faq-q-icon{font-size:14px;color:var(--g2);width:18px;flex-shrink:0;}
+.faq-q-text{font-size:14px;font-weight:700;color:var(--td);flex:1;}
+.faq-chevron{font-size:12px;color:var(--g2);transition:transform .28s ease;flex-shrink:0;}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+.faq-item.open .faq-q{background:rgba(34,197,94,.05);}
+.faq-a{display:none;padding:4px 20px 18px;}
+.faq-item.open .faq-a{display:block;}
+.faq-a-intro{font-size:13px;color:var(--tm);line-height:1.7;margin-bottom:12px;}
+.cmd-list{display:flex;flex-direction:column;gap:7px;}
+.cmd-row{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;background:var(--g6);border-radius:9px;border:1px solid rgba(34,197,94,.2);}
+.cmd-code{font-family:monospace;font-size:12px;font-weight:700;color:var(--g1);background:rgba(34,197,94,.14);padding:3px 9px;border-radius:5px;white-space:nowrap;flex-shrink:0;}
+.cmd-desc{font-size:12px;color:var(--tm);line-height:1.5;}
+.don-list{display:flex;flex-direction:column;gap:7px;}
+.don-row{display:flex;align-items:flex-start;gap:9px;padding:9px 13px;background:var(--g6);border-radius:9px;border:1px solid rgba(34,197,94,.2);}
+.don-icon{font-size:12px;color:var(--g2);flex-shrink:0;margin-top:2px;}
+.don-text{font-size:12px;color:var(--tm);line-height:1.5;}
+.don-text strong{color:var(--g1);}
+.faq-wand{display:flex;align-items:center;gap:7px;padding:8px 13px;background:rgba(34,197,94,.1);border-radius:9px;font-size:12px;font-weight:600;color:var(--g1);margin-bottom:10px;border:1px solid rgba(34,197,94,.25);}
+
+/* ═══ ADMIN PANEL ═══ */
+#p-admin{background:var(--milk);}
+.adm-wrap{flex:1;overflow-y:auto;padding:0 20px 24px;scrollbar-width:none;}
+.adm-wrap::-webkit-scrollbar{display:none;}
+.adm-inner{max-width:700px;margin:0 auto;}
+.adm-tabs{display:flex;background:var(--g6);border-radius:12px;padding:4px;gap:4px;margin-bottom:18px;}
+.adm-tab{flex:1;padding:10px;border:none;background:transparent;border-radius:9px;font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;letter-spacing:.5px;color:var(--tm);cursor:pointer;transition:var(--tr);}
+.adm-tab.on{background:var(--g2);color:#fff;box-shadow:0 4px 12px rgba(34,197,94,.4);}
+.adm-panel{display:none;}
+.adm-panel.on{display:block;}
+.conv-list{display:flex;flex-direction:column;gap:8px;}
+.conv-item{background:rgba(255,255,255,.88);border:2px solid rgba(34,197,94,.15);border-radius:12px;padding:14px 16px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;gap:12px;}
+.conv-item:hover{border-color:var(--g2);transform:translateX(3px);}
+.conv-av{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.conv-info{flex:1;overflow:hidden;}
+.conv-nick{font-size:14px;font-weight:700;color:var(--td);}
+.conv-preview{font-size:12px;color:var(--tll);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.conv-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.conv-time{font-size:11px;color:var(--tll);}
+.conv-unread{width:18px;height:18px;border-radius:99px;background:var(--g2);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.adm-empty{text-align:center;padding:32px 16px;color:var(--tll);font-size:13px;background:rgba(255,255,255,.7);border-radius:12px;border:2px dashed rgba(34,197,94,.2);}
+.adm-empty i{font-size:32px;color:var(--g4);display:block;margin-bottom:8px;}
+.news-form{background:rgba(255,255,255,.88);border-radius:14px;padding:20px;border:2px solid rgba(34,197,94,.15);box-shadow:var(--sh);margin-bottom:18px;}
+.nf-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--td);margin-bottom:6px;display:block;}
+.nf-inp{width:100%;background:var(--g6);border:2px solid transparent;border-radius:10px;padding:10px 13px;font-family:'Oswald',sans-serif;font-size:14px;color:var(--td);outline:none;transition:var(--tr);margin-bottom:12px;}
+.nf-inp:focus{border-color:var(--g2);background:#fff;}
+.nf-area{width:100%;background:var(--g6);border:2px solid transparent;border-radius:10px;padding:10px 13px;font-family:'Oswald',sans-serif;font-size:13px;color:var(--td);outline:none;transition:var(--tr);resize:vertical;min-height:90px;}
+.nf-area:focus{border-color:var(--g2);background:#fff;}
+.nf-submit{padding:10px 24px;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;border:none;border-radius:10px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:var(--tr);}
+.nf-submit:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(34,197,94,.4);}
+.adm-news-list{display:flex;flex-direction:column;gap:9px;}
+.adm-news-item{background:rgba(255,255,255,.88);border-radius:12px;padding:14px 16px;border:2px solid rgba(34,197,94,.12);display:flex;align-items:flex-start;gap:12px;box-shadow:var(--sh);}
+.adm-news-body{flex:1;}
+.adm-news-title{font-size:14px;font-weight:700;color:var(--td);margin-bottom:3px;}
+.adm-news-meta{font-size:11px;color:var(--tll);}
+
+/* ═══ DM MODAL ═══ */
+.dm-ov{position:fixed;inset:0;z-index:6000;background:rgba(10,40,20,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;animation:fi .22s ease;}
+.dm-ov.h{display:none;}
+.dm-box{position:relative;background:#fff;border-radius:20px;width:100%;max-width:460px;height:560px;max-height:82vh;display:flex;flex-direction:column;box-shadow:0 40px 90px rgba(10,40,20,.28);overflow:hidden;animation:pi .28s cubic-bezier(.4,0,.2,1);}
+.dm-head{padding:14px 18px;background:linear-gradient(135deg,var(--g2),var(--g1));display:flex;align-items:center;gap:11px;flex-shrink:0;}
+.dm-head-av{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;flex-shrink:0;}
+.dm-head-info{flex:1;}
+.dm-head-nick{font-size:14px;font-weight:700;color:#fff;}
+.dm-head-role{font-size:10px;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.5px;}
+.dm-x{width:30px;height:30px;border-radius:99px;border:none;background:rgba(255,255,255,.2);color:#fff;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.dm-x:hover{background:rgba(255,255,255,.4);}
+.dm-msgs{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:9px;scrollbar-width:thin;scrollbar-color:var(--g3) transparent;}
+.dm-msgs::-webkit-scrollbar{width:3px;}
+.dm-msgs::-webkit-scrollbar-thumb{background:var(--g3);border-radius:99px;}
+.dm-bubble{max-width:78%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.55;word-break:break-word;}
+.dm-bubble.sent{background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+.dm-bubble.recv{background:var(--g6);color:var(--td);align-self:flex-start;border-bottom-left-radius:4px;border:1px solid rgba(34,197,94,.2);}
+.dm-btime{font-size:10px;opacity:.65;margin-top:3px;}
+.dm-bubble.sent .dm-btime{text-align:right;}
+.dm-bname{font-size:10px;font-weight:700;margin-bottom:2px;opacity:.75;}
+.dm-empty{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--tll);font-size:13px;}
+.dm-empty i{font-size:28px;color:var(--g4);}
+.dm-footer{padding:11px 14px;border-top:1px solid var(--cream);display:flex;gap:8px;flex-shrink:0;background:#fff;}
+.dm-inp{flex:1;background:var(--g6);border:2px solid transparent;border-radius:10px;padding:9px 12px;font-family:'Oswald',sans-serif;font-size:13px;color:var(--td);outline:none;transition:var(--tr);}
+.dm-inp:focus{border-color:var(--g2);background:#fff;}
+.dm-send{width:40px;height:40px;border-radius:9px;border:none;background:linear-gradient(135deg,var(--g2),var(--g1));color:#fff;font-size:14px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.dm-send:hover{transform:scale(1.06);}
+.dm-login-note{text-align:center;padding:18px;font-size:13px;color:var(--tl);}
 
 /* ═══ MODALS ═══ */
 .mod-ov{position:fixed;inset:0;z-index:5000;background:rgba(10,40,20,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;animation:fi .22s ease;}
@@ -259,25 +388,8 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .pr-p{font-size:18px;font-weight:700;}
 .btn-buy2{width:100%;padding:13px;border:none;border-radius:10px;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:7px;color:#fff;}
 .btn-buy2:hover{transform:translateY(-2px);}
-.suc-box{text-align:center;max-width:340px;background:linear-gradient(140deg,#fff 0%,var(--milk2) 100%);}
-.suc-i{font-size:52px;color:var(--g2);margin-bottom:12px;animation:bo .6s ease;}
-@keyframes bo{0%,100%{transform:translateY(0);}40%{transform:translateY(-14px);}70%{transform:translateY(-6px);}}
-.suc-t{font-size:20px;font-weight:700;color:var(--td);margin-bottom:9px;letter-spacing:1px;text-transform:uppercase;}
-.suc-d{font-size:13px;color:var(--tm);font-weight:300;line-height:1.8;margin-bottom:20px;}
 
-@media(max-width:760px){.cg{grid-template-columns:1fr 1fr;}}
-@media(max-width:480px){.cg{grid-template-columns:1fr;}.sidebar{width:260px;}.sv-card{min-width:270px;}.sv-sec{padding:14px 20px 10px;}.sv-status{padding:11px 20px;}}
-
-/* ─── Logo image ─── */
-.logo-img{object-fit:contain;display:block;}
-.logo-img-nav{width:34px;height:34px;border-radius:8px;box-shadow:0 2px 8px rgba(22,163,74,.25);}
-.logo-img-sb{width:36px;height:36px;border-radius:9px;box-shadow:0 2px 8px rgba(22,163,74,.25);}
-.logo-img-login{width:80px;height:80px;border-radius:18px;box-shadow:0 8px 28px rgba(22,163,74,.3);margin:0 auto 10px;display:block;animation:logo-pop .6s cubic-bezier(.4,0,.2,1);}
-.logo-img-hero{width:110px;height:110px;border-radius:22px;box-shadow:0 12px 40px rgba(22,163,74,.35),0 0 0 4px rgba(255,255,255,.6);margin:0 auto 18px;display:block;animation:logo-float 4s ease-in-out infinite;}
-@keyframes logo-pop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
-@keyframes logo-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-
-/* ─── Application form modal ─── */
+/* App modal */
 .app-box{max-width:460px;padding:0;overflow:hidden;}
 .app-header{padding:28px 28px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.2);}
 .app-rank-icon{font-size:32px;margin-bottom:6px;}
@@ -290,7 +402,6 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .app-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:6px;}
 .app-field label i{font-size:12px;}
 .inp-i{font-size:13px;flex-shrink:0;}
-
 .app-upload{border:2px dashed rgba(34,197,94,.35);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:var(--tr);background:var(--g6);min-height:90px;display:flex;align-items:center;justify-content:center;}
 .app-upload:hover{border-color:var(--g2);background:var(--cream);}
 .upload-placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;}
@@ -299,14 +410,10 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .upload-placeholder small{font-size:11px;color:var(--tll);}
 .upload-preview{max-width:100%;max-height:160px;border-radius:8px;object-fit:contain;}
 .upload-preview.h{display:none;}
-
 .app-err{color:#ef4444;font-size:12px;text-align:center;min-height:14px;font-weight:500;}
-
 .btn-app-submit{width:100%;padding:11px;border:none;border-radius:10px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:7px;color:#fff;}
 .btn-app-submit:hover{transform:translateY(-2px);}
 .btn-app-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-
-/* ─── Done / Final success modal ─── */
 .done-box{text-align:center;max-width:380px;background:linear-gradient(140deg,#fff 0%,var(--milk2) 100%);}
 .done-anim{display:flex;justify-content:center;margin-bottom:18px;}
 .done-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:circle-pop .5s cubic-bezier(.4,0,.2,1);}
@@ -319,6 +426,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .done-note i{margin-right:5px;}
 .done-note strong{color:var(--td);}
 
+/* Stats */
 .stat-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
 .stat-row{display:flex;align-items:center;gap:10px;padding:9px 13px;background:rgba(34,197,94,.07);border-radius:10px;border:1px solid rgba(34,197,94,.15);transition:var(--tr);}
 .stat-row:hover{background:rgba(34,197,94,.14);}
@@ -328,6 +436,27 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 .stat-rank.bronze-r{background:linear-gradient(135deg,#cd7c3a,#a85d28);}
 .stat-nick{flex:1;font-size:13px;font-weight:600;color:var(--td);}
 .stat-val{font-size:13px;font-weight:700;color:var(--g1);letter-spacing:.3px;}
+
+/* Logo images */
+.logo-img{object-fit:contain;display:block;}
+.logo-img-nav{width:34px;height:34px;border-radius:8px;box-shadow:0 2px 8px rgba(22,163,74,.25);}
+.logo-img-sb{width:36px;height:36px;border-radius:9px;box-shadow:0 2px 8px rgba(22,163,74,.25);}
+.logo-img-login{width:80px;height:80px;border-radius:18px;box-shadow:0 8px 28px rgba(22,163,74,.3);margin:0 auto 10px;display:block;animation:logo-pop .6s cubic-bezier(.4,0,.2,1);}
+.logo-img-hero{width:110px;height:110px;border-radius:22px;box-shadow:0 12px 40px rgba(22,163,74,.35),0 0 0 4px rgba(255,255,255,.6);margin:0 auto 18px;display:block;animation:logo-float 4s ease-in-out infinite;}
+@keyframes logo-pop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+@keyframes logo-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+/* Write news modal */
+.wnm-ov{position:fixed;inset:0;z-index:7000;background:rgba(10,40,20,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;animation:fi .22s ease;}
+.wnm-ov.h{display:none;}
+.wnm-box{background:#fff;border-radius:20px;width:100%;max-width:480px;padding:28px;box-shadow:0 40px 90px rgba(10,40,20,.28);animation:pi .28s cubic-bezier(.4,0,.2,1);position:relative;}
+.wnm-title{font-size:18px;font-weight:700;color:var(--td);margin-bottom:4px;letter-spacing:1px;}
+.wnm-sub{font-size:12px;color:var(--tl);margin-bottom:20px;}
+.wnm-x{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:99px;border:none;background:var(--cream);color:var(--tm);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.wnm-x:hover{background:var(--g2);color:#fff;}
+
+@media(max-width:760px){.cg{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.cg{grid-template-columns:1fr;}.sidebar{width:260px;}.sv-card{min-width:270px;}.sv-sec{padding:14px 20px 10px;}.sv-status{padding:11px 20px;}}
 </style>
 </head>
 <body>
@@ -341,7 +470,7 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
   </div>
   <div class="sb-user">
     <div class="sb-av" id="sbAv">?</div>
-    <div><span class="sb-nick" id="sbNk">Кіру қажет</span><span class="sb-role">Ойыншы</span></div>
+    <div><span class="sb-nick" id="sbNk">Кіру қажет</span><span class="sb-role" id="sbRole">Ойыншы</span></div>
   </div>
   <nav class="sb-nav">
     <div class="sb-lnk act" onclick="go('dash')"><i class="fa-solid fa-house"></i><span>Басты бет</span></div>
@@ -349,6 +478,12 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
     <div class="sb-lnk" onclick="go('cases')"><i class="fa-solid fa-box-open"></i><span>Кейстер</span></div>
     <div class="sb-lnk" onclick="go('stats')"><i class="fa-solid fa-chart-bar"></i><span>Статистика</span></div>
     <div class="sb-lnk" onclick="go('forum')"><i class="fa-solid fa-comments"></i><span>Форум</span></div>
+    <div class="sb-sep"></div>
+    <div class="sb-lnk" onclick="go('rules')"><i class="fa-solid fa-shield-halved"></i><span>Ережелер</span></div>
+    <div class="sb-lnk" onclick="go('members')"><i class="fa-solid fa-users"></i><span>Сервер мүшелері</span></div>
+    <div class="sb-lnk" onclick="go('faq')"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></div>
+    <div class="sb-sep"></div>
+    <div class="sb-lnk admin-lnk" id="sbAdminLink" onclick="go('admin')"><i class="fa-solid fa-user-shield"></i><span>Админ панель</span><span class="admin-badge-sb">ADMIN</span></div>
   </nav>
   <div class="sb-foot">
     <button class="sb-out" onclick="doOut()"><i class="fa-solid fa-right-from-bracket"></i><span>Шығу</span></button>
@@ -403,21 +538,18 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
     <div class="hg hg1"></div><div class="hg hg2"></div>
     <div class="cubes"><div class="cb b1"></div><div class="cb b2"></div><div class="cb b3"></div><div class="cb b4"></div></div>
     <div class="dash-c">
-      <img src="images/logo.png" class="logo-img logo-img-hero" alt="7QAZYNA"/>
+      <img src="images/logo.png" class="logo-img logo-img-hero" alt="7QAZYNA" onerror="this.style.display='none'"/>
       <h1 class="htitle">7QAZYNA</h1>
       <div class="sv-card">
-        <!-- JAVA -->
         <div class="sv-sec">
           <div class="sv-ed java-ed"><i class="fa-brands fa-java"></i> JAVA</div>
           <div class="sv-row"><i class="fa-solid fa-code-branch sv-ic"></i><span class="sv-lbl">Версия</span><span class="sv-val">1.21.4 — 1.21.11</span></div>
           <div class="sv-row"><i class="fa-solid fa-server sv-ic"></i><span class="sv-lbl">IP</span><span class="sv-val">7qazyna.kitpvp.su</span></div>
         </div>
-        <!-- BEDROCK -->
         <div class="sv-sec">
           <div class="sv-ed bdrk-ed"><i class="fa-solid fa-cube"></i> BEDROCK</div>
           <div class="sv-row"><i class="fa-solid fa-clock sv-ic" style="color:#9ca3af"></i><span class="sv-lbl">Күй</span><span class="sv-val na">Әзірше қосылмады</span></div>
         </div>
-        <!-- STATUS (динамикалық) -->
         <div class="sv-status" id="svStatus">
           <div class="sv-dot" id="svDot"></div>
           <span class="sv-stxt" id="svTxt">Тексерілуде...</span>
@@ -481,27 +613,223 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
   <section id="p-forum" class="page">
     <div class="sh">
       <h2 class="st"><i class="fa-solid fa-comments"></i> Форум</h2>
-      <p class="ss">Сервер командасы</p>
+      <p class="ss">Сервер командасы және жаңалықтар</p>
     </div>
     <div class="fw">
       <div class="fl">
-        <div class="fm fo">
+        <!-- Admin cards -->
+        <div class="fm fo" onclick="openDM('rozikplay','FOUNDER')">
           <div class="fm-gl"></div>
-          <div class="fm-bd fo-b"><i class="fa-solid fa-crown"></i> Основатель</div>
+          <div class="fm-bd fo-b"><i class="fa-solid fa-crown"></i> Founder</div>
           <div class="fm-av fo-av">R</div>
-          <div><div class="fm-nk">RozikPlay &amp; QobaMn</div><div class="fm-rl">Серверді негіздеушілер</div></div>
+          <div>
+            <div class="fm-nk">rozikplay</div>
+            <div class="fm-rl">Серверді негіздеуші</div>
+          </div>
+          <div class="fm-msg"><i class="fa-solid fa-message"></i> Жазу</div>
         </div>
-        <div class="fm dv">
+        <div class="fm dv" onclick="openDM('QobaMn','FOUNDER · DEV')">
           <div class="fm-gl"></div>
-          <div class="fm-bd dv-b"><i class="fa-solid fa-code"></i> Разработчик</div>
+          <div class="fm-bd dv-b"><i class="fa-solid fa-crown"></i> Founder</div>
           <div class="fm-av dv-av">Q</div>
-          <div><div class="fm-nk">QobaMn</div><div class="fm-rl">Разработчик</div></div>
+          <div>
+            <div class="fm-nk">QobaMn</div>
+            <div class="fm-rl">Негіздеуші · Разработчик</div>
+          </div>
+          <div class="fm-msg" style="color:#6366f1"><i class="fa-solid fa-message"></i> Жазу</div>
         </div>
-        <div class="fm ad">
+        <div class="fm ad" onclick="openDM('azagoe','MODERATOR')">
           <div class="fm-gl"></div>
           <div class="fm-bd ad-b"><i class="fa-solid fa-shield-halved"></i> Модератор</div>
           <div class="fm-av ad-av">A</div>
-          <div><div class="fm-nk">azagoe</div><div class="fm-rl">Модератор</div></div>
+          <div>
+            <div class="fm-nk">azagoe</div>
+            <div class="fm-rl">Модератор</div>
+          </div>
+          <div class="fm-msg" style="color:#14b8a6"><i class="fa-solid fa-message"></i> Жазу</div>
+        </div>
+
+        <!-- News section -->
+        <div class="news-sep"></div>
+        <div class="news-section">
+          <div class="news-hdr">
+            <div class="news-hdr-txt"><i class="fa-solid fa-newspaper"></i> Жаңалықтар</div>
+            <button class="btn-add-news" id="btnAddNews" onclick="openWriteNews()">
+              <i class="fa-solid fa-plus"></i> Жазу
+            </button>
+          </div>
+          <div class="news-list" id="newsList">
+            <div class="news-empty"><i class="fa-solid fa-spinner fa-spin" style="font-size:20px;color:var(--g3);display:block;margin-bottom:8px"></i>Жүктелуде...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section id="p-rules" class="page">
+    <div class="sh">
+      <h2 class="st"><i class="fa-solid fa-shield-halved" style="color:var(--g2)"></i> Ережелер</h2>
+      <p class="ss">Серверде сақталатын міндетті ережелер</p>
+    </div>
+    <div class="rules-wrap">
+      <div class="rules-card">
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-body">
+            <div class="rule-text">Читтер пайдалануға ТЫЙЫМ САЛЫНАДЫ</div>
+            <div class="rule-sub">Барынша читтерсіз ойна! Читтер пайдалану серверден тұрақты шығарылуға әкеледі.</div>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-body">
+            <div class="rule-text">Басқа ойыншыларға балағат сөздер айтпау</div>
+            <div class="rule-sub">Барлық ойыншыларға сыйластықпен қарау міндетті. Хаттар, чат немесе белгілер арқылы балағат айтуға болмайды.</div>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-body">
+            <div class="rule-text">Спам және жарнамаға тыйым</div>
+            <div class="rule-sub">Чатта спам жасау, басқа серверлер мен сайттарды жарнамалау тыйым салынады.</div>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">4</div>
+          <div class="rule-body">
+            <div class="rule-text">Администрация шешімдеріне бағыну</div>
+            <div class="rule-sub">Администраторлар мен модераторлардың шешімдеріне сыйластықпен қарау міндетті.</div>
+          </div>
+        </div>
+        <div class="rule-warn">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          Ережелер бұзылған жағдайда: 7 күнге бан немесе ұзақ уақыттық мут.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERS -->
+  <section id="p-members" class="page">
+    <div class="sh">
+      <h2 class="st"><i class="fa-solid fa-users" style="color:var(--g2)"></i> Сервер мүшелері</h2>
+      <p class="ss">Тіркелген ойыншылар тізімі</p>
+    </div>
+    <div class="mem-wrap">
+      <div class="mem-count" id="memCount"></div>
+      <div class="mem-grid" id="memGrid">
+        <div style="grid-column:1/-1;text-align:center;padding:28px;color:var(--tll);font-size:13px;">
+          <i class="fa-solid fa-spinner fa-spin" style="font-size:24px;color:var(--g3);display:block;margin-bottom:8px"></i>
+          Жүктелуде...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="p-faq" class="page">
+    <div class="sh">
+      <h2 class="st"><i class="fa-solid fa-circle-question" style="color:var(--g2)"></i> FAQ</h2>
+      <p class="ss">Жиі қойылатын сұрақтар</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-list">
+
+        <!-- FAQ 1: Приват -->
+        <div class="faq-item" id="faq1">
+          <div class="faq-q" onclick="toggleFaq('faq1')">
+            <i class="faq-q-icon fa-solid fa-house-lock"></i>
+            <span class="faq-q-text">Қалай приват қоямын?</span>
+            <i class="faq-chevron fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">
+            <p class="faq-a-intro">Алдымен ойында <strong>//wand</strong> командасын жазып, берілген балтамен екі нүктені белгілейсіз. Содан кейін мына командаларды қолданасыз:</p>
+            <div class="faq-wand"><i class="fa-solid fa-wand-magic-sparkles"></i> <strong>//wand</strong> — балтаны қолыңызға алыңыз, содан кейін 2 бұрышты Left Click + Right Click жасаңыз</div>
+            <div class="cmd-list">
+              <div class="cmd-row"><span class="cmd-code">/house create [Үй аты]</span><span class="cmd-desc">Үй (приват) құру</span></div>
+              <div class="cmd-row"><span class="cmd-code">/house add [Үй аты] [Ойыншы аты]</span><span class="cmd-desc">Үйге достар қосу</span></div>
+              <div class="cmd-row"><span class="cmd-code">/house remove [Үй аты] [Ойыншы аты]</span><span class="cmd-desc">Үйден достарды шығару</span></div>
+              <div class="cmd-row"><span class="cmd-code">/house delete [Үй аты]</span><span class="cmd-desc">Үйді толығымен өшіру</span></div>
+              <div class="cmd-row"><span class="cmd-code">/house info</span><span class="cmd-desc">Үй туралы мәлімет алу</span></div>
+              <div class="cmd-row"><span class="cmd-code">/house help</span><span class="cmd-desc">Приват туралы толық анықтама</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2: Донат -->
+        <div class="faq-item" id="faq2">
+          <div class="faq-q" onclick="toggleFaq('faq2')">
+            <i class="faq-q-icon fa-solid fa-gem"></i>
+            <span class="faq-q-text">Қалай донат сатып аламын?</span>
+            <i class="faq-chevron fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">
+            <p class="faq-a-intro">Донат алу үшін төмендегі қадамдарды орындаңыз:</p>
+            <div class="don-list">
+              <div class="don-row"><i class="don-icon fa-solid fa-credit-card"></i><span class="don-text">Kaspi картасына аудару: <strong class="donhelp-card">4400 4302 9514 5079</strong></span></div>
+              <div class="don-row"><i class="don-icon fa-solid fa-arrow-right"></i><span class="don-text">Аударым жасаған кезде комментарийге өзіңіздің <strong>никіңізді</strong> қатесіз жазыңыз</span></div>
+              <div class="don-row"><i class="don-icon fa-solid fa-globe"></i><span class="don-text">Осы сайттың <strong>«Донаттар»</strong> бөліміне өтіңіз</span></div>
+              <div class="don-row"><i class="don-icon fa-solid fa-cart-shopping"></i><span class="don-text">Қажетті рангті таңдап <strong>«Сатып алу»</strong> батырмасын басыңыз</span></div>
+              <div class="don-row"><i class="don-icon fa-solid fa-file-lines"></i><span class="don-text">Шыққан форманы толтырыңыз (НИК, Kaspi аты, скриншот)</span></div>
+              <div class="don-row"><i class="don-icon fa-solid fa-paper-plane"></i><span class="don-text"><strong>«Арызымды жіберу»</strong> батырмасын басып 4–6 сағат күтіңіз</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3: Жалпы командалар -->
+        <div class="faq-item" id="faq3">
+          <div class="faq-q" onclick="toggleFaq('faq3')">
+            <i class="faq-q-icon fa-solid fa-terminal"></i>
+            <span class="faq-q-text">Негізгі командалар қандай?</span>
+            <i class="faq-chevron fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">
+            <div class="cmd-list">
+              <div class="cmd-row"><span class="cmd-code">/rtp</span><span class="cmd-desc">Кездейсоқ жерге телепортация</span></div>
+              <div class="cmd-row"><span class="cmd-code">/spawn</span><span class="cmd-desc">Спавнға оралу</span></div>
+              <div class="cmd-row"><span class="cmd-code">/donate</span><span class="cmd-desc">Донаттар мәзірін ашу</span></div>
+              <div class="cmd-row"><span class="cmd-code">/kits</span><span class="cmd-desc">Қолжетімді кит тізімі</span></div>
+              <div class="cmd-row"><span class="cmd-code">/pay [ойыншы] [сумма]</span><span class="cmd-desc">Ойыншыға ақша аудару</span></div>
+              <div class="cmd-row"><span class="cmd-code">/house help</span><span class="cmd-desc">Приват жүйесі туралы анықтама</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN PANEL -->
+  <section id="p-admin" class="page">
+    <div class="sh">
+      <h2 class="st"><i class="fa-solid fa-user-shield" style="color:#f97316"></i> Админ Панель</h2>
+      <p class="ss" id="admSubtitle">Басқару тақтасы</p>
+    </div>
+    <div class="adm-wrap">
+      <div class="adm-inner">
+        <div class="adm-tabs">
+          <button class="adm-tab on" onclick="admTab('msgs')"><i class="fa-solid fa-inbox"></i> Хабарламалар</button>
+          <button class="adm-tab" onclick="admTab('news')"><i class="fa-solid fa-newspaper"></i> Жаңалықтар</button>
+        </div>
+        <!-- Messages panel -->
+        <div class="adm-panel on" id="admMsgs">
+          <div class="conv-list" id="convList">
+            <div class="adm-empty"><i class="fa-solid fa-inbox"></i>Хабарламалар жоқ</div>
+          </div>
+        </div>
+        <!-- News panel -->
+        <div class="adm-panel" id="admNews">
+          <div class="news-form">
+            <span class="nf-lbl">Жаңалық тақырыбы</span>
+            <input class="nf-inp" type="text" id="nfTitle" placeholder="Тақырыпты енгізіңіз..."/>
+            <span class="nf-lbl">Мазмұн</span>
+            <textarea class="nf-area" id="nfBody" placeholder="Жаңалықтың мазмұнын жазыңыз..."></textarea>
+            <div style="display:flex;justify-content:flex-end;margin-top:10px">
+              <button class="nf-submit" onclick="publishNews()"><i class="fa-solid fa-paper-plane"></i> Жариялау</button>
+            </div>
+          </div>
+          <div class="adm-news-list" id="admNewsList"></div>
         </div>
       </div>
     </div>
@@ -521,30 +849,20 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 <div id="appMod" class="mod-ov h">
   <div class="mod-box app-box" id="appBox">
     <button class="mod-x" id="appX" onclick="closeApp()"><i class="fa-solid fa-xmark"></i></button>
-
     <div class="app-header" id="appHeader">
       <div class="app-rank-icon" id="appRankIcon"></div>
       <div class="app-rank-name" id="appRankName"></div>
       <div class="app-rank-price" id="appRankPrice"></div>
     </div>
-
     <div class="app-form" id="appForm">
       <div class="app-field">
         <label><i class="fa-solid fa-hammer"></i> Minecraft НИК</label>
-        <div class="inp">
-          <i class="fa-solid fa-user inp-i"></i>
-          <input type="text" id="appNick" placeholder="Сіздің [НИК]" autocomplete="off"/>
-        </div>
+        <div class="inp"><i class="fa-solid fa-user inp-i"></i><input type="text" id="appNick" placeholder="Сіздің [НИК]" autocomplete="off"/></div>
       </div>
-
       <div class="app-field">
         <label><i class="fa-solid fa-id-card"></i> Kaspi — Толық аты жөні</label>
-        <div class="inp">
-          <i class="fa-solid fa-user-tie inp-i"></i>
-          <input type="text" id="appName" placeholder="Мысалы - Мақсат.Д" autocomplete="off"/>
-        </div>
+        <div class="inp"><i class="fa-solid fa-user-tie inp-i"></i><input type="text" id="appName" placeholder="Мысалы - Мақсат.Д" autocomplete="off"/></div>
       </div>
-
       <div class="app-field">
         <label><i class="fa-solid fa-image"></i> Трансфер скриншоты</label>
         <div class="app-upload" id="appUpload" onclick="document.getElementById('appFile').click()">
@@ -557,12 +875,9 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
           <img id="uploadPreview" class="upload-preview h" alt="preview"/>
         </div>
       </div>
-
       <p class="app-err" id="appErr"></p>
-
       <button class="btn-app-submit" id="appSubmitBtn" onclick="submitApp()">
-        <i class="fa-solid fa-paper-plane"></i>
-        Арызымды жіберу
+        <i class="fa-solid fa-paper-plane"></i> Арызымды жіберу
       </button>
     </div>
   </div>
@@ -571,153 +886,146 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
 <!-- FINAL SUCCESS MODAL -->
 <div id="doneSod" class="mod-ov h">
   <div class="mod-box done-box">
-    <div class="done-anim">
-      <div class="done-circle">
-        <i class="fa-solid fa-check done-check"></i>
-      </div>
-    </div>
+    <div class="done-anim"><div class="done-circle"><i class="fa-solid fa-check done-check"></i></div></div>
     <h2 class="done-title">Арыз жіберілді!</h2>
-    <p class="done-desc">
-      Сіздің донат алу үшін жіберген арызыңыз
-      <strong>4–6 сағат ішінде</strong> администраторлар тарапынан
-      көріп шығылады. Күтіңіз!
-    </p>
-    <div class="done-note">
-      <i class="fa-solid fa-circle-info"></i>
-      Шағымдарыңыз болса администраторларға
-      <strong>Minecraft</strong> сервері арқылы хабарласыңыз!
-    </div>
+    <p class="done-desc">Сіздің донат алу үшін жіберген арызыңыз <strong>4–6 сағат ішінде</strong> администраторлар тарапынан көріп шығылады. Күтіңіз!</p>
+    <div class="done-note"><i class="fa-solid fa-circle-info"></i>Шағымдарыңыз болса администраторларға <strong>Minecraft</strong> сервері арқылы хабарласыңыз!</div>
     <button class="btn-auth" onclick="closeDone()" style="margin-top:20px">Жабу</button>
+  </div>
+</div>
+
+<!-- DM MODAL -->
+<div id="dmOv" class="dm-ov h">
+  <div class="dm-box">
+    <div class="dm-head">
+      <div class="dm-head-av" id="dmHeadAv">?</div>
+      <div class="dm-head-info">
+        <div class="dm-head-nick" id="dmHeadNick">—</div>
+        <div class="dm-head-role" id="dmHeadRole">—</div>
+      </div>
+      <button class="dm-x" onclick="closeDM()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="dm-msgs" id="dmMsgs"></div>
+    <div class="dm-footer" id="dmFooter">
+      <input class="dm-inp" id="dmInp" placeholder="Хабарламаңызды жазыңыз..." onkeydown="if(event.key==='Enter')sendDM()"/>
+      <button class="dm-send" onclick="sendDM()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- WRITE NEWS MODAL (quick modal from forum page) -->
+<div id="wnMod" class="wnm-ov h">
+  <div class="wnm-box">
+    <button class="wnm-x" onclick="closeWriteNews()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="wnm-title"><i class="fa-solid fa-newspaper" style="color:var(--g2);margin-right:7px"></i>Жаңалық жазу</div>
+    <div class="wnm-sub">Жаңалық форумда барлық пайдаланушыларға көрінеді</div>
+    <span class="nf-lbl">Тақырып</span>
+    <input class="nf-inp" type="text" id="wnTitle" placeholder="Жаңалық тақырыбы..."/>
+    <span class="nf-lbl">Мазмұн</span>
+    <textarea class="nf-area" id="wnBody" placeholder="Жаңалықтың мазмұны..."></textarea>
+    <div style="display:flex;gap:9px;justify-content:flex-end;margin-top:14px">
+      <button style="padding:9px 18px;border:none;border-radius:9px;background:var(--cream);color:var(--tm);font-family:'Oswald',sans-serif;font-size:13px;cursor:pointer" onclick="closeWriteNews()">Болдырмау</button>
+      <button class="nf-submit" onclick="publishNewsModal()"><i class="fa-solid fa-paper-plane"></i> Жариялау</button>
+    </div>
   </div>
 </div>
 
 <script type="module">
 import { initializeApp }   from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getDatabase, ref, get, set, child, onValue }
+import { getDatabase, ref, get, set, push, remove, child, onValue, query, orderByChild }
   from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
-/* ─── Firebase конфиг (жаңа база) ─── */
+/* ─── Firebase config ─── */
 const app = initializeApp({
-  apiKey:            "AIzaSyDWpoojmmQk-mNRi7HCB7FAsl7eZ5UeQ2g",
-  authDomain:        "qazyna-14965.firebaseapp.com",
-  projectId:         "qazyna-14965",
-  storageBucket:     "qazyna-14965.firebasestorage.app",
-  messagingSenderId: "332841660314",
-  appId:             "1:332841660314:web:2b51f3ff9b0f25c1935423",
-  measurementId:     "G-9S538ZC9L7",
-  databaseURL:       "https://qazyna-14965-default-rtdb.firebaseio.com"
+  apiKey:"AIzaSyDWpoojmmQk-mNRi7HCB7FAsl7eZ5UeQ2g",
+  authDomain:"qazyna-14965.firebaseapp.com",
+  projectId:"qazyna-14965",
+  storageBucket:"qazyna-14965.firebasestorage.app",
+  messagingSenderId:"332841660314",
+  appId:"1:332841660314:web:2b51f3ff9b0f25c1935423",
+  measurementId:"G-9S538ZC9L7",
+  databaseURL:"https://qazyna-14965-default-rtdb.firebaseio.com"
 });
 const db = getDatabase(app);
 
-/* ═══ СЕРВЕР СТАТУСЫН ТЕКСЕРУ ═══
-   api.mcsrvstat.us — тегін public API
-   Әр 60 секунд сайын жаңартады         */
-async function checkServer() {
-  const dot  = document.getElementById("svDot");
-  const txt  = document.getElementById("svTxt");
-  const pl   = document.getElementById("svPlayers");
-  const bar  = document.getElementById("svStatus");
+/* ─── State ─── */
+let _currentUser = null;
+let _isAdmin = false;
+let _dmAdminNick = null;
+let _dmAdminRole = null;
+let _dmUnsubscribe = null;
+let _adminConvUnsubscribes = [];
 
-  // Тексерілуде күйі
-  dot.className = "sv-dot checking";
-  txt.className = "sv-stxt checking";
-  txt.textContent = "Тексерілуде...";
-  pl.textContent = "";
+const ADMIN_NICKS = ['rozikplay','azagoe','qobamn'];
 
-  try {
-    const res  = await fetch("https://api.mcsrvstat.us/3/7qazyna.kitpvp.su");
-    const data = await res.json();
-
-    if (data.online) {
-      const online = data.players?.online ?? 0;
-      const max    = data.players?.max    ?? 0;
-
-      dot.className  = "sv-dot";
-      txt.className  = "sv-stxt";
-      txt.textContent = "Онлайн";
-      pl.className   = "sv-players";
-      pl.textContent = `${online} / ${max} ойыншы`;
-      bar.classList.remove("offline");
-    } else {
-      dot.className  = "sv-dot offline";
-      txt.className  = "sv-stxt offline";
-      txt.textContent = "Офлайн";
-      pl.className   = "sv-players offline";
-      bar.classList.add("offline");
-    }
-  } catch {
-    dot.className  = "sv-dot offline";
-    txt.className  = "sv-stxt offline";
-    txt.textContent = "Қол жетімсіз";
-    pl.className   = "sv-players offline";
-    bar.classList.add("offline");
-  }
+/* ═══ SERVER STATUS ═══ */
+async function checkServer(){
+  const dot=document.getElementById("svDot"),txt=document.getElementById("svTxt"),pl=document.getElementById("svPlayers"),bar=document.getElementById("svStatus");
+  dot.className="sv-dot checking";txt.className="sv-stxt checking";txt.textContent="Тексерілуде...";pl.textContent="";
+  try{
+    const res=await fetch("https://api.mcsrvstat.us/3/7qazyna.kitpvp.su");
+    const data=await res.json();
+    if(data.online){
+      const online=data.players?.online??0,max=data.players?.max??0;
+      dot.className="sv-dot";txt.className="sv-stxt";txt.textContent="Онлайн";
+      pl.className="sv-players";pl.textContent=`${online} / ${max} ойыншы`;bar.classList.remove("offline");
+    }else{dot.className="sv-dot offline";txt.className="sv-stxt offline";txt.textContent="Офлайн";pl.className="sv-players offline";bar.classList.add("offline");}
+  }catch{dot.className="sv-dot offline";txt.className="sv-stxt offline";txt.textContent="Қол жетімсіз";pl.className="sv-players offline";bar.classList.add("offline");}
 }
+checkServer();setInterval(checkServer,60000);
 
-// Бірден тексер, содан кейін әр 60 секунд сайын
-checkServer();
-setInterval(checkServer, 60_000);
-
-/* ─── Stats: Firebase-тен оқу ─── */
-function rankClass(i){ return i===0?'gold-r':i===1?'silver-r':i===2?'bronze-r':''; }
-
-function renderPlaytime(data) {
-  const el = document.getElementById("listPlaytime");
-  if (!data || !data.length) {
-    el.innerHTML=`<div class="te"><i class="fa-solid fa-gamepad"></i><p>Деректер жоқ</p><span>Плагин іске қосылмаған немесе ойыншылар жоқ.</span></div>`;
-    return;
-  }
-  el.innerHTML=`<ul class="stat-list">${data.map((r,i)=>`
-    <li class="stat-row">
-      <span class="stat-rank ${rankClass(i)}">${i+1}</span>
-      <span class="stat-nick"><i class="fa-solid fa-user" style="font-size:10px;margin-right:5px;color:var(--tl)"></i>${r.nick||'?'}</span>
-      <span class="stat-val"><i class="fa-solid fa-clock" style="font-size:10px;margin-right:3px"></i>${r.time||'0 мин'}</span>
-    </li>`).join("")}</ul>`;
+/* ═══ STATS ═══ */
+function rankClass(i){return i===0?'gold-r':i===1?'silver-r':i===2?'bronze-r':'';}
+function renderPlaytime(data){
+  const el=document.getElementById("listPlaytime");
+  if(!data||!data.length){el.innerHTML=`<div class="te"><i class="fa-solid fa-gamepad"></i><p>Деректер жоқ</p><span>Плагин іске қосылмаған немесе ойыншылар жоқ.</span></div>`;return;}
+  el.innerHTML=`<ul class="stat-list">${data.map((r,i)=>`<li class="stat-row"><span class="stat-rank ${rankClass(i)}">${i+1}</span><span class="stat-nick"><i class="fa-solid fa-user" style="font-size:10px;margin-right:5px;color:var(--tl)"></i>${r.nick||'?'}</span><span class="stat-val"><i class="fa-solid fa-clock" style="font-size:10px;margin-right:3px"></i>${r.time||'0 мин'}</span></li>`).join("")}</ul>`;
 }
-
-function renderRichest(data) {
-  const el = document.getElementById("listRichest");
-  if (!data || !data.length) {
-    el.innerHTML=`<div class="te"><i class="fa-solid fa-coins"></i><p>Деректер жоқ</p><span>Vault плагині орнатылмаған немесе ойыншылар жоқ.</span></div>`;
-    return;
-  }
-  el.innerHTML=`<ul class="stat-list">${data.map((r,i)=>`
-    <li class="stat-row">
-      <span class="stat-rank ${rankClass(i)}">${i+1}</span>
-      <span class="stat-nick"><i class="fa-solid fa-user" style="font-size:10px;margin-right:5px;color:var(--tl)"></i>${r.nick||'?'}</span>
-      <span class="stat-val"><i class="fa-solid fa-coins" style="font-size:10px;margin-right:3px"></i>${Number(r.balance||0).toLocaleString()}₸</span>
-    </li>`).join("")}</ul>`;
+function renderRichest(data){
+  const el=document.getElementById("listRichest");
+  if(!data||!data.length){el.innerHTML=`<div class="te"><i class="fa-solid fa-coins"></i><p>Деректер жоқ</p><span>Vault плагині орнатылмаған немесе ойыншылар жоқ.</span></div>`;return;}
+  el.innerHTML=`<ul class="stat-list">${data.map((r,i)=>`<li class="stat-row"><span class="stat-rank ${rankClass(i)}">${i+1}</span><span class="stat-nick"><i class="fa-solid fa-user" style="font-size:10px;margin-right:5px;color:var(--tl)"></i>${r.nick||'?'}</span><span class="stat-val"><i class="fa-solid fa-coins" style="font-size:10px;margin-right:3px"></i>${Number(r.balance||0).toLocaleString()}₸</span></li>`).join("")}</ul>`;
 }
+onValue(ref(db,'/stats/playtime'),snap=>{const val=snap.val();renderPlaytime(Array.isArray(val)?val:(val?Object.values(val):[]));});
+onValue(ref(db,'/stats/richest'),snap=>{const val=snap.val();renderRichest(Array.isArray(val)?val:(val?Object.values(val):[]));});
 
-// Нақты уақытта тыңдау (onValue) — деректер өзгерсе бет өзі жаңарады
-onValue(ref(db,'/stats/playtime'), snap => {
-  const val = snap.val();
-  renderPlaytime(Array.isArray(val) ? val : (val ? Object.values(val) : []));
-});
-onValue(ref(db,'/stats/richest'), snap => {
-  const val = snap.val();
-  renderRichest(Array.isArray(val) ? val : (val ? Object.values(val) : []));
-});
-
-/* block scroll */
-const ns = e=>{ if(!e.target.closest('.mod-box')&&!e.target.closest('.ca')) e.preventDefault(); };
+/* ═══ BLOCK SCROLL ═══ */
+const ns=e=>{if(!e.target.closest('.mod-box')&&!e.target.closest('.ca')&&!e.target.closest('.fw')&&!e.target.closest('.faq-wrap')&&!e.target.closest('.mem-wrap')&&!e.target.closest('.adm-wrap')&&!e.target.closest('.dm-msgs')&&!e.target.closest('.rules-wrap'))e.preventDefault();};
 document.addEventListener('wheel',ns,{passive:false});
 document.addEventListener('touchmove',ns,{passive:false});
-document.addEventListener('keydown',e=>{ if(['ArrowUp','ArrowDown','PageUp','PageDown','Home','End'].includes(e.key)) e.preventDefault(); });
+document.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','PageUp','PageDown','Home','End'].includes(e.key))e.preventDefault();});
 
-/* hash */
+/* ═══ HASH ═══ */
 async function hs(s){
   const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));
   return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
 }
 
-/* session — localStorage: браузер жабылса да сақталады */
+/* ═══ SESSION ═══ */
 const SK="7qz_u";
 const sv=n=>{localStorage.setItem(SK,n);};
 const lv=()=>localStorage.getItem(SK);
 const cv=()=>localStorage.removeItem(SK);
 
-/* tab */
+/* ═══ SEED ADMINS ═══ */
+async function seedAdmins(){
+  const admins=[{nick:'rozikplay',pw:'123456'},{nick:'azagoe',pw:'123456'}];
+  for(const a of admins){
+    try{
+      const snap=await get(ref(db,`users/${a.nick}`));
+      const hashed=await hs(a.pw);
+      if(!snap.exists()){
+        await set(ref(db,`users/${a.nick}`),{password:hashed,nick:a.nick,role:'admin',createdAt:Date.now()});
+      }else{
+        const val=snap.val();
+        if(!val.role){await set(ref(db,`users/${a.nick}/role`),'admin');}
+      }
+    }catch(e){console.warn('Seed admin error:',e);}
+  }
+}
+seedAdmins();
+
+/* ═══ AUTH ═══ */
 window.swTab=t=>{
   document.getElementById("tL").classList.toggle("on",t==="l");
   document.getElementById("tR").classList.toggle("on",t==="r");
@@ -727,7 +1035,6 @@ window.swTab=t=>{
   document.getElementById("rEr").textContent="";
 };
 
-/* login */
 window.doLogin=async()=>{
   const nk=document.getElementById("lNk").value.trim();
   const pw=document.getElementById("lPw").value;
@@ -737,11 +1044,13 @@ window.doLogin=async()=>{
     const s=await get(child(ref(db),`users/${nk}`));
     if(!s.exists()){er.textContent="Мұндай пайдаланушы жоқ.";return;}
     if(s.val().password!==await hs(pw)){er.textContent="Құпиясөз қате.";return;}
-    sv(nk); enter(nk);
+    sv(nk);
+    _currentUser=nk;
+    _isAdmin=(s.val().role==='admin')||ADMIN_NICKS.includes(nk.toLowerCase());
+    enter(nk);
   }catch(e){er.textContent="Қате орын алды.";console.error(e);}
 };
 
-/* register */
 window.doReg=async()=>{
   const nk=document.getElementById("rNk").value.trim();
   const pw=document.getElementById("rPw").value;
@@ -751,274 +1060,399 @@ window.doReg=async()=>{
   if(pw!==p2){er.textContent="Құпиясөздер сәйкес келмейді.";return;}
   if(pw.length<6){er.textContent="Кем дегенде 6 таңба болуы керек.";return;}
   if(!/^[A-Za-z0-9_]+$/.test(nk)){er.textContent="НИК тек латын, цифр, _.";return;}
+  if(ADMIN_NICKS.includes(nk.toLowerCase())){er.textContent="Бұл НИК қолданылуда.";return;}
   try{
     const s=await get(child(ref(db),`users/${nk}`));
     if(s.exists()){er.textContent="Бұл НИК бос емес.";return;}
-    await set(ref(db,`users/${nk}`),{password:await hs(pw),nick:nk,createdAt:Date.now()});
-    sv(nk); enter(nk);
+    await set(ref(db,`users/${nk}`),{password:await hs(pw),nick:nk,role:'user',createdAt:Date.now()});
+    sv(nk);_currentUser=nk;_isAdmin=false;enter(nk);
   }catch(e){er.textContent="Тіркелу кезінде қате.";console.error(e);}
 };
 
-/* logout */
-window.doOut=()=>{cv();document.getElementById("lgOv").classList.remove("out");setUI(null);closeSB();go("dash");};
-function enter(n){document.getElementById("lgOv").classList.add("out");setUI(n);}
-function setUI(n){document.getElementById("sbAv").textContent=n?n.charAt(0).toUpperCase():"?";document.getElementById("sbNk").textContent=n||"Кіру қажет";}
-(()=>{const s=lv();if(s)enter(s);})();
+window.doOut=()=>{cv();_currentUser=null;_isAdmin=false;document.getElementById("lgOv").classList.remove("out");setUI(null);closeSB();go("dash");};
 
-/* sidebar */
+function enter(n){
+  document.getElementById("lgOv").classList.add("out");
+  setUI(n);
+  if(document.getElementById("p-members").classList.contains("on")||true)loadMembers();
+}
+
+function setUI(n){
+  document.getElementById("sbAv").textContent=n?n.charAt(0).toUpperCase():"?";
+  document.getElementById("sbNk").textContent=n||"Кіру қажет";
+  document.getElementById("sbRole").textContent=_isAdmin?"Әкімші":"Ойыншы";
+  const adminLink=document.getElementById("sbAdminLink");
+  if(_isAdmin){adminLink.style.display="flex";}else{adminLink.style.display="none";}
+  // Show news button for admins
+  const btnNews=document.getElementById("btnAddNews");
+  if(btnNews){btnNews.classList.toggle("visible",_isAdmin);}
+  // Update admin panel subtitle
+  if(n)document.getElementById("admSubtitle").textContent=`${n} — Басқару тақтасы`;
+}
+
+/* ─── Auto-login from session ─── */
+(async()=>{
+  const s=lv();
+  if(s){
+    _currentUser=s;
+    try{
+      const snap=await get(ref(db,`users/${s}`));
+      if(snap.exists()){
+        _isAdmin=(snap.val().role==='admin')||ADMIN_NICKS.includes(s.toLowerCase());
+      }
+    }catch{}
+    enter(s);
+  }
+})();
+
+/* ═══ SIDEBAR ═══ */
 window.openSB=()=>{document.getElementById("sb").classList.add("on");document.getElementById("sbOv").classList.add("on");};
 window.closeSB=()=>{document.getElementById("sb").classList.remove("on");document.getElementById("sbOv").classList.remove("on");};
 
-/* navigation */
-const PAGES=["dash","donate","cases","stats","forum"];
+/* ═══ NAVIGATION ═══ */
+const PAGES=["dash","donate","cases","stats","forum","rules","members","faq","admin"];
 window.go=id=>{
+  if(id==='admin'&&!_isAdmin){go('dash');return;}
   PAGES.forEach(p=>{document.getElementById(`p-${p}`).classList.toggle("on",p===id);});
-  document.querySelectorAll(".sb-lnk").forEach((el,i)=>{el.classList.toggle("act",PAGES[i]===id);});
+  document.querySelectorAll(".sb-lnk").forEach(el=>{
+    const page=el.getAttribute('onclick')?.match(/go\('(\w+)'\)/)?.[1];
+    if(page)el.classList.toggle("act",page===id);
+  });
   closeSB();
+  if(id==='members')loadMembers();
+  if(id==='admin'&&_isAdmin)loadAdminConversations();
+  if(id==='admin'&&_isAdmin)loadAdminNews();
+  if(id==='forum')loadNews();
 };
 
-/* rank data */
-const RD={
-  nova:{title:"NOVA",color:"#ea580c",bg:"linear-gradient(140deg,#fff7ed,#ffedd5)",perkBg:"rgba(249,115,22,.1)",codeBg:"rgba(249,115,22,.15)",codeCol:"#c2410c",lbl:"rgba(249,115,22,.18)",prBg:"rgba(249,115,22,.07)",prSel:"rgba(249,115,22,.18)",btn:"linear-gradient(135deg,#f97316,#ea580c)",btnSh:"rgba(249,115,22,.4)",icon:"fa-fire",
-    perks:[
-      {i:"fa-box-open",t:"Өз китің",c:"/kit nova"},
-      {i:"fa-shuffle",t:"Телепортацияны блоктау",c:"/tptoggle"},
-      {i:"fa-skull",t:"Өзін өлтіру",c:"/suicide"},
-      {i:"fa-house",t:"Үй нүктесі: 3 дана",c:""},
-      {i:"fa-building",t:"Приват саны: 2 дана",c:""},
-      {i:"fa-users",t:"Достар лимиті: 6 ойыншы",c:""},
-      {i:"fa-vector-square",t:"Приват аймағы: 230×230",c:""}
-    ],
-    pr:[{l:"Шексіздік",p:"280₸"}]
-  },
-  void:{title:"VOID",color:"#9333ea",bg:"linear-gradient(140deg,#faf5ff,#f3e8ff)",perkBg:"rgba(168,85,247,.1)",codeBg:"rgba(168,85,247,.15)",codeCol:"#7e22ce",lbl:"rgba(168,85,247,.18)",prBg:"rgba(168,85,247,.07)",prSel:"rgba(168,85,247,.18)",btn:"linear-gradient(135deg,#a855f7,#9333ea)",btnSh:"rgba(168,85,247,.4)",icon:"fa-ghost",
-    perks:[
-      {i:"fa-circle-check",t:"NOVA мүмкіндіктері (барлығы)",c:""},
-      {i:"fa-box-open",t:"Өз китің",c:"/kit void"},
-      {i:"fa-rotate-left",t:"Өлген жерге қайту",c:"/back"},
-      {i:"fa-screwdriver-wrench",t:"Виртуалды верстак",c:"/workbench"},
-      {i:"fa-house",t:"Үй нүктесі: 5 дана",c:""},
-      {i:"fa-building",t:"Приват саны: 4 дана",c:""},
-      {i:"fa-users",t:"Достар лимиті: 10 ойыншы",c:""},
-      {i:"fa-vector-square",t:"Приват аймағы: 280×280",c:""}
-    ],
-    pr:[{l:"Шексіздік",p:"590₸"}]
-  },
-  gold:{title:"GOLD",color:"#ca8a04",bg:"linear-gradient(140deg,#fefce8,#fef9c3)",perkBg:"rgba(234,179,8,.1)",codeBg:"rgba(234,179,8,.18)",codeCol:"#92400e",lbl:"rgba(234,179,8,.2)",prBg:"rgba(234,179,8,.07)",prSel:"rgba(234,179,8,.2)",btn:"linear-gradient(135deg,#eab308,#ca8a04)",btnSh:"rgba(234,179,8,.4)",icon:"fa-coins",
-    perks:[
-      {i:"fa-box-open",t:"Өз китің",c:"/kit gold"},
-      {i:"fa-wrench",t:"Затты жөндеу",c:"/repair"},
-      {i:"fa-utensils",t:"Аштықты қалпына келтіру",c:"/feed"},
-      {i:"fa-pen",t:"Зат атауын өзгерту",c:"/rename <мәтін>"},
-      {i:"fa-house",t:"Үй нүктесі: 8 дана",c:""},
-      {i:"fa-building",t:"Приват саны: 6 дана",c:""},
-      {i:"fa-users",t:"Достар лимиті: 16 ойыншы",c:""},
-      {i:"fa-vector-square",t:"Приват аймағы: 340×340",c:""}
-    ],
-    pr:[{l:"Шексіздік",p:"1 020₸"}]
-  },
-  crystal:{title:"CRYSTAL",color:"#2563eb",bg:"linear-gradient(140deg,#eff6ff,#dbeafe)",perkBg:"rgba(59,130,246,.1)",codeBg:"rgba(59,130,246,.15)",codeCol:"#1d4ed8",lbl:"rgba(59,130,246,.18)",prBg:"rgba(59,130,246,.07)",prSel:"rgba(59,130,246,.18)",btn:"linear-gradient(135deg,#3b82f6,#2563eb)",btnSh:"rgba(59,130,246,.4)",icon:"fa-snowflake",
-    perks:[
-      {i:"fa-box-open",t:"Өз китің",c:"/kit crystal"},
-      {i:"fa-screwdriver-wrench",t:"Барлық заттарды жөндеу",c:"/repairall"},
-      {i:"fa-bullhorn",t:"Хабарландыру беру",c:"/broadcast <мәтін>"},
-      {i:"fa-hat-wizard",t:"Блокты басыңа кию",c:"/hat"},
-      {i:"fa-box-archive",t:"Виртуалды эндер сандық",c:"/ec"},
-      {i:"fa-book",t:"Зат крафтын көру",c:"/recipe"},
-      {i:"fa-street-view",t:"Жақын ойыншыларды көру",c:"/near"},
-      {i:"fa-house",t:"Үй нүктесі: 12 дана",c:""},
-      {i:"fa-building",t:"Приват саны: 8 дана",c:""},
-      {i:"fa-users",t:"Достар лимиті: 20 ойыншы",c:""},
-      {i:"fa-vector-square",t:"Приват аймақ: 400×400",c:""}
-    ],
-    pr:[{l:"Шексіздік",p:"1 670₸"}]
-  },
-  diamond:{title:"DIAMOND",color:"#0891b2",bg:"linear-gradient(140deg,#ecfeff,#cffafe)",perkBg:"rgba(6,182,212,.1)",codeBg:"rgba(6,182,212,.15)",codeCol:"#0e7490",lbl:"rgba(6,182,212,.18)",prBg:"rgba(6,182,212,.07)",prSel:"rgba(6,182,212,.18)",btn:"linear-gradient(135deg,#06b6d4,#0891b2)",btnSh:"rgba(6,182,212,.4)",icon:"fa-gem",
-    perks:[
-      {i:"fa-box-open",t:"Өз китің",c:"/kit diamond"},
-      {i:"fa-heart-pulse",t:"Денсаулықты толтыру",c:"/heal"},
-      {i:"fa-wand-sparkles",t:"Затқа сиқыр беру",c:"/enchant <аты> <деңгей>"},
-      {i:"fa-map-pin",t:"Варп жарату (1 дана)",c:"/setwarp <атауы>"},
-      {i:"fa-circle-check",t:"Алдыңғы донаттардың барлық мүмкіндіктері",c:""},
-      {i:"fa-house",t:"Үй нүктесі: 16 дана",c:""},
-      {i:"fa-building",t:"Приват саны: 12 дана",c:""},
-      {i:"fa-users",t:"Достар лимиті: 28 ойыншы",c:""},
-      {i:"fa-vector-square",t:"Приват аймақ: 500×500",c:""},
-      {i:"fa-coins",t:"20 000 виртуалды теңге (ойын ішінде)",c:""}
-    ],
-    pr:[{l:"Шексіздік",p:"2 590₸"}]
+/* ═══ FAQ TOGGLE ═══ */
+window.toggleFaq=id=>{
+  const item=document.getElementById(id);
+  const wasOpen=item.classList.contains("open");
+  document.querySelectorAll(".faq-item").forEach(el=>el.classList.remove("open"));
+  if(!wasOpen)item.classList.add("open");
+};
+
+/* ═══ MEMBERS ═══ */
+async function loadMembers(){
+  const grid=document.getElementById("memGrid");
+  const countEl=document.getElementById("memCount");
+  try{
+    const snap=await get(ref(db,"users"));
+    if(!snap.exists()){grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:28px;color:var(--tll);font-size:13px">Мүшелер жоқ</div>`;return;}
+    const users=snap.val();
+    const list=Object.values(users).sort((a,b)=>{
+      const ra=(a.role==='admin')?0:1,rb=(b.role==='admin')?0:1;
+      return ra-rb||(a.nick||'').localeCompare(b.nick||'');
+    });
+    countEl.textContent=`Барлығы: ${list.length} мүше`;
+    grid.innerHTML=list.map(u=>{
+      const nick=u.nick||'?';
+      const role=u.role||'user';
+      const isAdm=role==='admin'||ADMIN_NICKS.includes(nick.toLowerCase());
+      const isMod=nick.toLowerCase()==='azagoe';
+      const avCls=isAdm?(isMod?'mem-av mod':'mem-av adm'):'mem-av';
+      const badgeCls=isAdm?(isMod?'mem-role-badge moder':'mem-role-badge admin'):'mem-role-badge user';
+      const badgeTxt=isAdm?(isMod?'MODER':'ADMIN'):'USER';
+      return `<div class="mem-card"><div class="${avCls}">${nick.charAt(0).toUpperCase()}</div><div class="mem-info"><div class="mem-nick">${nick}</div><span class="${badgeCls}">${badgeTxt}</span></div></div>`;
+    }).join("");
+  }catch(e){grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:28px;color:#ef4444;font-size:13px">Жүктеу қатесі</div>`;}
+}
+
+/* ═══ NEWS ═══ */
+onValue(ref(db,'news'),snap=>{renderNews(snap.val());});
+
+function renderNews(data){
+  const list=document.getElementById("newsList");
+  const admList=document.getElementById("admNewsList");
+  if(!data){
+    list.innerHTML=`<div class="news-empty"><i class="fa-solid fa-newspaper" style="font-size:24px;color:var(--g4);display:block;margin-bottom:8px"></i>Жаңалықтар жоқ</div>`;
+    if(admList)admList.innerHTML=`<div class="adm-empty"><i class="fa-solid fa-newspaper"></i>Жаңалықтар жоқ</div>`;
+    return;
   }
+  const items=Object.entries(data).sort((a,b)=>b[1].ts-a[1].ts);
+  const fmtDate=ts=>new Date(ts).toLocaleDateString('kk-KZ',{day:'2-digit',month:'short',year:'numeric'});
+  
+  list.innerHTML=items.map(([id,n])=>`
+    <div class="news-card">
+      <div class="news-card-hd">
+        <div class="news-card-author">
+          <div class="news-author-av">${(n.author||'A').charAt(0).toUpperCase()}</div>
+          <span class="news-author-nick">${n.author||'Admin'}</span>
+        </div>
+        <span class="news-card-date">${fmtDate(n.ts||Date.now())}</span>
+      </div>
+      <div class="news-card-title">${n.title||''}</div>
+      <div class="news-card-body">${n.body||''}</div>
+    </div>`).join("");
+
+  if(admList){
+    admList.innerHTML=items.length?items.map(([id,n])=>`
+      <div class="adm-news-item">
+        <div class="adm-news-body">
+          <div class="adm-news-title">${n.title||''}</div>
+          <div class="adm-news-meta">${n.author} · ${fmtDate(n.ts||Date.now())}</div>
+        </div>
+        ${_isAdmin?`<button class="news-del" onclick="deleteNews('${id}')"><i class="fa-solid fa-trash"></i></button>`:''}
+      </div>`).join("")
+      :`<div class="adm-empty"><i class="fa-solid fa-newspaper"></i>Жаңалықтар жоқ</div>`;
+  }
+}
+
+function loadNews(){onValue(ref(db,'news'),snap=>{renderNews(snap.val());});}
+
+window.publishNews=async()=>{
+  if(!_isAdmin)return;
+  const title=document.getElementById("nfTitle").value.trim();
+  const body=document.getElementById("nfBody").value.trim();
+  if(!title||!body)return alert("Тақырып пен мазмұнды толтырыңыз.");
+  await push(ref(db,'news'),{title,body,author:_currentUser,ts:Date.now()});
+  document.getElementById("nfTitle").value="";
+  document.getElementById("nfBody").value="";
 };
 
-/* modal */
+window.publishNewsModal=async()=>{
+  if(!_isAdmin)return;
+  const title=document.getElementById("wnTitle").value.trim();
+  const body=document.getElementById("wnBody").value.trim();
+  if(!title||!body)return alert("Тақырып пен мазмұнды толтырыңыз.");
+  await push(ref(db,'news'),{title,body,author:_currentUser,ts:Date.now()});
+  document.getElementById("wnTitle").value="";
+  document.getElementById("wnBody").value="";
+  closeWriteNews();
+};
+
+window.deleteNews=async(id)=>{
+  if(!_isAdmin)return;
+  if(confirm("Жаңалықты өшіресіз бе?"))await remove(ref(db,`news/${id}`));
+};
+
+window.openWriteNews=()=>{
+  if(!_isAdmin)return;
+  document.getElementById("wnMod").classList.remove("h");
+};
+window.closeWriteNews=()=>document.getElementById("wnMod").classList.add("h");
+
+/* ═══ ADMIN PANEL TABS ═══ */
+window.admTab=tab=>{
+  document.querySelectorAll(".adm-tab").forEach((el,i)=>el.classList.toggle("on",[...document.querySelectorAll(".adm-tab")].indexOf(el)===(['msgs','news'].indexOf(tab))));
+  document.getElementById("admMsgs").classList.toggle("on",tab==='msgs');
+  document.getElementById("admNews").classList.toggle("on",tab==='news');
+  if(tab==='news')loadAdminNews();
+  if(tab==='msgs')loadAdminConversations();
+};
+
+function loadAdminNews(){
+  // Re-use onValue already set up
+  const snap_handler=snap=>{renderNews(snap.val());};
+  try{get(ref(db,'news')).then(snap=>renderNews(snap.val()));}catch{}
+}
+
+/* ═══ ADMIN CONVERSATIONS ═══ */
+async function loadAdminConversations(){
+  if(!_isAdmin||!_currentUser)return;
+  const convList=document.getElementById("convList");
+  convList.innerHTML=`<div class="adm-empty"><i class="fa-solid fa-spinner fa-spin"></i>Жүктелуде...</div>`;
+  
+  _adminConvUnsubscribes.forEach(u=>u());
+  _adminConvUnsubscribes=[];
+  
+  const adminNick=_currentUser;
+  const unsub=onValue(ref(db,`dms/${adminNick}`),snap=>{
+    const data=snap.val();
+    if(!data){
+      convList.innerHTML=`<div class="adm-empty"><i class="fa-solid fa-inbox"></i>Хабарламалар жоқ</div>`;
+      return;
+    }
+    const conversations=Object.entries(data);
+    if(!conversations.length){
+      convList.innerHTML=`<div class="adm-empty"><i class="fa-solid fa-inbox"></i>Хабарламалар жоқ</div>`;
+      return;
+    }
+    const convData=conversations.map(([userNick,msgs])=>{
+      const msgList=Object.values(msgs).sort((a,b)=>a.ts-b.ts);
+      const last=msgList[msgList.length-1];
+      const unread=msgList.filter(m=>!m.isAdmin&&!m.read).length;
+      return{userNick,last,unread,msgList};
+    }).sort((a,b)=>(b.last?.ts||0)-(a.last?.ts||0));
+    
+    const fmtTime=ts=>{const d=new Date(ts);return d.toLocaleTimeString('kk-KZ',{hour:'2-digit',minute:'2-digit'});};
+    convList.innerHTML=convData.map(c=>`
+      <div class="conv-item" onclick="openAdminConv('${c.userNick}')">
+        <div class="conv-av">${c.userNick.charAt(0).toUpperCase()}</div>
+        <div class="conv-info">
+          <div class="conv-nick">${c.userNick}</div>
+          <div class="conv-preview">${c.last?.text||'...'}</div>
+        </div>
+        <div class="conv-meta">
+          <span class="conv-time">${fmtTime(c.last?.ts||Date.now())}</span>
+          ${c.unread>0?`<span class="conv-unread">${c.unread}</span>`:''}
+        </div>
+      </div>`).join("");
+  });
+  _adminConvUnsubscribes.push(unsub);
+}
+
+window.openAdminConv=userNick=>{
+  if(!_isAdmin)return;
+  _dmAdminNick=_currentUser;
+  _dmAdminRole='ADMIN';
+  document.getElementById("dmHeadAv").textContent=userNick.charAt(0).toUpperCase();
+  document.getElementById("dmHeadNick").textContent=userNick;
+  document.getElementById("dmHeadRole").textContent="Сұрақ жіберуші";
+  document.getElementById("dmOv").classList.remove("h");
+  const footer=document.getElementById("dmFooter");
+  footer.style.display="flex";
+  loadDMMessages(_currentUser, userNick, true);
+};
+
+/* ═══ DM SYSTEM ═══ */
+window.openDM=(adminNick,adminRole)=>{
+  if(!_currentUser){
+    document.getElementById("lgOv").classList.remove("out");
+    return;
+  }
+  _dmAdminNick=adminNick;
+  _dmAdminRole=adminRole;
+  document.getElementById("dmHeadAv").textContent=adminNick.charAt(0).toUpperCase();
+  document.getElementById("dmHeadNick").textContent=adminNick;
+  document.getElementById("dmHeadRole").textContent=adminRole;
+  document.getElementById("dmOv").classList.remove("h");
+  const footer=document.getElementById("dmFooter");
+  footer.style.display="flex";
+  loadDMMessages(adminNick, _currentUser, false);
+};
+
+function loadDMMessages(adminNick, userNick, isAdminView){
+  if(_dmUnsubscribe){_dmUnsubscribe();}
+  const msgsEl=document.getElementById("dmMsgs");
+  msgsEl.innerHTML=`<div style="text-align:center;padding:20px;color:var(--tll);font-size:13px"><i class="fa-solid fa-spinner fa-spin"></i></div>`;
+  
+  const path=`dms/${adminNick}/${userNick}`;
+  _dmUnsubscribe=onValue(ref(db,path),snap=>{
+    const data=snap.val();
+    if(!data){
+      msgsEl.innerHTML=`<div class="dm-empty"><i class="fa-regular fa-comment-dots"></i>Хабарламалар жоқ. Бірінші жазыңыз!</div>`;
+      return;
+    }
+    const msgs=Object.values(data).sort((a,b)=>a.ts-b.ts);
+    const fmtTime=ts=>new Date(ts).toLocaleTimeString('kk-KZ',{hour:'2-digit',minute:'2-digit'});
+    msgsEl.innerHTML=msgs.map(m=>{
+      const isMine=isAdminView?m.isAdmin:!m.isAdmin;
+      return`<div class="dm-bubble ${isMine?'sent':'recv'}">
+        ${!isMine?`<div class="dm-bname">${m.from}</div>`:''}
+        ${m.text}
+        <div class="dm-btime">${fmtTime(m.ts)}</div>
+      </div>`;
+    }).join("");
+    msgsEl.scrollTop=msgsEl.scrollHeight;
+  });
+}
+
+window.sendDM=async()=>{
+  if(!_currentUser||!_dmAdminNick)return;
+  const inp=document.getElementById("dmInp");
+  const text=inp.value.trim();
+  if(!text)return;
+  inp.value="";
+  
+  const isAdminSending=_isAdmin&&_currentUser===_dmAdminNick;
+  const userNick=isAdminSending?
+    document.getElementById("dmHeadNick").textContent:
+    _currentUser;
+  
+  await push(ref(db,`dms/${_dmAdminNick}/${userNick}`),{
+    from:_currentUser,
+    text,
+    ts:Date.now(),
+    isAdmin:_isAdmin
+  });
+};
+
+window.closeDM=()=>{
+  document.getElementById("dmOv").classList.add("h");
+  if(_dmUnsubscribe){_dmUnsubscribe();_dmUnsubscribe=null;}
+};
+
+/* ═══ RANK MODAL ═══ */
+const RD={
+  nova:{title:"NOVA",color:"#ea580c",bg:"linear-gradient(140deg,#fff7ed,#ffedd5)",perkBg:"rgba(249,115,22,.1)",codeBg:"rgba(249,115,22,.15)",codeCol:"#c2410c",lbl:"rgba(249,115,22,.18)",prBg:"rgba(249,115,22,.07)",prSel:"rgba(249,115,22,.18)",btn:"linear-gradient(135deg,#f97316,#ea580c)",btnSh:"rgba(249,115,22,.4)",icon:"fa-fire",perks:[{i:"fa-box-open",t:"Өз китің",c:"/kit nova"},{i:"fa-shuffle",t:"Телепортацияны блоктау",c:"/tptoggle"},{i:"fa-skull",t:"Өзін өлтіру",c:"/suicide"},{i:"fa-house",t:"Үй нүктесі: 3 дана",c:""},{i:"fa-building",t:"Приват саны: 2 дана",c:""},{i:"fa-users",t:"Достар лимиті: 6 ойыншы",c:""},{i:"fa-vector-square",t:"Приват аймағы: 230×230",c:""}],pr:[{l:"Шексіздік",p:"280₸"}]},
+  void:{title:"VOID",color:"#9333ea",bg:"linear-gradient(140deg,#faf5ff,#f3e8ff)",perkBg:"rgba(168,85,247,.1)",codeBg:"rgba(168,85,247,.15)",codeCol:"#7e22ce",lbl:"rgba(168,85,247,.18)",prBg:"rgba(168,85,247,.07)",prSel:"rgba(168,85,247,.18)",btn:"linear-gradient(135deg,#a855f7,#9333ea)",btnSh:"rgba(168,85,247,.4)",icon:"fa-ghost",perks:[{i:"fa-circle-check",t:"NOVA мүмкіндіктері (барлығы)",c:""},{i:"fa-box-open",t:"Өз китің",c:"/kit void"},{i:"fa-rotate-left",t:"Өлген жерге қайту",c:"/back"},{i:"fa-screwdriver-wrench",t:"Виртуалды верстак",c:"/workbench"},{i:"fa-house",t:"Үй нүктесі: 5 дана",c:""},{i:"fa-building",t:"Приват саны: 4 дана",c:""},{i:"fa-users",t:"Достар лимиті: 10 ойыншы",c:""},{i:"fa-vector-square",t:"Приват аймағы: 280×280",c:""}],pr:[{l:"Шексіздік",p:"590₸"}]},
+  gold:{title:"GOLD",color:"#ca8a04",bg:"linear-gradient(140deg,#fefce8,#fef9c3)",perkBg:"rgba(234,179,8,.1)",codeBg:"rgba(234,179,8,.18)",codeCol:"#92400e",lbl:"rgba(234,179,8,.2)",prBg:"rgba(234,179,8,.07)",prSel:"rgba(234,179,8,.2)",btn:"linear-gradient(135deg,#eab308,#ca8a04)",btnSh:"rgba(234,179,8,.4)",icon:"fa-coins",perks:[{i:"fa-box-open",t:"Өз китің",c:"/kit gold"},{i:"fa-wrench",t:"Затты жөндеу",c:"/repair"},{i:"fa-utensils",t:"Аштықты қалпына келтіру",c:"/feed"},{i:"fa-pen",t:"Зат атауын өзгерту",c:"/rename <мәтін>"},{i:"fa-house",t:"Үй нүктесі: 8 дана",c:""},{i:"fa-building",t:"Приват саны: 6 дана",c:""},{i:"fa-users",t:"Достар лимиті: 16 ойыншы",c:""},{i:"fa-vector-square",t:"Приват аймағы: 340×340",c:""}],pr:[{l:"Шексіздік",p:"1 020₸"}]},
+  crystal:{title:"CRYSTAL",color:"#2563eb",bg:"linear-gradient(140deg,#eff6ff,#dbeafe)",perkBg:"rgba(59,130,246,.1)",codeBg:"rgba(59,130,246,.15)",codeCol:"#1d4ed8",lbl:"rgba(59,130,246,.18)",prBg:"rgba(59,130,246,.07)",prSel:"rgba(59,130,246,.18)",btn:"linear-gradient(135deg,#3b82f6,#2563eb)",btnSh:"rgba(59,130,246,.4)",icon:"fa-snowflake",perks:[{i:"fa-box-open",t:"Өз китің",c:"/kit crystal"},{i:"fa-screwdriver-wrench",t:"Барлық заттарды жөндеу",c:"/repairall"},{i:"fa-bullhorn",t:"Хабарландыру беру",c:"/broadcast <мәтін>"},{i:"fa-hat-wizard",t:"Блокты басыңа кию",c:"/hat"},{i:"fa-box-archive",t:"Виртуалды эндер сандық",c:"/ec"},{i:"fa-book",t:"Зат крафтын көру",c:"/recipe"},{i:"fa-street-view",t:"Жақын ойыншыларды көру",c:"/near"},{i:"fa-house",t:"Үй нүктесі: 12 дана",c:""},{i:"fa-building",t:"Приват саны: 8 дана",c:""},{i:"fa-users",t:"Достар лимиті: 20 ойыншы",c:""},{i:"fa-vector-square",t:"Приват аймақ: 400×400",c:""}],pr:[{l:"Шексіздік",p:"1 670₸"}]},
+  diamond:{title:"DIAMOND",color:"#0891b2",bg:"linear-gradient(140deg,#ecfeff,#cffafe)",perkBg:"rgba(6,182,212,.1)",codeBg:"rgba(6,182,212,.15)",codeCol:"#0e7490",lbl:"rgba(6,182,212,.18)",prBg:"rgba(6,182,212,.07)",prSel:"rgba(6,182,212,.18)",btn:"linear-gradient(135deg,#06b6d4,#0891b2)",btnSh:"rgba(6,182,212,.4)",icon:"fa-gem",perks:[{i:"fa-box-open",t:"Өз китің",c:"/kit diamond"},{i:"fa-heart-pulse",t:"Денсаулықты толтыру",c:"/heal"},{i:"fa-wand-sparkles",t:"Затқа сиқыр беру",c:"/enchant <аты> <деңгей>"},{i:"fa-map-pin",t:"Варп жарату (1 дана)",c:"/setwarp <атауы>"},{i:"fa-circle-check",t:"Алдыңғы донаттардың барлық мүмкіндіктері",c:""},{i:"fa-house",t:"Үй нүктесі: 16 дана",c:""},{i:"fa-building",t:"Приват саны: 12 дана",c:""},{i:"fa-users",t:"Достар лимиті: 28 ойыншы",c:""},{i:"fa-vector-square",t:"Приват аймақ: 500×500",c:""},{i:"fa-coins",t:"20 000 виртуалды теңге (ойын ішінде)",c:""}],pr:[{l:"Шексіздік",p:"2 590₸"}]}
+};
+
+let _curRank=null;
 window.openMod=key=>{
-  const r=RD[key]; if(!r) return;
-  _curRank = key;
-  const ph=r.perks.map(p=>`
-    <li style="background:${r.perkBg}">
-      <i class="fa-solid ${p.i}" style="color:${r.color}"></i>
-      <span style="color:#1a1a1a">${p.t}</span>
-      ${p.c?`<code style="background:${r.codeBg};color:${r.codeCol}">${p.c}</code>`:""}
-    </li>`).join("");
-  const prh=r.pr.map((p,i)=>`
-    <div class="pr-row sel" style="background:${r.prSel};border-color:${r.color}" onclick="selPr(this,'${r.color}','${r.prSel}','${r.prBg}')">
-      <span class="pr-lbl" style="color:${r.color}">${p.l}</span>
-      <span class="pr-p" style="color:${r.color}">${p.p}</span>
-    </div>`).join("");
+  const r=RD[key];if(!r)return;
+  _curRank=key;
+  const ph=r.perks.map(p=>`<li style="background:${r.perkBg}"><i class="fa-solid ${p.i}" style="color:${r.color}"></i><span style="color:#1a1a1a">${p.t}</span>${p.c?`<code style="background:${r.codeBg};color:${r.codeCol}">${p.c}</code>`:""}</li>`).join("");
+  const prh=r.pr.map(p=>`<div class="pr-row sel" style="background:${r.prSel};border-color:${r.color}" onclick="selPr(this,'${r.color}','${r.prSel}','${r.prBg}')"><span class="pr-lbl" style="color:${r.color}">${p.l}</span><span class="pr-p" style="color:${r.color}">${p.p}</span></div>`).join("");
   const box=document.getElementById("rMod").querySelector(".mod-box");
   box.style.background=r.bg;
   const xBtn=box.querySelector(".mod-x");
-  xBtn.style.background=r.perkBg;
-  xBtn.style.color=r.color;
-  document.getElementById("mCon").innerHTML=`
-    <div class="mod-t" style="color:${r.color}"><i class="fa-solid ${r.icon}" style="margin-right:9px"></i>${r.title}</div>
-    <p class="mod-s" style="color:${r.color}">Ранг мүмкіндіктері мен баға жоспары</p>
-    <div class="mod-lbl" style="color:${r.color};background:${r.lbl}"><i class="fa-solid fa-bolt"></i>Мүмкіндіктер</div>
-    <ul class="mod-perks">${ph}</ul>
-    <div class="mod-lbl" style="color:${r.color};background:${r.lbl}"><i class="fa-solid fa-infinity"></i>Баға — Шексіздік</div>
-    <div class="pr-opts">${prh}</div>
-    <button class="btn-buy2" style="background:${r.btn};box-shadow:0 5px 16px ${r.btnSh}" onclick="confBuy()"><i class="fa-solid fa-cart-shopping"></i> Сатып алу</button>`;
+  xBtn.style.background=r.perkBg;xBtn.style.color=r.color;
+  document.getElementById("mCon").innerHTML=`<div class="mod-t" style="color:${r.color}"><i class="fa-solid ${r.icon}" style="margin-right:9px"></i>${r.title}</div><p class="mod-s" style="color:${r.color}">Ранг мүмкіндіктері мен баға жоспары</p><div class="mod-lbl" style="color:${r.color};background:${r.lbl}"><i class="fa-solid fa-bolt"></i>Мүмкіндіктер</div><ul class="mod-perks">${ph}</ul><div class="mod-lbl" style="color:${r.color};background:${r.lbl}"><i class="fa-solid fa-infinity"></i>Баға — Шексіздік</div><div class="pr-opts">${prh}</div><button class="btn-buy2" style="background:${r.btn};box-shadow:0 5px 16px ${r.btnSh}" onclick="confBuy()"><i class="fa-solid fa-cart-shopping"></i> Сатып алу</button>`;
   document.getElementById("rMod").classList.remove("h");
 };
-window.selPr=(el,col,sel,bg)=>{
-  document.querySelectorAll(".pr-row").forEach(r=>{r.classList.remove("sel");r.style.background=bg;r.style.borderColor="transparent";});
-  el.classList.add("sel");el.style.background=sel;el.style.borderColor=col;
-};
+window.selPr=(el,col,sel,bg)=>{document.querySelectorAll(".pr-row").forEach(r=>{r.classList.remove("sel");r.style.background=bg;r.style.borderColor="transparent";});el.classList.add("sel");el.style.background=sel;el.style.borderColor=col;};
 window.closeMod=()=>document.getElementById("rMod").classList.add("h");
 
-/* ─── Current rank for application form ─── */
-let _curRank = null;
-
-/* ─── Open application form after "Сатып алу" ─── */
-window.confBuy = () => {
-  if (!_curRank) return;
-  const r = RD[_curRank];
-  closeMod();
-
-  // Apply rank theme to app modal
-  const box    = document.getElementById("appBox");
-  const header = document.getElementById("appHeader");
-  const xBtn   = document.getElementById("appX");
-  const form   = document.getElementById("appForm");
-
-  box.style.background    = "#fff";
-  header.style.background = r.btn;
-  xBtn.style.background   = "rgba(255,255,255,.25)";
-  xBtn.style.color        = "#fff";
-
-  document.getElementById("appRankIcon").innerHTML  = `<i class="fa-solid ${r.icon}" style="color:#fff"></i>`;
-  document.getElementById("appRankName").textContent  = r.title;
-  document.getElementById("appRankName").style.color  = "#fff";
-  document.getElementById("appRankPrice").textContent = r.pr[0].p + " — Шексіздік";
-  document.getElementById("appRankPrice").style.color = "rgba(255,255,255,.85)";
-
-  const submitBtn = document.getElementById("appSubmitBtn");
-  submitBtn.style.background  = r.btn;
-  submitBtn.style.boxShadow   = `0 5px 16px ${r.btnSh}`;
-
-  // Reset form
-  document.getElementById("appNick").value  = "";
-  document.getElementById("appName").value  = "";
-  document.getElementById("appFile").value  = "";
-  document.getElementById("appErr").textContent = "";
-  document.getElementById("uploadPreview").classList.add("h");
-  document.getElementById("uploadPlaceholder").style.display = "flex";
-  submitBtn.disabled = false;
-  submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';
-
-  // Upload area color
-  document.getElementById("appUpload").style.borderColor = r.color + "88";
-
+window.confBuy=()=>{
+  if(!_curRank)return;
+  const r=RD[_curRank];closeMod();
+  const box=document.getElementById("appBox"),header=document.getElementById("appHeader"),xBtn=document.getElementById("appX");
+  box.style.background="#fff";header.style.background=r.btn;xBtn.style.background="rgba(255,255,255,.25)";xBtn.style.color="#fff";
+  document.getElementById("appRankIcon").innerHTML=`<i class="fa-solid ${r.icon}" style="color:#fff"></i>`;
+  document.getElementById("appRankName").textContent=r.title;document.getElementById("appRankName").style.color="#fff";
+  document.getElementById("appRankPrice").textContent=r.pr[0].p+" — Шексіздік";document.getElementById("appRankPrice").style.color="rgba(255,255,255,.85)";
+  const submitBtn=document.getElementById("appSubmitBtn");
+  submitBtn.style.background=r.btn;submitBtn.style.boxShadow=`0 5px 16px ${r.btnSh}`;
+  document.getElementById("appNick").value="";document.getElementById("appName").value="";document.getElementById("appFile").value="";document.getElementById("appErr").textContent="";
+  document.getElementById("uploadPreview").classList.add("h");document.getElementById("uploadPlaceholder").style.display="flex";
+  submitBtn.disabled=false;submitBtn.innerHTML='<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';
+  document.getElementById("appUpload").style.borderColor=r.color+"88";
   document.getElementById("appMod").classList.remove("h");
 };
+window.closeApp=()=>document.getElementById("appMod").classList.add("h");
 
-window.closeApp = () => document.getElementById("appMod").classList.add("h");
-
-/* ─── File preview ─── */
-window.previewFile = (input) => {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const prev = document.getElementById("uploadPreview");
-    prev.src = e.target.result;
-    prev.classList.remove("h");
-    document.getElementById("uploadPlaceholder").style.display = "none";
-  };
+window.previewFile=input=>{
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{const prev=document.getElementById("uploadPreview");prev.src=e.target.result;prev.classList.remove("h");document.getElementById("uploadPlaceholder").style.display="none";};
   reader.readAsDataURL(file);
 };
 
-/* ─── Submit application → Telegram ─── */
-const TG_TOKEN = "8765622433:AAG_4AnEhIa3hTlWU49v2TOf6iX48vaJZvg";
-const TG_CHATS = ["1934206536", "1130859355"];
-
-window.submitApp = async () => {
-  const nick  = document.getElementById("appNick").value.trim();
-  const name  = document.getElementById("appName").value.trim();
-  const file  = document.getElementById("appFile").files[0];
-  const errEl = document.getElementById("appErr");
-  const btn   = document.getElementById("appSubmitBtn");
-
-  if (!nick)  { errEl.textContent = "НИКті енгізіңіз."; return; }
-  if (!name)  { errEl.textContent = "Kaspi аты жөнін енгізіңіз."; return; }
-  if (!file)  { errEl.textContent = "Трансфер скриншотын таңдаңыз."; return; }
-  errEl.textContent = "";
-
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Жіберілуде...';
-
-  const r = RD[_curRank];
-  const caption = `🎮 <b>7QAZYNA — Донат арызы</b>\n\n` +
-    `📦 Ранг: <b>${r.title}</b> — ${r.pr[0].p}\n` +
-    `⛏ НИК: <b>${nick}</b>\n` +
-    `👤 Kaspi аты: <b>${name}</b>\n` +
-    `🕐 Уақыт: ${new Date().toLocaleString('kk-KZ')}`;
-
-  try {
-    const sendToAll = TG_CHATS.map(chatId => {
-      const formData = new FormData();
-      formData.append("chat_id",    chatId);
-      formData.append("photo",      file);
-      formData.append("caption",    caption);
-      formData.append("parse_mode", "HTML");
-      return fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, {
-        method: "POST",
-        body:   formData
-      });
-    });
-
-    const results = await Promise.all(sendToAll);
-    const allOk   = await Promise.all(results.map(r => r.json()));
-    const success = allOk.some(d => d.ok);
-
-    if (success) {
-      closeApp();
-      setTimeout(() => {
-        const r2 = RD[_curRank];
-        // Style done modal
-        document.querySelector(".done-circle").style.background = r2.btn;
-        document.querySelector(".done-title").style.color = r2.color;
-        document.querySelector(".done-note").style.background = r2.perkBg;
-        document.getElementById("doneSod").classList.remove("h");
-      }, 150);
-    } else {
-      errEl.textContent = "Жіберу қатесі. Қайталап көріңіз.";
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';
-    }
-  } catch {
-    errEl.textContent = "Интернет байланысы жоқ.";
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';
-  }
+const TG_TOKEN="8765622433:AAG_4AnEhIa3hTlWU49v2TOf6iX48vaJZvg";
+const TG_CHATS=["1934206536","1130859355"];
+window.submitApp=async()=>{
+  const nick=document.getElementById("appNick").value.trim(),name=document.getElementById("appName").value.trim(),file=document.getElementById("appFile").files[0],errEl=document.getElementById("appErr"),btn=document.getElementById("appSubmitBtn");
+  if(!nick){errEl.textContent="НИКті енгізіңіз.";return;}
+  if(!name){errEl.textContent="Kaspi аты жөнін енгізіңіз.";return;}
+  if(!file){errEl.textContent="Трансфер скриншотын таңдаңыз.";return;}
+  errEl.textContent="";btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Жіберілуде...';
+  const r=RD[_curRank];
+  const caption=`🎮 <b>7QAZYNA — Донат арызы</b>\n\n📦 Ранг: <b>${r.title}</b> — ${r.pr[0].p}\n⛏ НИК: <b>${nick}</b>\n👤 Kaspi аты: <b>${name}</b>\n🕐 Уақыт: ${new Date().toLocaleString('kk-KZ')}`;
+  try{
+    const sendToAll=TG_CHATS.map(chatId=>{const fd=new FormData();fd.append("chat_id",chatId);fd.append("photo",file);fd.append("caption",caption);fd.append("parse_mode","HTML");return fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`,{method:"POST",body:fd});});
+    const results=await Promise.all(sendToAll);const allOk=await Promise.all(results.map(r=>r.json()));const success=allOk.some(d=>d.ok);
+    if(success){closeApp();setTimeout(()=>{const r2=RD[_curRank];document.querySelector(".done-circle").style.background=r2.btn;document.querySelector(".done-title").style.color=r2.color;document.querySelector(".done-note").style.background=r2.perkBg;document.getElementById("doneSod").classList.remove("h");},150);}
+    else{errEl.textContent="Жіберу қатесі. Қайталап көріңіз.";btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';}
+  }catch{errEl.textContent="Интернет байланысы жоқ.";btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-paper-plane"></i> Арызымды жіберу';}
 };
+window.closeDone=()=>document.getElementById("doneSod").classList.add("h");
 
-window.closeDone = () => document.getElementById("doneSod").classList.add("h");
+/* Close on backdrop */
+document.getElementById("rMod").addEventListener("click",e=>{if(e.target===e.currentTarget)closeMod();});
+document.getElementById("appMod").addEventListener("click",e=>{if(e.target===e.currentTarget)closeApp();});
+document.getElementById("doneSod").addEventListener("click",e=>{if(e.target===e.currentTarget)closeDone();});
+document.getElementById("dmOv").addEventListener("click",e=>{if(e.target===e.currentTarget)closeDM();});
+document.getElementById("wnMod").addEventListener("click",e=>{if(e.target===e.currentTarget)closeWriteNews();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMod();closeApp();closeDone();closeDM();closeWriteNews();}});
 
-document.getElementById("rMod").addEventListener("click",   e => { if(e.target===e.currentTarget) closeMod(); });
-document.getElementById("appMod").addEventListener("click",  e => { if(e.target===e.currentTarget) closeApp(); });
-document.getElementById("doneSod").addEventListener("click", e => { if(e.target===e.currentTarget) closeDone(); });
-document.addEventListener("keydown", e => { if(e.key==="Escape"){ closeMod(); closeApp(); closeDone(); } });
+/* Init news on forum load */
+loadNews();
 </script>
 </body>
 </html>
