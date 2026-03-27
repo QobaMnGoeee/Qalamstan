@@ -738,13 +738,13 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
           </div>
           <div class="fm-msg"><i class="fa-solid fa-message"></i> Жазу</div>
         </div>
-        <div class="fm dv" onclick="openDM('QobaMn','FOUNDER · DEV')">
+        <div class="fm dv" onclick="openDM('Nurik07kaz','DEV')">
           <div class="fm-gl"></div>
           <div class="fm-bd dv-b"><i class="fa-solid fa-crown"></i> Founder</div>
           <div class="fm-av dv-av">Q</div>
           <div>
-            <div class="fm-nk">QobaMn</div>
-            <div class="fm-rl">Негіздеуші · Разработчик</div>
+            <div class="fm-nk">nurik07kaz</div>
+            <div class="fm-rl">Разработчик</div>
           </div>
           <div class="fm-msg" style="color:#6366f1"><i class="fa-solid fa-message"></i> Жазу</div>
         </div>
@@ -853,12 +853,11 @@ body{font-family:'Oswald',sans-serif;background:var(--milk);color:var(--td);}
             <p class="faq-a-intro">Алдымен ойында <strong>//wand</strong> командасын жазып, берілген балтамен екі нүктені белгілейсіз. Содан кейін мына командаларды қолданасыз:</p>
             <div class="faq-wand"><i class="fa-solid fa-wand-magic-sparkles"></i> <strong>//wand</strong> — балтаны қолыңызға алыңыз, содан кейін 2 бұрышты Left Click + Right Click жасаңыз</div>
             <div class="cmd-list">
-              <div class="cmd-row"><span class="cmd-code">/house create [Үй аты]</span><span class="cmd-desc">Үй (приват) құру</span></div>
-              <div class="cmd-row"><span class="cmd-code">/house add [Үй аты] [Ойыншы аты]</span><span class="cmd-desc">Үйге достар қосу</span></div>
-              <div class="cmd-row"><span class="cmd-code">/house remove [Үй аты] [Ойыншы аты]</span><span class="cmd-desc">Үйден достарды шығару</span></div>
-              <div class="cmd-row"><span class="cmd-code">/house delete [Үй аты]</span><span class="cmd-desc">Үйді толығымен өшіру</span></div>
-              <div class="cmd-row"><span class="cmd-code">/house info</span><span class="cmd-desc">Үй туралы мәлімет алу</span></div>
-              <div class="cmd-row"><span class="cmd-code">/house help</span><span class="cmd-desc">Приват туралы толық анықтама</span></div>
+              <div class="cmd-row"><span class="cmd-code">/rg claim [Үй аты]</span><span class="cmd-desc">Үй (приват) құру</span></div>
+              <div class="cmd-row"><span class="cmd-code">/rg addmember [Үй аты] [Ойыншы аты]</span><span class="cmd-desc">Үйге достар қосу</span></div>
+              <div class="cmd-row"><span class="cmd-code">/house removemembet [Үй аты] [Ойыншы аты]</span><span class="cmd-desc">Үйден достарды шығару</span></div>
+              <div class="cmd-row"><span class="cmd-code">/rg delete [Үй аты]</span><span class="cmd-desc">Үйді толығымен өшіру</span></div>
+              <div class="cmd-row"><span class="cmd-code">/rg info</span><span class="cmd-desc">Үй туралы мәлімет алу</span></div>
             </div>
           </div>
         </div>
@@ -1150,7 +1149,7 @@ let _dmAdminRole = null;
 let _dmUnsubscribe = null;
 let _adminConvUnsubscribes = [];
 
-const ADMIN_NICKS = ['rozikplay','azagoe','qobamn'];
+const ADMIN_NICKS = ['rozikplay','azagoe','nurik07kaz'];
 
 /* ═══ SERVER STATUS ═══ */
 async function checkServer(){
@@ -1354,7 +1353,7 @@ async function loadMembers(){
       countEl.textContent='Барлығы: 0 мүше';return;
     }
     const users=snap.val();
-    const FOUNDERS=['rozikplay','qobamn'];
+    const FOUNDERS=['rozikplay','nurik07kaz'];
     const MODS=['azagoe'];
     const list=Object.values(users).sort((a,b)=>{
       const na=(a.nick||'').toLowerCase(),nb=(b.nick||'').toLowerCase();
@@ -1666,7 +1665,7 @@ window.closeDone=()=>document.getElementById("doneSod").classList.add("h");
 /* ═══════════════════════════════════════
    ТЕХ-ПОДДЕРЖКА
 ═══════════════════════════════════════ */
-const SUP_ADMINS = ['rozikplay','azagoe','qobamn'];
+const SUP_ADMINS = ['rozikplay','azagoe','nurik07kaz'];
 
 const SUP_TYPES = [
   {id:'bug',    name:'Баг / қате',       desc:'Серверде тапқан қате немесе мәселе',   icon:'fa-bug',           bg:'rgba(239,68,68,.1)',    col:'#dc2626'},
@@ -1805,7 +1804,7 @@ const LC_LIMIT   = 100;     // 100-ден асса тазалау
 let _lcUnsub     = null;
 let _lcEditId    = null;
 let _lcInited    = false;
-const FOUNDERS_LC  = ['rozikplay','qobamn'];
+const FOUNDERS_LC  = ['rozikplay','nurik07kaz'];
 const MODS_LC      = ['azagoe'];
 
 function lcNickClass(n){
