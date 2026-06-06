@@ -7,30 +7,44 @@
       NovaLand — Донат Дүкені
     </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
     <style>
       :root {
-  --cream: #fdf8f0;
-  --warm-white: #fffef9;
-  --soft-yellow: #f5e6b2;
-  --gold: #d4a847;
-  --gold-light: #e8c96a;
-  --gold-dark: #a07830;
-  --ink: #1a1410;
-  --ink-light: #3d3020;
-  --muted: #8a7a6a;
-  --muted-light: #bfb0a0;
-  --border: rgba(212,168,71,0.2);
-  --border-strong: rgba(212,168,71,0.45);
-  --card-bg: rgba(255,254,249,0.85);
-  --card-hover: #fffdf4;
-  --shadow: 0 4px 24px rgba(60,40,10,0.10);
-  --shadow-lg: 0 12px 48px rgba(60,40,10,0.16);
+  /* ── Rich Warm Palette ── */
+  --cream: #fdf0d8;
+  --warm-white: #fef6e4;
+  --soft-yellow: #fde68a;
+  --soft-yellow-2: #fcd34d;
+  --soft-orange: #fdba74;
+  --soft-orange-2: #fb923c;
+  --soft-red: #fca5a5;
+  --soft-red-2: #f87171;
+  /* accent */
+  --gold: #d97706;
+  --gold-light: #f59e0b;
+  --gold-dark: #92400e;
+  --accent-red: #b91c1c;
+  --accent-orange: #c2410c;
+  /* text */
+  --ink: #1c0f02;
+  --ink-light: #3b1a06;
+  --muted: #78502a;
+  --muted-light: #a87040;
+  /* structural */
+  --border: rgba(180,83,9,0.28);
+  --border-strong: rgba(180,83,9,0.55);
+  --card-bg: rgba(254,246,228,0.95);
+  --card-hover: #fef3c7;
+  --shadow: 0 4px 24px rgba(100,50,5,0.14);
+  --shadow-lg: 0 12px 48px rgba(100,50,5,0.24);
   --radius: 16px;
   --radius-sm: 10px;
   --sidebar-w: 240px;
+  /* layout */
+  --header-h: 76px;
+  --catbar-h: 52px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,9 +64,9 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(245,230,178,0.55) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(212,168,71,0.15) 0%, transparent 60%),
-    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a847' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10S50 55.5 50 50zm-40 0c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10S10 55.5 10 50zm40-40c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10S50 15.5 50 10zM10 10c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10S10 15.5 10 10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(253,230,138,0.75) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 90% 100%, rgba(251,146,60,0.45) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(252,211,77,0.20) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -61,7 +75,7 @@ body::before {
 
 .sidebar {
   width: var(--sidebar-w);
-  background: rgba(255,254,249,0.9);
+  background: rgba(255,253,248,0.95);
   backdrop-filter: blur(20px);
   border-right: 1px solid var(--border-strong);
   position: fixed;
@@ -168,10 +182,11 @@ body::before {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 }
 
 .top-bar {
-  background: rgba(255,254,249,0.85);
+  background: rgba(253,243,210,0.95);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   padding: 0 32px;
@@ -220,7 +235,7 @@ body::before {
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
 
 .hamburger-btn {
-  display: none;
+  display: none !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -245,6 +260,11 @@ body::before {
 .content {
   padding: 36px 36px 60px;
   flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .section-page { display: none; }
@@ -314,9 +334,9 @@ body::before {
 .dash-hero-text p { color: var(--muted); font-size: 0.9rem; margin-top: 8px; max-width: 380px; }
 
 .dash-cta {
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-  color: white;
-  border: none;
+  background: var(--soft-yellow);
+  color: var(--ink-light);
+  border: 1.5px solid var(--border-strong);
   padding: 13px 28px;
   border-radius: var(--radius-sm);
   font-weight: 700;
@@ -329,10 +349,10 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 16px rgba(212,168,71,0.35);
+  box-shadow: 0 2px 10px rgba(180,83,9,0.15);
 }
 
-.dash-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,168,71,0.45); }
+.dash-cta:hover { transform: translateY(-2px); background: var(--soft-yellow-2); box-shadow: 0 6px 18px rgba(180,83,9,0.25); }
 
 .server-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 28px; }
 
@@ -870,7 +890,7 @@ body::before {
 
 footer {
   margin-left: var(--sidebar-w);
-  background: rgba(255,254,249,0.85);
+  background: rgba(253,243,210,0.95);
   border-top: 1px solid var(--border);
   padding: 20px 36px;
   display: flex;
@@ -1230,8 +1250,8 @@ html {
 /* ── Large Desktop / TV (1600px+) ── */
 @media (min-width: 1600px) {
   html { font-size: 16px; }
-  :root { --sidebar-w: 270px; }
-  .content { padding: 44px 52px 80px; }
+  :root { --sidebar-w: 0px; }
+  .content { padding: 44px 48px 80px; max-width: 1360px; }
   .product-grid { grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
 }
 
@@ -1301,17 +1321,458 @@ html {
 
 /* ── TV / Large screens (2000px+) ── */
 @media (min-width: 2000px) {
-  html { font-size: 18px; }
-  :root { --sidebar-w: 300px; }
-  .content { padding: 56px 64px 100px; }
+  html { font-size: 17px; }
+  :root { --sidebar-w: 0px; }
+  .content { padding: 56px 64px 100px; max-width: 1440px; }
   .product-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
   .dash-hero { padding: 48px 56px; }
 }
 /* ══════════════ END RESPONSIVE ══════════════ */
 
+/* ════════════════════════════════════
+   NOVALAND — NEW HEADER + CATBAR LAYOUT
+   ════════════════════════════════════ */
+
+/* ── SITE HEADER ── */
+.site-header {
+  position: fixed;
+  /* needed for absolute children */
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: 500;
+  background: linear-gradient(135deg,
+    rgba(253,230,138,0.99) 0%,
+    rgba(251,191,36,0.97) 40%,
+    rgba(245,158,11,0.97) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 2px solid rgba(180,83,9,0.45);
+  box-shadow: 0 4px 32px rgba(146,64,14,0.22), 0 1px 0 rgba(255,255,255,0.5) inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 100% at 50% 50%, rgba(255,255,255,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-logo-text {
+  font-family: 'Cinzel Decorative', 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: 8px;
+  background: linear-gradient(135deg,
+    #6b1d00 0%,
+    #92400e 20%,
+    #b45309 45%,
+    #d97706 60%,
+    #92400e 80%,
+    #6b1d00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  line-height: 1;
+  position: relative;
+  filter: drop-shadow(0 2px 8px rgba(192,98,26,0.35));
+}
+
+.header-logo-sub {
+  font-size: 0.6rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.header-star-left,
+.header-star-right {
+  position: absolute;
+  font-size: 1.1rem;
+  color: var(--gold);
+  opacity: 0.6;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header-star-left { left: calc(50% - 130px); }
+.header-star-right { right: calc(50% - 130px); }
+
+/* ── CATEGORY BAR ── */
+.cat-bar {
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0;
+  height: var(--catbar-h);
+  z-index: 400;
+  background: rgba(254,243,199,0.98);
+  backdrop-filter: blur(16px);
+  border-bottom: 1.5px solid rgba(180,83,9,0.32);
+  box-shadow: 0 2px 16px rgba(192,98,26,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  gap: 0;
+}
+
+/* cat-bar inner wrapper for centering */
+.cat-nav {
+  justify-content: center !important;
+}
+
+.cat-hamburger {
+  width: 36px; height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--soft-yellow);
+  flex-shrink: 0;
+  transition: all 0.2s;
+  margin-right: 10px;
+}
+
+.cat-hamburger span {
+  display: block;
+  width: 16px; height: 2px;
+  background: var(--gold-dark);
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+.cat-hamburger:hover { background: var(--soft-orange); border-color: var(--gold); }
+
+.cat-divider-v {
+  width: 1px;
+  height: 24px;
+  background: var(--border-strong);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.cat-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+.cat-nav::-webkit-scrollbar { display: none; }
+
+.cat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: all 0.18s;
+  border: 1.5px solid transparent;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+
+.cat-item i { font-size: 0.85rem; }
+
+.cat-item:hover {
+  background: var(--soft-yellow);
+  color: var(--ink-light);
+  border-color: var(--border);
+}
+
+.cat-item.active {
+  background: linear-gradient(135deg, var(--soft-orange), var(--soft-yellow));
+  color: var(--gold-dark);
+  border-color: rgba(232,146,58,0.5);
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(232,146,58,0.18);
+}
+
+.cat-right { display: none; }
+
+
+/* ── Header Hamburger (mobile only) ── */
+.header-hamburger { display: none !important; } .header-hamburger-DISABLED {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; height: 40px;
+  display: none; /* hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border: 1.5px solid rgba(232,146,58,0.4);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s;
+}
+.header-hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--gold-dark);
+  border-radius: 2px;
+  transition: 0.2s;
+}
+.header-hamburger:hover { background: rgba(255,212,148,0.5); border-color: var(--gold); }
+
+/* Show hamburger only on mobile */
+@media (max-width: 860px) {
+  .header-hamburger { display: none !important; } .header-hamburger-DISABLED { display: flex; }
+}
+
+/* Hide cat-hamburger CSS (already removed from HTML but safety) */
+.cat-hamburger { display: none !important; }
+.cat-divider-v { display: none !important; }
+
+.header-online-pill {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.45);
+  border: 1.5px solid rgba(180,83,9,0.45);
+  border-radius: 40px;
+  padding: 6px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-light);
+  backdrop-filter: blur(8px);
+}
+
+.header-online-pill .dot {
+  width: 7px; height: 7px;
+  background: #4caf50;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(76,175,80,0.25);
+  animation: pulse 2s infinite;
+}
+
+@media (max-width: 479px) {
+  .header-online-pill { display: none; }
+}
+
+.server-online-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,243,196,0.8);
+  border: 1.5px solid rgba(180,83,9,0.45);
+  border-radius: 40px;
+  padding: 5px 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-light);
+}
+
+.server-online-pill .dot {
+  width: 7px; height: 7px;
+  background: #4caf50;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(76,175,80,0.25);
+  animation: pulse 2s infinite;
+}
+
+/* ── MAIN LAYOUT SHIFT (push content below header+catbar) ── */
+.layout {
+  padding-top: calc(var(--header-h) + var(--catbar-h));
+  display: block;
+}
+
+.main {
+  margin-left: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.top-bar { display: none !important; }
+
+footer {
+  margin-left: 0 !important;
+  background: linear-gradient(135deg, rgba(253,230,138,0.95), rgba(251,191,36,0.88)) !important;
+  border-top: 1.5px solid rgba(180,83,9,0.38) !important;
+  padding: 22px 40px !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.footer-copy i { color: var(--gold); }
+
+.footer-tagline {
+  font-size: 0.72rem;
+  color: var(--muted-light);
+  letter-spacing: 0.5px;
+}
+
+.footer-links a {
+  color: var(--muted) !important;
+}
+
+.footer-links a:hover {
+  color: var(--gold-dark) !important;
+}
+
+/* ── SIDEBAR: hidden on desktop (slides out for mobile) ── */
+@media (min-width: 861px) {
+  .sidebar {
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+/* ── MOBILE responsive ── */
+@media (max-width: 699px) {
+  .cat-item span { display: none; }
+  .cat-item { padding: 7px 10px; }
+  footer { padding: 16px 18px !important; flex-direction: column; align-items: flex-start; }
+  .layout { padding-top: calc(var(--header-h) + var(--catbar-h)); }
+}
+
+@media (max-width: 479px) {
+  :root { --header-h: 64px; --catbar-h: 48px; }
+  .header-logo-text { font-size: 1.6rem; letter-spacing: 5px; }
+  .header-star-left, .header-star-right { display: none; }
+}
+
+/* ── Update buy/action button colors to orange-red ── */
+.buy-btn, .dash-cta, .modal-action, .copy-card-btn {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%) !important;
+  box-shadow: 0 4px 16px rgba(146,64,14,0.40) !important;
+}
+
+.buy-btn:hover, .dash-cta:hover, .modal-action:hover {
+  box-shadow: 0 6px 22px rgba(192,98,26,0.42) !important;
+}
+
+/* nav active uses orange */
+.nav-item.active {
+  background: linear-gradient(135deg, var(--soft-orange), rgba(232,146,58,0.15)) !important;
+  color: var(--gold-dark) !important;
+  border-color: rgba(232,146,58,0.5) !important;
+}
+
+/* hero gradient */
+.dash-hero {
+  background: linear-gradient(135deg, var(--soft-yellow) 0%, var(--soft-orange-2) 60%, rgba(251,146,60,0.5) 100%) !important;
+  border-color: rgba(180,83,9,0.5) !important;
+}
+
+/* gold calc + inputs */
+.gold-inp, .form-input, .g-preset, .gold-result {
+  background: var(--soft-yellow) !important;
+  border-color: rgba(232,146,58,0.3) !important;
+}
+
+/* server card bg */
+.server-card-icon {
+  background: linear-gradient(135deg, var(--soft-orange), rgba(232,146,58,0.2)) !important;
+}
+
+/* Cinzel Decorative font for logo */
+
+
     </style>
   </head>
   <body>
+    <!-- ══ SITE HEADER ══ -->
+    <header class="site-header">
+      <div class="header-logo-wrap">
+        <div class="header-logo-text">NOVALAND</div>
+        <div class="header-logo-sub">Minecraft Server · 1.21.x</div>
+      </div>
+      <div class="header-online-pill">
+        <div class="dot"></div>
+        Онлайн
+      </div>
+    </header>
+
+    <!-- ══ CATEGORY BAR ══ -->
+    <nav class="cat-bar" id="catBar">
+      <div class="cat-nav" id="catNav">
+        <div class="cat-item active" onclick="goTo('dashboard',this)" data-page="dashboard">
+          <i class="fa-solid fa-house"></i><span>Dashboard</span>
+        </div>
+        <div class="cat-item" onclick="goTo('donates',this)" data-page="donates">
+          <i class="fa-solid fa-crown"></i><span>Донаттар</span>
+        </div>
+        <div class="cat-item" onclick="goTo('cases',this)" data-page="cases">
+          <i class="fa-solid fa-box-open"></i><span>Кейстер</span>
+        </div>
+        <div class="cat-item" onclick="goTo('golds',this)" data-page="golds">
+          <i class="fa-solid fa-coins"></i><span>Алтындар</span>
+        </div>
+        <div class="cat-item" onclick="goTo('others',this)" data-page="others">
+          <i class="fa-solid fa-puzzle-piece"></i><span>Басқалар</span>
+        </div>
+        <div class="cat-item" onclick="goTo('faq',this)" data-page="faq">
+          <i class="fa-solid fa-circle-question"></i><span>Сұрақ-жауап</span>
+        </div>
+        <div class="cat-item" onclick="goTo('rules',this)" data-page="rules">
+          <i class="fa-solid fa-scale-balanced"></i><span>Ережелер</span>
+        </div>
+        <div class="cat-item" onclick="window.location.href='ai_agent.html'" style="color:#e8600a;border-color:rgba(232,96,10,0.25)">
+          <i class="fa-solid fa-robot"></i><span>AI Agent</span>
+        </div>
+      </div>
+    </nav>
+
     <div class="toast" id="toast">
       <i class="fa-solid fa-check"></i>
       <span id="toastMsg">      Көшірілді!
@@ -1468,7 +1929,7 @@ html {
                       @tornado437
                     </div>
                     <div style="font-size:0.75rem;color:var(--muted);margin-top:2px">
-                      Telegram арнасы
+                      Telegram профиль
                     </div>
                   </div>
                 </div>
@@ -1537,7 +1998,7 @@ html {
                 Қанша алтын алғыңыз келетінін жазыңыз
               </p>
               <div class="gold-input-row">
-                <input type="number" class="gold-inp" id="goldAmt" value="100" min="1" oninput="calcGold()" />
+                <input type="number" class="gold-inp" id="goldAmt" placeholder="......" min="1" oninput="calcGold()" />
                 <div class="gold-unit">
                   <i class="fa-solid fa-coins" style="color:var(--gold)"></i>
                   алтын
@@ -2093,17 +2554,17 @@ html {
 
         </div>
         <footer>
+          <div class="footer-inner">
           <div class="footer-copy">
             <i class="fa-regular fa-copyright"></i>
-            2026 NovaLand. Барлық құқықтар қорғалған.
+            <span>2025–2026 <strong>NovaLand</strong>. Барлық құқықтар қорғалған.</span>
+            <span class="footer-tagline" style="margin-left:10px;opacity:0.6">· Java &amp; Bedrock · 1.21.x · novaland.pro</span>
           </div>
           <div class="footer-links">
-            <a href="#">            Ережелер
-</a>
-            <a href="https://t.me/tornado437" target="_blank">            Қолдау
-</a>
-            <a href="#">            Конфиденциалдылық
-</a>
+            <a href="#" onclick="goTo('rules',document.querySelector('[data-page=rules]'));return false;">Ережелер</a>
+            <a href="https://t.me/tornado437" target="_blank">Қолдау</a>
+            <a href="#">Конфиденциалдылық</a>
+          </div>
           </div>
         </footer>
       </div>
@@ -2264,11 +2725,11 @@ const rankData = [
     periods:[{l:'1 ай',p:190},{l:'3 ай',p:590},{l:'Мәңгілік',p:990}],
     cmds:['/kit noker','/hat','/feed'],
     extra:'3 үй нүктелері · 5 аукцион слоты' },
-  { name:'SARBAZ', icon:'fa-sword', color:'#f5c842', bg:'rgba(245,200,66,0.1)',
+  { name:'SARBAZ', icon:'fa-shield-halved', color:'#f5c842', bg:'rgba(245,200,66,0.1)',
     periods:[{l:'1 ай',p:490},{l:'3 ай',p:890},{l:'Мәңгілік',p:1290}],
     cmds:['/kit sarbaz','/ec','/craft'],
     extra:'4 үй нүктелері · 6 аукцион слоты' },
-  { name:'BATYR', icon:'fa-bow-arrow', color:'#00e5ff', bg:'rgba(0,229,255,0.08)',
+  { name:'BATYR', icon:'fa-bullseye', color:'#00e5ff', bg:'rgba(0,229,255,0.08)',
     periods:[{l:'1 ай',p:790},{l:'3 ай',p:1190},{l:'Мәңгілік',p:1590}],
     cmds:['/kit batyr','/ext','/clear','/rtp far'],
     extra:'5 үй нүктелері · 7 аукцион слоты' },
@@ -2365,11 +2826,16 @@ function caseCard(name,qty,price,icon,color) {
 function goTo(page, el) {
   document.querySelectorAll('.section-page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.cat-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
   if(el) el.classList.add('active');
+  // Also activate matching cat-item
+  const catMatch = document.querySelector('.cat-item[data-page="'+page+'"]');
+  if(catMatch) catMatch.classList.add('active');
   const labels = {dashboard:'Dashboard',donates:'Донаттар',cases:'Кейстер',golds:'Алтындар',others:'Басқалар',faq:'Сұрақ-жауап',rules:'Ережелер'};
-  document.getElementById('breadcrumb').textContent = labels[page]||page;
-  if(window.innerWidth<=860) closeSidebar();
+  const bc = document.getElementById('breadcrumb');
+  if(bc) bc.textContent = labels[page]||page;
+  closeSidebar();
 }
 
 /* ─── SIDEBAR ─── */
