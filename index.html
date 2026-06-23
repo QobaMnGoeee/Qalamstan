@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Bozorcha — O'zbekiston bozori</title>
 <meta name="description" content="O'z mahsulotingizni joylang, narxingizni belgilang va xaridorga yeting">
+<meta property="og:title" content="Bozorcha — O'zbekiston bozori">
+<meta property="og:description" content="O'z mahsulotingizni joylang, narxingizni belgilang va xaridorga yeting">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bozorcha.uz">
+<meta property="og:image" content="https://bozorcha.uz/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bozorcha — O'zbekiston bozori">
+<meta name="twitter:description" content="O'z mahsulotingizni joylang, narxingizni belgilang va xaridorga yeting">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2B3A8F">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cpath d='M6 30 L28 8 L88 8 Q96 8 96 16 L96 44 Q96 52 88 52 L28 52 Z' fill='%232B3A8F'/%3E%3Ccircle cx='24' cy='30' r='5' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +99,27 @@ h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;font-weight:800;letter-spaci
 .cat-drop-item .cdi-icon svg{width:16px;height:16px;}
 .cat-drop-item .cdi-text{font-size:.85rem;font-weight:700;color:var(--ink);}
 .cat-drop-item.selected .cdi-text{color:var(--indigo);}
+
+/* Sort pills inside filter modal */
+.sort-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.sort-pill{flex:1;min-width:90px;text-align:center;padding:10px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-size:.84rem;font-weight:700;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s,color .15s;user-select:none;}
+.sort-pill:hover{border-color:var(--indigo-light);}
+.sort-pill.active{border-color:var(--indigo);background:var(--indigo);color:#fff;}
+
+/* Custom city select (used in filter modal) */
+.city-select-wrap{position:relative;}
+.city-select-trigger{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:11px 40px 11px 13px;font-size:.93rem;color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s;user-select:none;width:100%;}
+.city-select-trigger:hover,.city-select-trigger.open{border-color:var(--indigo-light);}
+.city-select-trigger .cty-label{flex:1;font-weight:600;}
+.city-select-trigger .cty-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-soft);transition:transform .2s;}
+.city-select-trigger.open .cty-arrow{transform:translateY(-50%) rotate(180deg);}
+.city-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);z-index:140;overflow:hidden;display:none;animation:dropIn .18s ease;}
+.city-dropdown.open{display:block;}
+.city-drop-list{max-height:260px;overflow-y:auto;}
+.city-drop-item{display:flex;align-items:center;gap:9px;padding:11px 14px;cursor:pointer;background:var(--surface);transition:background .12s;font-size:.88rem;font-weight:600;color:var(--ink);}
+.city-drop-item:hover{background:var(--indigo-tint);}
+.city-drop-item.selected{background:var(--indigo-tint);color:var(--indigo);}
+.city-drop-item+.city-drop-item{border-top:1px solid var(--line);}
 
 /* Custom confirm modal */
 .confirm-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
@@ -513,7 +544,7 @@ footer{border-top:1px solid var(--line);padding-block:clamp(26px,4vw,44px);}
       </div>
       <div class="field">
         <label class="lbl" data-t="title">Sarlavha</label>
-        <input class="inp" type="text" id="postTitle" data-tp="title_ph" placeholder="..." maxlength="100">
+        <input class="inp" type="text" id="postTitle" data-tp="title_ph" placeholder="Masalan: iPhone 14 Pro, 128GB" maxlength="100">
       </div>
       <div class="field">
         <label class="lbl" data-t="description">Tavsif</label>
@@ -532,6 +563,18 @@ footer{border-top:1px solid var(--line);padding-block:clamp(26px,4vw,44px);}
       <div class="field">
         <label class="lbl" data-t="phone">Telefon raqami</label>
         <input class="inp" type="tel" id="postPhone" placeholder="+998 XX XXX XX XX" autocomplete="tel">
+      </div>
+      <div class="field">
+        <label class="lbl" data-t="city_label">Shahar</label>
+        <select class="inp inp-sel" id="postCity"></select>
+      </div>
+      <div class="field">
+        <label class="lbl">Telegram (ixtiyoriy)</label>
+        <input class="inp" type="text" id="postTg" placeholder="@username">
+      </div>
+      <div class="field">
+        <label class="lbl">WhatsApp (ixtiyoriy)</label>
+        <input class="inp" type="tel" id="postWa" placeholder="+998901234567">
       </div>
       <div class="field">
         <label class="lbl" data-t="photos">Rasmlar (max 3)</label>
@@ -594,6 +637,69 @@ footer{border-top:1px solid var(--line);padding-block:clamp(26px,4vw,44px);}
   </div>
 </div>
 
+<!-- Profile Modal -->
+<div class="modal" id="profileModal">
+  <div class="modal-bg" id="profileModalBg"></div>
+  <div class="modal-box" style="max-width:420px;">
+    <div class="modal-drag"></div>
+    <div class="modal-head">
+      <div>
+        <h3 class="modal-title" id="profileName">—</h3>
+        <div style="font-size:.8rem;color:var(--ink-soft);" id="profileCount"></div>
+      </div>
+      <button class="modal-close-btn" id="profileClose"><svg viewBox="0 0 24 24"><use href="#i-close"/></svg></button>
+    </div>
+    <div id="profileGrid" style="max-height:60vh;overflow-y:auto;"></div>
+  </div>
+</div>
+
+<!-- Filter Modal -->
+<div class="modal" id="filterModal">
+  <div class="modal-bg" id="filterModalBg"></div>
+  <div class="modal-box" style="max-width:420px;">
+    <div class="modal-drag"></div>
+    <div class="modal-head">
+      <h3 class="modal-title" data-t="filter_title">Filter</h3>
+      <button class="modal-close-btn" id="filterClose"><svg viewBox="0 0 24 24"><use href="#i-close"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="field">
+        <label class="lbl" data-t="sort_label">Saralash</label>
+        <div class="sort-pills" id="filterSortPills"></div>
+      </div>
+      <div class="field">
+        <label class="lbl" data-t="city_label">Shahar</label>
+        <div class="city-select-wrap" id="citySelectWrap">
+          <div class="city-select-trigger" id="citySelectTrigger">
+            <span class="cty-label" id="ctyLabel">—</span>
+            <svg class="cty-arrow" viewBox="0 0 24 24"><use href="#i-chevron-down"/></svg>
+          </div>
+          <div class="city-dropdown" id="cityDropdown">
+            <div class="city-drop-list" id="cityDropList"></div>
+          </div>
+        </div>
+        <input type="hidden" id="filterCity" value="all">
+      </div>
+      <div class="field">
+        <label class="lbl" data-t="price_range">Narx diapazoni</label>
+        <div style="display:flex;gap:9px;align-items:center;">
+          <input class="inp" type="number" id="filterPriceMin" placeholder="0" min="0" style="flex:1;">
+          <span style="color:var(--ink-soft);font-size:.88rem;">—</span>
+          <input class="inp" type="number" id="filterPriceMax" placeholder="∞" min="0" style="flex:1;">
+        </div>
+      </div>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;font-size:.9rem;">
+        <input type="checkbox" id="filterOnlyPhoto" style="width:18px;height:18px;accent-color:var(--indigo);">
+        <span data-t="only_photo">Faqat fotoli</span>
+      </label>
+      <div style="display:flex;gap:9px;margin-top:4px;">
+        <button class="btn btn-ghost" id="filterResetBtn" style="flex:1;" data-t="filter_reset">Tozalash</button>
+        <button class="btn btn-primary" id="filterApplyBtn" style="flex:1;" data-t="filter_apply">Qo'llash</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <main>
@@ -606,7 +712,7 @@ footer{border-top:1px solid var(--line);padding-block:clamp(26px,4vw,44px);}
         <div class="hero-search">
           <label class="search-shell" for="heroSearch">
             <svg viewBox="0 0 24 24"><use href="#i-search"/></svg>
-            <input id="heroSearch" type="text" data-tp="hero_search_ph" placeholder="...">
+            <input id="heroSearch" type="text" data-tp="hero_search_ph" placeholder="Masalan: iPhone 14, divan, velosiped...">
             <button class="btn btn-primary btn-sm" id="heroSearchBtn" data-t="search_btn">Qidirish</button>
           </label>
         </div>
@@ -678,14 +784,12 @@ footer{border-top:1px solid var(--line);padding-block:clamp(26px,4vw,44px);}
           <svg viewBox="0 0 24 24"><use href="#i-search"/></svg>
           <input id="lSearch" type="text" data-tp="search_ph" placeholder="Nima qidiryapsiz?">
         </label>
-        <!-- Custom sort dropdown -->
-        <div class="sort-wrap">
-          <div class="sort-trigger" id="sortTrigger">
-            <span id="sortLabel">Yangisi</span>
-            <svg class="sort-arrow" viewBox="0 0 24 24"><use href="#i-chevron-down"/></svg>
-          </div>
-          <div class="sort-dropdown" id="sortDropdown"></div>
-        </div>
+        <!-- Unified filter button (sort + city + price + photo) -->
+        <button class="btn btn-ghost btn-sm" id="filterOpenBtn" style="gap:5px;border-radius:999px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          <span data-t="filter_title">Filter</span>
+          <span id="filterBadge" style="display:none;background:var(--coral);color:#fff;border-radius:50%;width:16px;height:16px;font-size:.65rem;font-weight:700;display:none;align-items:center;justify-content:center;"></span>
+        </button>
       </div>
       <div class="section-meta">
         <h2 id="listingsTitle" data-t="all_ads_title">Barcha e'lonlar</h2>
@@ -761,7 +865,6 @@ const auth = firebase.auth();
 const db = firebase.database();
 const storage = firebase.storage();
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
 const CATS = [
   { id: 'all', icon: null, bg: 'var(--indigo-tint)', color: 'var(--indigo)' },
@@ -796,9 +899,9 @@ const LANGS = {
     eyebrow_txt:"O'ZBEKISTON · OCHIQ BOZOR",
     hero_sub:"O'z mahsulotingizni joylang, narxingizni belgilang va xaridorga yeting",
     cats_title:'Kategoriyalar',search_ph:"Nima qidiryapsiz?",
-    hero_search_ph:"...",
-    search_btn:'Qidirish',sort_new:'Yangisi',sort_cheap:'Arzonroq',sort_exp:'Qimmatroq',
-    title_ph:"...",desc_ph:'Mahsulot haqida batafsil yozing...',
+    hero_search_ph:"Masalan: iPhone 14, divan, velosiped...",
+    search_btn:'Qidirish',sort_label:'Saralash',sort_new:'Yangisi',sort_cheap:'Arzonroq',sort_exp:'Qimmatroq',
+    title_ph:"Masalan: iPhone 14 Pro, 128GB",desc_ph:'Mahsulot haqida batafsil yozing...',
     photo_hint:'Rasm yuklash uchun bosing',
     footer_desc:"O'zbekiston uchun ochiq savdo maydonchasi",
     for_buyers:'Xaridorlar uchun',for_sellers:'Sotuvchilar uchun',contact:'Aloqa',
@@ -814,8 +917,39 @@ const LANGS = {
     err_phone:'Telefon raqamini kiriting',err_title:'Sarlavha kiriting',
     err_generic:'Xatolik yuz berdi',err_domain:"Firebase Console-da domeningizni qo'shing",
     err_file_size:"Fayl hajmi 5MB dan oshmasligi kerak",
+    err_banned:"⛔ Taqiqlangan mahsulot. Bu tovar platformamizda joylashtirilishi mumkin emas.",
     cat_labels:["Barchasi","Elektronika","Kiyim-kechak","Uy-ro'zg'or","Go'zallik","Bolalar","Sport","Kitoblar","Avto","Boshqa"],
     user_label:'Foydalanuvchi',or:'yoki',
+    err_email_format:"Email formati noto'g'ri (masalan: ism@gmail.com)",
+    err_email_domain:"Bu email domain mavjud emas. Iltimos, haqiqiy email kiriting",
+    err_email_checking:"Email tekshirilmoqda...",
+    err_banned:"⛔ Taqiqlangan mahsulot. Bu tovar platformamizda joylashtirilishi mumkin emas.",
+    err_spam:"Siz bugun 5 ta e'lon joylashtirdingiz. 24 soatdan keyin qayta urinib ko'ring.",
+    err_verify:"E'lon joylashtirish uchun email manzilingizni tasdiqlang.",
+    verify_sent:"Tasdiqlash xati yuborildi. Email pochtangizni tekshiring.",
+    verify_resend:"Qayta yuborish",
+    verify_banner:"Email tasdiqlanmagan. Tasdiqlash xatini yuborish uchun bosing.",
+    sold_badge:"Sotildi",
+    mark_sold:"Sotildi deb belgilash",
+    unmark_sold:"Sotuvda deb belgilash",
+    views_label:"ko'rildi",
+    report:"Shikoyat",
+    report_sent:"Shikoyat yuborildi. Rahmat!",
+    city_label:"Shahar",
+    city_all:"Barcha shaharlar",
+    city_nukus:"Nukus",city_xojeli:"Xojeli",city_qonirat:"Qoñırat",
+    city_shimbay:"Shimbay",city_taqiyatas:"Taqiyatas",city_beruniy:"Beruniy",
+    city_tortkul:"Tòrtkùl",city_ellikqala:"Ellikqala",city_moynaq:"Moynaq",
+    city_kegeyli:"Kegeyli",city_taxtakopir:"Taxtakòpir",city_other_city:"Boshqa",
+    price_range:"Narx diapazoni",
+    only_photo:"Faqat fotoli",
+    profile_title:"Profil",
+    profile_ads:"E'lonlar",
+    tg_chat:"Telegramda yozish",
+    wa_chat:"WhatsApp yozish",
+    filter_title:"Filter",
+    filter_apply:"Qo'llash",
+    filter_reset:"Tozalash",
   },
   ru: {
     menu:'Меню',settings:'Настройки',language:'Язык',theme:'Тема',
@@ -835,9 +969,9 @@ const LANGS = {
     eyebrow_txt:'УЗБЕКИСТАН · ОТКРЫТЫЙ РЫНОК',
     hero_sub:'Размещайте товары, устанавливайте цену и выходите напрямую на покупателей',
     cats_title:'Категории',search_ph:'Что ищете?',
-    hero_search_ph:'...',
-    search_btn:'Найти',sort_new:'Новые',sort_cheap:'Дешевле',sort_exp:'Дороже',
-    title_ph: '...Опишите товар подробнее...',
+    hero_search_ph:'Например: iPhone 14, диван, велосипед...',
+    search_btn:'Найти',sort_label:'Сортировка',sort_new:'Новые',sort_cheap:'Дешевле',sort_exp:'Дороже',
+    title_ph:'Например: iPhone 14 Pro, 128GB',desc_ph:'Опишите товар подробнее...',
     photo_hint:'Нажмите для загрузки фото',
     footer_desc:'Открытая торговая площадка для Узбекистана',
     for_buyers:'Покупателям',for_sellers:'Продавцам',contact:'Контакты',
@@ -853,8 +987,39 @@ const LANGS = {
     err_phone:'Введите номер телефона',err_title:'Введите заголовок',
     err_generic:'Произошла ошибка',err_domain:'Добавьте домен в Firebase Console',
     err_file_size:'Размер файла не должен превышать 5МБ',
+    err_banned:'⛔ Запрещённый товар. Размещение этого товара на платформе недопустимо.',
     cat_labels:['Все','Электроника','Одежда','Дом','Красота','Детское','Спорт','Книги','Авто','Другое'],
     user_label:'Пользователь',or:'или',
+    err_email_format:'Неверный формат email (например: имя@gmail.com)',
+    err_email_domain:'Этот email домен не существует. Введите настоящий email.',
+    err_email_checking:'Проверка email...',
+    err_banned:'⛔ Запрещённый товар. Размещение недопустимо на платформе.',
+    err_spam:'Вы разместили 5 объявлений сегодня. Попробуйте через 24 часа.',
+    err_verify:'Подтвердите email для размещения объявления.',
+    verify_sent:'Письмо отправлено. Проверьте почту.',
+    verify_resend:'Отправить повторно',
+    verify_banner:'Email не подтверждён. Нажмите для отправки письма.',
+    sold_badge:'Продано',
+    mark_sold:'Отметить как проданное',
+    unmark_sold:'Снова в продаже',
+    views_label:'просм.',
+    report:'Пожаловаться',
+    report_sent:'Жалоба отправлена. Спасибо!',
+    city_label:'Город',
+    city_all:'Все города',
+    city_nukus:'Нукус',city_xojeli:'Ходжейли',city_qonirat:'Кунград',
+    city_shimbay:'Шумбай',city_taqiyatas:'Тахиаташ',city_beruniy:'Беруни',
+    city_tortkul:'Турткуль',city_ellikqala:'Элликкала',city_moynaq:'Муйнак',
+    city_kegeyli:'Кегейли',city_taxtakopir:'Тахтакупыр',city_other_city:'Другой',
+    price_range:'Диапазон цен',
+    only_photo:'Только с фото',
+    profile_title:'Профиль',
+    profile_ads:'Объявления',
+    tg_chat:'Написать в Telegram',
+    wa_chat:'Написать в WhatsApp',
+    filter_title:'Фильтр',
+    filter_apply:'Применить',
+    filter_reset:'Сбросить',
   },
   en: {
     menu:'Menu',settings:'Settings',language:'Language',theme:'Theme',
@@ -874,8 +1039,8 @@ const LANGS = {
     eyebrow_txt:'UZBEKISTAN · OPEN MARKETPLACE',
     hero_sub:'List your items, set your price, and reach buyers directly',
     cats_title:'Categories',search_ph:'What are you looking for?',
-    hero_search_ph:'...',
-    search_btn:'Search',sort_new:'Newest',sort_cheap:'Cheapest',sort_exp:'Most expensive',
+    hero_search_ph:'E.g. iPhone 14, sofa, bicycle...',
+    search_btn:'Search',sort_label:'Sort by',sort_new:'Newest',sort_cheap:'Cheapest',sort_exp:'Most expensive',
     title_ph:'E.g. iPhone 14 Pro, 128GB',desc_ph:'Describe the item in detail...',
     photo_hint:'Click to upload photo',
     footer_desc:'Open marketplace for Uzbekistan',
@@ -892,8 +1057,39 @@ const LANGS = {
     err_phone:'Please enter a phone number',err_title:'Please enter a title',
     err_generic:'Something went wrong',err_domain:'Add your domain in Firebase Console',
     err_file_size:'File size must not exceed 5MB',
+    err_banned:'⛔ Prohibited item. This product cannot be listed on our platform.',
     cat_labels:['All','Electronics','Clothing','Home','Beauty','Kids','Sport','Books','Auto','Other'],
     user_label:'User',or:'or',
+    err_email_format:'Invalid email format (e.g. name@gmail.com)',
+    err_email_domain:"This email domain doesn't exist. Please enter a real email.",
+    err_email_checking:'Checking email...',
+    err_banned:'⛔ Prohibited item. This product cannot be listed on our platform.',
+    err_spam:'You posted 5 listings today. Please try again after 24 hours.',
+    err_verify:'Please verify your email to post a listing.',
+    verify_sent:'Verification email sent. Check your inbox.',
+    verify_resend:'Resend',
+    verify_banner:'Email not verified. Click to send verification email.',
+    sold_badge:'Sold',
+    mark_sold:'Mark as sold',
+    unmark_sold:'Mark as available',
+    views_label:'views',
+    report:'Report',
+    report_sent:'Report submitted. Thank you!',
+    city_label:'City',
+    city_all:'All cities',
+    city_nukus:'Nukus',city_xojeli:'Khojeyli',city_qonirat:'Konirat',
+    city_shimbay:'Shumanay',city_taqiyatas:'Takhiatash',city_beruniy:'Beruniy',
+    city_tortkul:'Turtkul',city_ellikqala:'Ellikqala',city_moynaq:'Moynaq',
+    city_kegeyli:'Kegeyli',city_taxtakopir:'Takhtakupir',city_other_city:'Other',
+    price_range:'Price range',
+    only_photo:'Photo only',
+    profile_title:'Profile',
+    profile_ads:'Listings',
+    tg_chat:'Message on Telegram',
+    wa_chat:'Message on WhatsApp',
+    filter_title:'Filter',
+    filter_apply:'Apply',
+    filter_reset:'Reset',
   }
 };
 
@@ -909,6 +1105,97 @@ let postFiles = [];
 let editingId = null;
 let deletedUrls = [];
 let confirmCallback = null;
+let currentPriceMin = 0;
+let currentPriceMax = Infinity;
+let filterOnlyPhoto = false;
+let currentCity = 'all';
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+// ── CITIES ────────────────────────────────────────────────────────────────────
+const CITIES = [
+  {id:'all'},{id:'nukus'},{id:'xojeli'},{id:'qonirat'},{id:'shimbay'},
+  {id:'taqiyatas'},{id:'beruniy'},{id:'tortkul'},{id:'ellikqala'},
+  {id:'moynaq'},{id:'kegeyli'},{id:'taxtakopir'},{id:'other_city'}
+];
+
+// ── BANNED CONTENT MODERATION ─────────────────────────────────────────────────
+const BANNED_PATTERNS = [
+  /\b(pichaq|pichoq|bichaq|nozh|нож|кинжал|kinzhal|dagger|blade)\b/i,
+  /\b(shamshir|qilich|sword|сабля)\b/i,
+  /\b(kast[e3]t|knuckle|кастет)\b/i,
+  /\b(suiq\s*qur[ao]l|sovuq\s*qurol|холодн\w*\s*оруж|cold\s*weapon)\b/i,
+  /\b(miltiq|pistolet|pistol|revolver|револьвер)\b/i,
+  /\b(avtomat|автомат|kalash|ak[- ]?47|ak[- ]?74|m[- ]?16|ar[- ]?15)\b/i,
+  /\b(vintovka|винтовка|rifle|sniper|снайпер)\b/i,
+  /\b(granata|граната|grenade|mina|mine|bomb[a]?|бомб[а]?)\b/i,
+  /\b(portlat|взрывч|explosiv)\b/i,
+  /\b(ammo|боеприпас|bullet|патрон|patron)\b/i,
+  /\b(qora\s*dori|qoradori)\b/i,
+  /\b(narkotik|наркотик|drug[s]?)\b/i,
+  /\b(giyohvand|гиёхванд)\b/i,
+  /\b(geroin|героин|heroin)\b/i,
+  /\b(kokain|кокаин|cocaine)\b/i,
+  /\b(metamfetamin|метамфетамин|meth|crystal)\b/i,
+  /\b(amfetamin|амфетамин|amphetamine)\b/i,
+  /\b(fentanil|fentanyl|фентанил)\b/i,
+  /\b(morfin|морфин|morphine|op[i1]um|опиум|afyon)\b/i,
+  /\b(gashish|гашиш|hashish|hash|cannabis)\b/i,
+  /\b(marijuana|marihuana|weed)\b/i,
+  /\b(mdma|ekstazi|экстази|ecstasy)\b/i,
+  /\b(spice|sp[a4]ys|спайс)\b/i,
+  /\b(nasvar|nasvay|насвай)\b/i,
+  /\b(kontrabanda|контрабанда|contraband|smuggl)\b/i,
+  /\b(soxta\s*hujjat|поддельн\w+\s*докум|fake\s*(passport|id|document))\b/i,
+  /\b(soxta\s*pul|фальшив\w+\s*ден|counterfeit\s*money)\b/i,
+  /\b(adam\s*savdosi|торговл\w+\s*людьм|human\s*traff)\b/i,
+  /\b(radioaktiv|радиоактив|radioactive|nuclear)\b/i,
+];
+
+function moderateContent(title, desc) {
+  const text = ((title||'') + ' ' + (desc||'')).toLowerCase();
+  for (const pat of BANNED_PATTERNS) { if (pat.test(text)) return false; }
+  return true;
+}
+
+// ── EMAIL VALIDATION ──────────────────────────────────────────────────────────
+function validateEmailFormat(email) {
+  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/.test(email);
+}
+
+async function checkEmailDomainMX(email) {
+  try {
+    const domain = email.split('@')[1];
+    if (!domain) return false;
+    const res = await fetch(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=MX`, {
+      headers: { Accept: 'application/dns-json' }
+    });
+    const data = await res.json();
+    return data.Status === 0 && Array.isArray(data.Answer) && data.Answer.length > 0;
+  } catch (e) { return true; }
+}
+
+async function validateEmail(email, errEl) {
+  if (!email) { errEl.textContent = t('err_fill'); errEl.classList.add('show'); return false; }
+  if (!validateEmailFormat(email)) { errEl.textContent = t('err_email_format'); errEl.classList.add('show'); return false; }
+  errEl.textContent = t('err_email_checking');
+  errEl.style.color = 'var(--indigo-light)';
+  errEl.classList.add('show');
+  const hasMX = await checkEmailDomainMX(email);
+  errEl.style.color = '';
+  errEl.classList.remove('show');
+  if (!hasMX) { errEl.textContent = t('err_email_domain'); errEl.classList.add('show'); return false; }
+  return true;
+}
+
+// ── SPAM GUARD ────────────────────────────────────────────────────────────────
+async function checkSpamLimit() {
+  if (!currentUser || editingId) return true;
+  const since = Date.now() - 24*60*60*1000;
+  const snap = await db.ref('listings').orderByChild('uid').equalTo(currentUser.uid).once('value');
+  let count = 0;
+  snap.forEach(c => { if (c.val().createdAt > since) count++; });
+  return count < 5;
+}
 
 function t(key) { return LANGS[currentLang][key] || key; }
 
@@ -935,43 +1222,23 @@ document.getElementById('confirmCancel').addEventListener('click', closeConfirm)
 document.getElementById('confirmModalBg').addEventListener('click', closeConfirm);
 
 // ── Sort dropdown ─────────────────────────────────────────────────────────────
-function buildSortDropdown() {
+function buildSortPills() {
   const opts = [
     { val: 'new', key: 'sort_new' },
     { val: 'cheap', key: 'sort_cheap' },
     { val: 'exp', key: 'sort_exp' },
   ];
-  const dd = document.getElementById('sortDropdown');
-  dd.innerHTML = opts.map(o => `
-    <div class="sort-option${currentSort===o.val?' active':''}" data-val="${o.val}">
-      <span class="so-dot"></span>
-      <span>${t(o.key)}</span>
-    </div>`).join('');
-  dd.querySelectorAll('.sort-option').forEach(el => {
+  const wrap = document.getElementById('filterSortPills');
+  if (!wrap) return;
+  wrap.innerHTML = opts.map(o => `
+    <div class="sort-pill${currentSort===o.val?' active':''}" data-val="${o.val}">${t(o.key)}</div>`).join('');
+  wrap.querySelectorAll('.sort-pill').forEach(el => {
     el.addEventListener('click', () => {
       currentSort = el.dataset.val;
-      document.getElementById('sortLabel').textContent = t(opts.find(o=>o.val===currentSort).key);
-      closeSortDropdown();
-      renderListings();
+      wrap.querySelectorAll('.sort-pill').forEach(p=>p.classList.toggle('active', p.dataset.val===currentSort));
     });
   });
-  // update active label
-  const activeOpt = opts.find(o => o.val === currentSort);
-  if (activeOpt) document.getElementById('sortLabel').textContent = t(activeOpt.key);
 }
-function closeSortDropdown() {
-  document.getElementById('sortDropdown').classList.remove('open');
-  document.getElementById('sortTrigger').classList.remove('open');
-}
-document.getElementById('sortTrigger').addEventListener('click', (e) => {
-  e.stopPropagation();
-  const dd = document.getElementById('sortDropdown');
-  const tr = document.getElementById('sortTrigger');
-  const isOpen = dd.classList.contains('open');
-  closeSortDropdown();
-  closeCatDropdown();
-  if (!isOpen) { dd.classList.add('open'); tr.classList.add('open'); }
-});
 
 // ── Cat select dropdown ───────────────────────────────────────────────────────
 function buildCatDropdown() {
@@ -1019,12 +1286,11 @@ document.getElementById('catSelectTrigger').addEventListener('click', (e) => {
   const tr = document.getElementById('catSelectTrigger');
   const isOpen = dd.classList.contains('open');
   closeCatDropdown();
-  closeSortDropdown();
   buildCatDropdown();
   if (!isOpen) { dd.classList.add('open'); tr.classList.add('open'); }
 });
 // Close dropdowns on outside click
-document.addEventListener('click', () => { closeSortDropdown(); closeCatDropdown(); });
+document.addEventListener('click', () => { closeCatDropdown(); closeCityDropdown(); });
 
 // ── i18n ──────────────────────────────────────────────────────────────────────
 function applyLang(lang) {
@@ -1043,7 +1309,7 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.lang===lang));
   document.querySelectorAll('.footer-langs button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang===lang));
   document.querySelectorAll('.auth-divider').forEach(el => { el.textContent = LANGS[lang].or; });
-  buildSortDropdown();
+  buildSortPills();
   renderCats();
   renderListings();
   updateAuthUI();
@@ -1141,6 +1407,10 @@ function filterAndSort(list) {
   let filtered = [...list];
   if (myAdsMode&&currentUser) filtered=filtered.filter(l=>l.uid===currentUser.uid);
   if (currentCat!=='all') filtered=filtered.filter(l=>l.category===currentCat);
+  if (currentCity!=='all') filtered=filtered.filter(l=>l.city===currentCity);
+  if (filterOnlyPhoto) filtered=filtered.filter(l=>l.photos&&l.photos.length>0);
+  if (currentPriceMin>0) filtered=filtered.filter(l=>(parseInt(l.price)||0)>=currentPriceMin);
+  if (currentPriceMax<Infinity) filtered=filtered.filter(l=>(parseInt(l.price)||0)<=currentPriceMax);
   if (currentSearch.trim()) {
     const q=currentSearch.trim().toLowerCase();
     filtered=filtered.filter(l=>(l.title||'').toLowerCase().includes(q)||(l.desc||'').toLowerCase().includes(q));
@@ -1148,6 +1418,41 @@ function filterAndSort(list) {
   if (currentSort==='cheap') filtered.sort((a,b)=>(parseInt(a.price)||0)-(parseInt(b.price)||0));
   else if (currentSort==='exp') filtered.sort((a,b)=>(parseInt(b.price)||0)-(parseInt(a.price)||0));
   return filtered;
+}
+
+// ── PROFILE MODAL ─────────────────────────────────────────────────────────────
+function openProfile(uid, userName) {
+  const userListings = allListings.filter(l=>l.uid===uid);
+  const modal = document.getElementById('profileModal');
+  document.getElementById('profileName').textContent = userName || t('user_label');
+  document.getElementById('profileCount').textContent = userListings.length + ' ' + t('profile_ads');
+  const grid = document.getElementById('profileGrid');
+  if (userListings.length===0) {
+    grid.innerHTML = `<p style="color:var(--ink-soft);font-size:.88rem;padding:12px 0;">${t('no_listings')}</p>`;
+  } else {
+    grid.innerHTML = userListings.map(l => {
+      const cat=getCatStyle(l.category);
+      const img=l.photos&&l.photos.length>0
+        ?`<img src="${l.photos[0]}" style="width:52px;height:52px;border-radius:8px;object-fit:cover;flex:none;">`
+        :`<div style="width:52px;height:52px;border-radius:8px;background:${cat.bg};display:flex;align-items:center;justify-content:center;flex:none;"><svg viewBox="0 0 48 48" style="width:22px;height:22px;color:${cat.color}"><use href="#${cat.icon||'ic-other'}"/></svg></div>`;
+      return `<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer;" data-pid="${l.id}">
+        ${img}
+        <div style="min-width:0;flex:1;">
+          <div style="font-weight:700;font-size:.88rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l.title||''}</div>
+          <div style="font-size:.8rem;color:var(--indigo);font-family:'Space Mono';">${formatPrice(l.price)}</div>
+        </div>
+        ${l.sold?`<span style="font-size:.72rem;background:var(--turquoise-tint);color:var(--turquoise-dark);padding:2px 8px;border-radius:999px;font-weight:700;">${t('sold_badge')}</span>`:''}
+      </div>`;
+    }).join('');
+    grid.querySelectorAll('[data-pid]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        closeModal('profileModal');
+        const l=allListings.find(x=>x.id===el.dataset.pid);
+        if(l) setTimeout(()=>openDetail(l),120);
+      });
+    });
+  }
+  openModal('profileModal');
 }
 
 function renderListings() {
@@ -1185,17 +1490,20 @@ function renderListings() {
       ? `<img src="${listing.photos[0]}" alt="${listing.title||''}" loading="lazy">`
       : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${cat.bg};"><svg viewBox="0 0 48 48" style="width:38px;height:38px;color:${cat.color}"><use href="#${cat.icon||'ic-other'}"/></svg></div>`;
     const isOwn = currentUser&&listing.uid===currentUser.uid;
+    const soldBadge = listing.sold?`<div style="position:absolute;top:7px;left:7px;background:var(--turquoise);color:#fff;font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:999px;">${t('sold_badge')}</div>`:'';
     const ownBtns = isOwn?`<div class="card-own-btns">
       <button class="own-btn own-edit" data-id="${listing.id}" title="${t('edit')}"><svg viewBox="0 0 24 24"><use href="#i-edit"/></svg></button>
       <button class="own-btn own-delete" data-id="${listing.id}" title="${t('delete')}"><svg viewBox="0 0 24 24"><use href="#i-trash"/></svg></button>
     </div>`:'';
-    return `<article class="listing-card" data-id="${listing.id}">
-      <div class="card-img">${imgHtml}</div>
+    const views = listing.views?`<span style="font-size:.72rem;color:var(--ink-soft);">${listing.views} ${t('views_label')}</span>`:'';
+    const cityName = listing.city&&listing.city!=='all'?`<span style="font-size:.68rem;color:var(--ink-soft);">📍 ${t('city_'+listing.city)||listing.city}</span>`:'';
+    return `<article class="listing-card" data-id="${listing.id}" style="${listing.sold?'opacity:.7;':''}" >
+      <div class="card-img" style="position:relative;">${imgHtml}${soldBadge}</div>
       <div class="card-body">
-        <div class="card-cat">${getCatLabel(listing.category)}</div>
+        <div class="card-cat" style="display:flex;justify-content:space-between;align-items:center;">${getCatLabel(listing.category)}${views}</div>
         <div class="card-title">${listing.title||''}</div>
         <div class="card-price">${formatPrice(listing.price)}</div>
-        <div class="card-date">${formatDate(listing.createdAt)}</div>
+        <div class="card-date" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">${formatDate(listing.createdAt)} ${cityName}</div>
       </div>${ownBtns}
     </article>`;
   }).join('');
@@ -1221,6 +1529,14 @@ function renderListings() {
 function openDetail(listing) {
   const isOwn = currentUser&&listing.uid===currentUser.uid;
   const cat = getCatStyle(listing.category);
+
+  // Increment views
+  if (!isOwn) {
+    const newViews = (listing.views||0)+1;
+    db.ref('listings/'+listing.id+'/views').set(newViews);
+    listing.views = newViews;
+  }
+
   let galleryHtml = '';
   if (listing.photos&&listing.photos.length>0) {
     const cls = listing.photos.length===1?'single':'multi';
@@ -1228,32 +1544,72 @@ function openDetail(listing) {
   } else {
     galleryHtml = `<div class="detail-no-img" style="background:${cat.bg};"><svg viewBox="0 0 48 48" style="width:52px;height:52px;color:${cat.color};"><use href="#${cat.icon||'ic-other'}"/></svg></div>`;
   }
+
+  const soldBadgeHtml = listing.sold?`<div style="display:inline-block;background:var(--turquoise);color:#fff;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:6px;">${t('sold_badge')}</div><br>`:'';
+
+  const tgBtn = listing.tg?`<a href="https://t.me/${listing.tg.replace('@','')}" target="_blank" rel="noopener" class="btn btn-ghost btn-block" style="background:#229ED9;color:#fff;border-color:#229ED9;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg> ${t('tg_chat')}</a>`:'';
+  const waBtn = listing.wa?`<a href="https://wa.me/${listing.wa.replace(/[^0-9]/g,'')}" target="_blank" rel="noopener" class="btn btn-ghost btn-block" style="background:#25D366;color:#fff;border-color:#25D366;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.529 5.845L.057 23.943l6.256-1.44A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 0 1-5.003-1.368l-.359-.214-3.718.856.87-3.619-.234-.372A9.818 9.818 0 0 1 2.182 12c0-5.421 4.397-9.818 9.818-9.818 5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/></svg> ${t('wa_chat')}</a>`:'';
+
   const ownerBtns = isOwn?`
     <button class="btn btn-ghost btn-block" id="detailEdit"><svg width="15" height="15"><use href="#i-edit"/></svg> ${t('edit')}</button>
+    <button class="btn btn-ghost btn-block" id="detailSoldBtn" style="color:var(--turquoise-dark);border-color:var(--turquoise);">${listing.sold?t('unmark_sold'):t('mark_sold')}</button>
     <button class="btn btn-danger btn-block" id="detailDelete"><svg width="15" height="15"><use href="#i-trash"/></svg> ${t('delete')}</button>`:'';
+
+  const reportBtn = !isOwn?`<button class="btn btn-ghost btn-block" id="detailReport" style="font-size:.82rem;color:var(--ink-soft);">${t('report')}</button>`:'';
+  const cityTag = listing.city&&listing.city!=='all'?`<span style="font-size:.78rem;color:var(--ink-soft);">📍 ${t('city_'+listing.city)||listing.city}</span>`:'';
+  const viewsTag = listing.views?`<span style="font-size:.78rem;color:var(--ink-soft);">  ${listing.views} ${t('views_label')}</span>`:'';
+
   document.getElementById('detailContent').innerHTML = `
     ${galleryHtml}
-    <div class="detail-cat">${getCatLabel(listing.category)}</div>
+    ${soldBadgeHtml}
+    <div class="detail-cat" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">${getCatLabel(listing.category)} ${cityTag} ${viewsTag}</div>
     <h2 class="detail-title">${listing.title||''}</h2>
     <div class="detail-price">${formatPrice(listing.price)}</div>
     ${listing.desc?`<p class="detail-desc">${listing.desc}</p>`:''}
-    <div class="detail-seller">
+    <div class="detail-seller" style="cursor:pointer;" id="detailSellerRow">
       <div class="detail-seller-ico"><svg viewBox="0 0 24 24"><use href="#i-user"/></svg></div>
-      <div><div class="detail-seller-name">${listing.userName||t('user_label')}</div><div class="detail-seller-sub">${t('seller_label')}</div></div>
+      <div>
+        <div class="detail-seller-name">${listing.userName||t('user_label')}</div>
+        <div class="detail-seller-sub">${t('seller_label')} · ${t('profile_ads')}</div>
+      </div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="margin-left:auto;color:var(--ink-soft);"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
     <div class="detail-btns">
       ${listing.phone?`<a href="tel:${listing.phone}" class="btn btn-primary btn-block"><svg width="16" height="16"><use href="#i-phone"/></svg> ${listing.phone}</a>`:''}
+      ${tgBtn}${waBtn}
       ${ownerBtns}
+      ${reportBtn}
     </div>`;
+
   openModal('detailModal');
+
+  // Profile click
+  const sellerRow = document.getElementById('detailSellerRow');
+  if (sellerRow) sellerRow.addEventListener('click', ()=>{ closeModal('detailModal'); setTimeout(()=>openProfile(listing.uid, listing.userName),120); });
+
   if (isOwn) {
-    const de = document.getElementById('detailEdit');
-    const dd = document.getElementById('detailDelete');
-    if (de) de.addEventListener('click',()=>{ closeModal('detailModal'); openEditModal(listing); });
-    if (dd) dd.addEventListener('click',()=>{
-      showConfirm(t('confirm_delete_title'), t('confirm_delete_msg'), () => { closeModal('detailModal'); doDelete(listing.id); });
+    const de=document.getElementById('detailEdit');
+    const dd=document.getElementById('detailDelete');
+    const ds=document.getElementById('detailSoldBtn');
+    if(de)de.addEventListener('click',()=>{ closeModal('detailModal'); openEditModal(listing); });
+    if(ds)ds.addEventListener('click',async()=>{
+      const newSold=!listing.sold;
+      await db.ref('listings/'+listing.id+'/sold').set(newSold);
+      listing.sold=newSold;
+      showToast(newSold?t('sold_badge'):t('unmark_sold'));
+      closeModal('detailModal');
+    });
+    if(dd)dd.addEventListener('click',()=>{
+      showConfirm(t('confirm_delete_title'),t('confirm_delete_msg'),()=>{ closeModal('detailModal'); doDelete(listing.id); });
     });
   }
+  const rr=document.getElementById('detailReport');
+  if(rr)rr.addEventListener('click',async()=>{
+    if(!currentUser){openAuthModal('register');return;}
+    await db.ref('reports/'+listing.id).push({uid:currentUser.uid,ts:Date.now()});
+    showToast(t('report_sent'));
+    document.getElementById('detailReport').disabled=true;
+  });
 }
 
 function resetPostModal() {
@@ -1269,6 +1625,10 @@ function resetPostModal() {
   document.getElementById('postSubmitBtn').textContent = t('publish');
   document.getElementById('postPrice').disabled = false;
   setCatSelectValue('electronics');
+  buildCitySelect('postCity');
+  const pc=document.getElementById('postCity');if(pc)pc.value='toshkent';
+  const ptg=document.getElementById('postTg');if(ptg)ptg.value='';
+  const pwa=document.getElementById('postWa');if(pwa)pwa.value='';
 }
 
 function openEditModal(listing) {
@@ -1338,13 +1698,42 @@ async function doRegister() {
   if(pass.length<6){errEl.textContent=t('err_pass_short');errEl.classList.add('show');return;}
   const btn=document.getElementById('regBtn');
   btn.innerHTML='<div class="spinner-sm"></div>';btn.disabled=true;
+  // Email format + MX check
+  const emailOk = await validateEmail(email, errEl);
+  if(!emailOk){btn.textContent=t('continue');btn.disabled=false;return;}
   try {
     const cred=await auth.createUserWithEmailAndPassword(email,pass);
     await cred.user.updateProfile({displayName:name});
+    // Send email verification
+    await cred.user.sendEmailVerification();
     currentUser=auth.currentUser;
-    closeModal('authModal');showToast(t('login'));
+    closeModal('authModal');
+    showToast(t('verify_sent'));
+    showVerifyBanner();
   } catch(e){errEl.textContent=e.message||t('err_generic');errEl.classList.add('show');}
   finally{btn.textContent=t('continue');btn.disabled=false;}
+}
+
+function showVerifyBanner() {
+  if (!currentUser || currentUser.emailVerified) return;
+  let banner = document.getElementById('verifyBanner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'verifyBanner';
+    banner.style.cssText = 'position:fixed;top:var(--header-h);left:0;right:0;z-index:49;background:var(--marigold);color:#1a1000;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.84rem;font-weight:700;';
+    banner.innerHTML = `<span data-t="verify_banner">${t('verify_banner')}</span>
+      <button style="background:rgba(0,0,0,.15);border:none;border-radius:999px;padding:6px 14px;font-weight:700;cursor:pointer;font-family:inherit;font-size:.82rem;" id="verifyResendBtn">${t('verify_resend')}</button>`;
+    document.body.appendChild(banner);
+    document.getElementById('verifyResendBtn').addEventListener('click', async () => {
+      try { await currentUser.sendEmailVerification(); showToast(t('verify_sent')); } catch(e){}
+    });
+  }
+  banner.style.display = 'flex';
+}
+
+function hideVerifyBanner() {
+  const b = document.getElementById('verifyBanner');
+  if (b) b.style.display = 'none';
 }
 
 async function doLogin() {
@@ -1380,40 +1769,62 @@ async function doPost() {
   const desc=document.getElementById('postDesc').value.trim();
   const cat=document.getElementById('postCatVal').value;
   const phone=document.getElementById('postPhone').value.trim();
+  const city=document.getElementById('postCity')?document.getElementById('postCity').value:'toshkent';
+  const tgHandle=document.getElementById('postTg')?document.getElementById('postTg').value.trim():'';
+  const waPhone=document.getElementById('postWa')?document.getElementById('postWa').value.trim():'';
   const isFree=document.getElementById('postFree').checked;
   const priceVal=isFree?'0':(document.getElementById('postPrice').value||'0');
   const errEl=document.getElementById('postErr');
   errEl.classList.remove('show');
+
   if(!title){errEl.textContent=t('err_title');errEl.classList.add('show');return;}
   if(!phone){errEl.textContent=t('err_phone');errEl.classList.add('show');return;}
+
+  // Email verification check
+  if(currentUser && !currentUser.emailVerified && !currentUser.providerData.some(p=>p.providerId==='google.com')) {
+    errEl.textContent=t('err_verify');errEl.classList.add('show');return;
+  }
+
+  // Content moderation
+  if(!moderateContent(title,desc)){
+    errEl.textContent=t('err_banned');errEl.classList.add('show');return;
+  }
 
   const btn=document.getElementById('postSubmitBtn');
   btn.innerHTML='<div class="spinner-sm"></div>';btn.disabled=true;
 
+  // Spam check
+  const spamOk = await checkSpamLimit();
+  if(!spamOk){
+    errEl.textContent=t('err_spam');errEl.classList.add('show');
+    btn.textContent=editingId?t('save_changes'):t('publish');btn.disabled=false;return;
+  }
+
   try {
     const photoURLs=[];
-    // Count total slots: existing (not deleted) + new files
-    const existingKept = postFiles.filter(f=>f._existingUrl&&!deletedUrls.includes(f._existingUrl));
-    const newFiles = postFiles.filter(f=>!f._existingUrl);
-    const total = existingKept.length + newFiles.length;
-    if(total>3){errEl.textContent='Max 3 rasm';errEl.classList.add('show');btn.textContent=editingId?t('save_changes'):t('publish');btn.disabled=false;return;}
-
+    const existingKept=postFiles.filter(f=>f._existingUrl&&!deletedUrls.includes(f._existingUrl));
+    const newFiles=postFiles.filter(f=>!f._existingUrl);
+    if(existingKept.length+newFiles.length>3){
+      errEl.textContent='Max 3 rasm';errEl.classList.add('show');
+      btn.textContent=editingId?t('save_changes'):t('publish');btn.disabled=false;return;
+    }
     for(const f of existingKept) photoURLs.push(f._existingUrl);
-    for(const file of newFiles) {
+    for(const file of newFiles){
       if(file.size>MAX_FILE_SIZE){errEl.textContent=t('err_file_size');errEl.classList.add('show');btn.textContent=editingId?t('save_changes'):t('publish');btn.disabled=false;return;}
       const ref=storage.ref(`listings/${currentUser.uid}/${Date.now()}_${file.name}`);
       await ref.put(file);
       photoURLs.push(await ref.getDownloadURL());
     }
-    // Delete removed photos from Storage
     for(const url of deletedUrls){try{await storage.refFromURL(url).delete();}catch(e){}}
 
     const data={
-      title,desc,category:cat,price:priceVal,phone,
+      title,desc,category:cat,price:priceVal,phone,city,
+      tg:tgHandle,wa:waPhone,
       photos:photoURLs,uid:currentUser.uid,
       userName:currentUser.displayName||currentUser.email,
+      sold:false,
     };
-    if(!editingId) data.createdAt=Date.now(); // FIX: only set on create
+    if(!editingId) data.createdAt=Date.now();
 
     if(editingId){
       await db.ref('listings/'+editingId).update(data);
@@ -1504,17 +1915,114 @@ document.getElementById('heroSearchBtn').addEventListener('click',()=>{
   document.querySelector('.listings-section').scrollIntoView({behavior:'smooth'});
 });
 
+// ── City select builders ──────────────────────────────────────────────────────
+function buildCitySelect(selId) {
+  const sel = document.getElementById(selId);
+  if (!sel) return;
+  sel.innerHTML = CITIES.map(c=>`<option value="${c.id}">${t('city_'+c.id)||c.id}</option>`).join('');
+}
+
+// ── Profile + filter modal events ─────────────────────────────────────────────
+document.getElementById('profileModalBg').addEventListener('click',()=>closeModal('profileModal'));
+document.getElementById('profileClose').addEventListener('click',()=>closeModal('profileModal'));
+document.getElementById('filterModalBg').addEventListener('click',()=>closeModal('filterModal'));
+document.getElementById('filterClose').addEventListener('click',()=>closeModal('filterModal'));
+
+document.getElementById('filterOpenBtn').addEventListener('click',()=>{
+  buildSortPills();
+  setCitySelectValue(currentCity);
+  document.getElementById('filterPriceMin').value = currentPriceMin||'';
+  document.getElementById('filterPriceMax').value = currentPriceMax===Infinity?'':currentPriceMax;
+  document.getElementById('filterOnlyPhoto').checked = filterOnlyPhoto;
+  openModal('filterModal');
+});
+
+document.getElementById('filterApplyBtn').addEventListener('click',()=>{
+  currentCity = document.getElementById('filterCity').value;
+  const mn = parseInt(document.getElementById('filterPriceMin').value)||0;
+  const mx = parseInt(document.getElementById('filterPriceMax').value)||0;
+  currentPriceMin = mn;
+  currentPriceMax = mx>0?mx:Infinity;
+  filterOnlyPhoto = document.getElementById('filterOnlyPhoto').checked;
+  closeModal('filterModal');
+  renderListings();
+  updateFilterBadge();
+});
+
+document.getElementById('filterResetBtn').addEventListener('click',()=>{
+  currentCity='all'; currentPriceMin=0; currentPriceMax=Infinity; filterOnlyPhoto=false;
+  currentSort='new';
+  buildSortPills();
+  setCitySelectValue('all');
+  document.getElementById('filterPriceMin').value='';
+  document.getElementById('filterPriceMax').value='';
+  document.getElementById('filterOnlyPhoto').checked=false;
+  renderListings();
+  updateFilterBadge();
+});
+
+function updateFilterBadge() {
+  const badge = document.getElementById('filterBadge');
+  if (!badge) return;
+  const active = (currentCity!=='all'?1:0)+(currentPriceMin>0||currentPriceMax<Infinity?1:0)+(filterOnlyPhoto?1:0)+(currentSort!=='new'?1:0);
+  if (active>0) { badge.textContent=active; badge.style.display='inline-flex'; }
+  else { badge.style.display='none'; }
+}
+
+// ── Custom city dropdown (used in filter modal) ───────────────────────────────
+function buildCityDropdown() {
+  const list = document.getElementById('cityDropList');
+  const cur = document.getElementById('filterCity').value;
+  list.innerHTML = CITIES.map(c => {
+    const isSel = (cur === c.id) ? ' selected' : '';
+    const lbl = t('city_'+c.id) || c.id;
+    return `<div class="city-drop-item${isSel}" data-cityid="${c.id}">${lbl}</div>`;
+  }).join('');
+  list.querySelectorAll('.city-drop-item').forEach(el => {
+    el.addEventListener('click', () => {
+      setCitySelectValue(el.dataset.cityid);
+      closeCityDropdown();
+    });
+  });
+}
+function setCitySelectValue(cityId) {
+  document.getElementById('filterCity').value = cityId;
+  document.getElementById('ctyLabel').textContent = t('city_'+cityId) || cityId;
+  buildCityDropdown();
+}
+function closeCityDropdown() {
+  document.getElementById('cityDropdown').classList.remove('open');
+  document.getElementById('citySelectTrigger').classList.remove('open');
+}
+document.getElementById('citySelectTrigger').addEventListener('click', (e) => {
+  e.stopPropagation();
+  const dd = document.getElementById('cityDropdown');
+  const tr = document.getElementById('citySelectTrigger');
+  const isOpen = dd.classList.contains('open');
+  closeCityDropdown();
+  closeCatDropdown();
+  buildCityDropdown();
+  if (!isOpen) { dd.classList.add('open'); tr.classList.add('open'); }
+});
+
+// ── Auth state ─────────────────────────────────────────────────────────────────
 auth.onAuthStateChanged(user=>{
   currentUser=user;
   updateAuthUI();
   renderListings();
+  if(user && !user.emailVerified && !user.providerData.some(p=>p.providerId==='google.com')) {
+    showVerifyBanner();
+  } else {
+    hideVerifyBanner();
+  }
 });
 
 applyLang(currentLang);
 applyTheme(currentTheme);
 renderCats();
-buildSortDropdown();
+buildSortPills();
 setCatSelectValue('electronics');
+buildCitySelect('postCity');
 listenListings();
 </script>
 </body>
