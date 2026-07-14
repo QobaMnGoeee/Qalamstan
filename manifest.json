@@ -1,0 +1,23 @@
+{
+  "name": "TURAN STUDIO",
+  "short_name": "TURAN",
+  "description": "Minecraft плагиндерін, серверлік сборкаларды, карталарды және графикалық дизайнды тапсырыс бойынша жасайтын студия.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0E1116",
+  "theme_color": "#0E1116",
+  "lang": "kk",
+  "icons": [
+    {
+      "src": "/assets/images/logo/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

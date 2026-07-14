@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Заказать проект — TURAN STUDIO</title>
+<meta name="description" content="Оставьте заявку на разработку плагина, сборку сервера, дизайн карты или визуальный дизайн. Команда TURAN STUDIO свяжется с вами в течение 24 часов.">
+<link rel="canonical" href="https://turanstudio.kz/pages/order.html">
+<meta property="og:title" content="Заказать проект — TURAN STUDIO">
+<meta property="og:description" content="Оставьте заявку — команда свяжется с вами в течение 24 часов.">
+<meta property="og:image" content="/assets/images/logo/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta name="theme-color" content="#F7F9FC">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/components/navbar.css">
+<link rel="stylesheet" href="../css/components/footer.css">
+<link rel="stylesheet" href="../css/components/cookie-banner.css">
+<link rel="stylesheet" href="../css/pages/inner-pages.css">
+<link rel="stylesheet" href="../css/pages/forms.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Перейти к содержимому</a>
+<header class="site-header">
+<div class="container navbar">
+<a class="navbar-brand" href="../index.html">
+<img class="navbar-brand-mark" src="../assets/images/logo/logo-icon.png" alt="TURAN STUDIO" width="29" height="29">
+TURAN STUDIO
+</a>
+<nav class="navbar-links" data-open="false" aria-label="Основная навигация">
+<a class="navbar-link" href="services.html" data-t="nav_services">Услуги</a>
+<a class="navbar-link" href="team.html" data-t="nav_team">Команда</a>
+<a class="navbar-link" href="order.html" aria-current="page" data-t="nav_order">Заказать</a>
+<a class="navbar-link" href="contact.html" data-t="nav_contact">Контакты</a>
+<div class="navbar-actions">
+<a class="btn btn-secondary" href="login.html" data-auth-logged-out data-t="nav_login">Войти</a>
+<a class="btn btn-primary" href="register.html" data-auth-logged-out data-t="nav_register">Регистрация</a>
+<button class="btn btn-secondary" type="button" data-logout-btn data-auth-logged-in style="display:none" data-t="nav_logout">Выйти</button>
+</div>
+</nav>
+<div class="navbar-actions">
+<div class="lang-switch">
+<button class="lang-switch-trigger" type="button" data-lang-trigger aria-expanded="false" aria-haspopup="true">
+<span data-lang-current-label>RU</span>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="lang-switch-menu" data-open="false" role="menu">
+<button class="lang-switch-option" type="button" data-lang-option="ru" role="menuitem" aria-selected="true">Русский</button>
+<button class="lang-switch-option" type="button" data-lang-option="kz" role="menuitem" aria-selected="false">Қазақша</button>
+<button class="lang-switch-option" type="button" data-lang-option="en" role="menuitem" aria-selected="false">English</button>
+</div>
+</div>
+<button class="navbar-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+<span class="navbar-toggle-icon"></span>
+</button>
+</div>
+</div>
+</header>
+<main id="main-content">
+<div class="page-header">
+<div class="container">
+<div class="breadcrumbs">
+<a href="../index.html">Главная</a>
+<span aria-hidden="true">/</span>
+<span aria-current="page" data-t="order_heading">Заказать</span>
+</div>
+<span class="eyebrow" data-t="order_eyebrow">Начать проект</span>
+<h1 class="page-header-title" data-t="order_heading">Заказать проект</h1>
+<p class="page-header-desc" data-t="order_sub">Расскажите о задаче — команда свяжется с вами в течение 24 часов.</p>
+</div>
+</div>
+<section class="section order-section">
+<div class="container order-grid">
+<div class="order-form-panel">
+<div class="order-success" id="orderSuccess">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8 12.5L11 15.5L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span data-t="order_success_msg">Заявка отправлена! Мы свяжемся с вами в ближайшее время.</span>
+</div>
+<form id="orderForm" novalidate>
+<div class="order-form-row">
+<div class="field">
+<label class="lbl" for="orderName" data-t="order_name_label">Имя</label>
+<input class="inp" type="text" id="orderName" name="name" data-tp="order_name_ph" placeholder="Ваше имя" autocomplete="name">
+</div>
+<div class="field">
+<label class="lbl" for="orderContact" data-t="order_contact_label">Контакт (Discord, Telegram или email)</label>
+<input class="inp" type="text" id="orderContact" name="contact" data-tp="order_contact_ph" placeholder="username#0000 или email@example.com">
+</div>
+</div>
+<div class="field" style="margin-top:16px">
+<label class="lbl" for="orderService" data-t="order_service_label">Тип услуги</label>
+<div class="order-select-wrap">
+<select class="inp" id="orderService" name="service">
+<option value="plugin" data-t="order_service_plugin">Разработка плагина</option>
+<option value="server" data-t="order_service_server">Сборка сервера</option>
+<option value="map" data-t="order_service_map">Дизайн карты</option>
+<option value="design" data-t="order_service_design">Визуальный дизайн</option>
+<option value="other" data-t="order_service_other">Другое</option>
+</select>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<div class="order-form-row" style="margin-top:16px">
+<div class="field">
+<label class="lbl" for="orderBudget" data-t="order_budget_label">Бюджет</label>
+<input class="inp" type="text" id="orderBudget" name="budget" data-tp="order_budget_ph" placeholder="Например: 100 000 – 300 000 тг">
+</div>
+<div class="field">
+<label class="lbl" for="orderDeadline" data-t="order_deadline_label">Желаемый срок</label>
+<input class="inp" type="text" id="orderDeadline" name="deadline" data-tp="order_deadline_ph" placeholder="Например: 2 недели">
+</div>
+</div>
+<div class="field" style="margin-top:16px">
+<label class="lbl" for="orderDescription" data-t="order_desc_label">Описание проекта</label>
+<textarea class="inp inp-area" id="orderDescription" name="description" data-tp="order_desc_ph" placeholder="Расскажите подробнее: что нужно сделать, есть ли референсы, особые пожелания..."></textarea>
+</div>
+<div class="err-msg" id="orderErr" style="margin-top:16px"></div>
+<div class="auth-form-actions">
+<button class="btn btn-primary btn-block btn-lg" type="submit" id="orderSubmitBtn" data-t="order_submit_btn">Отправить заявку</button>
+<p class="order-submit-note" data-t="order_submit_note">Заявка уходит напрямую в Discord команды разработки.</p>
+</div>
+</form>
+</div>
+<div class="order-side">
+<div class="order-side-card">
+<h2 class="order-side-title" data-t="order_side_title">Как проходит работа</h2>
+<div class="order-step-row">
+<span class="order-step-num">1</span>
+<div>
+<div class="order-step-title" data-t="order_step1_title">Заявка</div>
+<div class="order-step-desc" data-t="order_step1_desc">Вы описываете задачу через форму или Discord.</div>
+</div>
+</div>
+<div class="order-step-row">
+<span class="order-step-num">2</span>
+<div>
+<div class="order-step-title" data-t="order_step2_title">Обсуждение</div>
+<div class="order-step-desc" data-t="order_step2_desc">Согласовываем детали, сроки и стоимость.</div>
+</div>
+</div>
+<div class="order-step-row">
+<span class="order-step-num">3</span>
+<div>
+<div class="order-step-title" data-t="order_step3_title">Разработка</div>
+<div class="order-step-desc" data-t="order_step3_desc">Команда работает, вы получаете промежуточные апдейты.</div>
+</div>
+</div>
+<div class="order-step-row">
+<span class="order-step-num">4</span>
+<div>
+<div class="order-step-title" data-t="order_step4_title">Сдача</div>
+<div class="order-step-desc" data-t="order_step4_desc">Проверяете готовый проект и получаете исходники.</div>
+</div>
+</div>
+</div>
+<div class="order-side-card order-discord-card">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 6C6 7 4.5 9 4 13C4 16 6.5 18 9 18.5L10 17C8.5 16.5 7.5 15.8 7 15C9.5 16.2 14.5 16.2 17 15C16.5 15.8 15.5 16.5 14 17L15 18.5C17.5 18 20 16 20 13C19.5 9 18 7 16 6L15 8C13 7.5 11 7.5 9 8L8 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="9.5" cy="12.5" r="1.2" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1.2" fill="currentColor"/></svg>
+<h2 class="order-side-title" data-t="order_discord_title">Discord-сервер</h2>
+<p data-t="order_discord_desc">Присоединяйтесь к сообществу и первыми узнавайте о новостях и турнирах.</p>
+<a class="btn btn-gold btn-block" href="https://discord.gg/turanstudio" data-t="order_discord_btn">Перейти в Discord</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand-col">
+<a class="footer-brand" href="../index.html">
+<img class="footer-brand-mark" src="../assets/images/logo/logo-icon.png" alt="TURAN STUDIO" width="27" height="27">
+TURAN STUDIO
+</a>
+<p class="footer-tagline" data-t="footer_tagline">Разработка плагинов, сборка серверов, карты и визуальный дизайн для Minecraft-проектов.</p>
+<div class="footer-social">
+<a class="footer-social-link" href="https://discord.gg/turanstudio" aria-label="Discord">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 6C6 7 4.5 9 4 13C4 16 6.5 18 9 18.5L10 17C8.5 16.5 7.5 15.8 7 15C9.5 16.2 14.5 16.2 17 15C16.5 15.8 15.5 16.5 14 17L15 18.5C17.5 18 20 16 20 13C19.5 9 18 7 16 6L15 8C13 7.5 11 7.5 9 8L8 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="9.5" cy="12.5" r="1.2" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1.2" fill="currentColor"/></svg>
+</a>
+<a class="footer-social-link" href="https://instagram.com/turanstudio" aria-label="Instagram">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="13" height="13" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.5"/><circle cx="16.2" cy="7.8" r="0.9" fill="currentColor"/></svg>
+</a>
+<a class="footer-social-link" href="https://youtube.com/@turanstudio" aria-label="YouTube">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="6" width="14" height="10" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 9.5L14.5 12L10.5 14.5V9.5Z" fill="currentColor"/></svg>
+</a>
+<a class="footer-social-link" href="https://t.me/turanstudio" aria-label="Telegram">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12L20 5L17 20L12 16.5L9.5 19L9 14.5L18 7L7.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+</a>
+</div>
+</div>
+<div class="footer-col">
+<h3 class="footer-heading" data-t="footer_nav_heading">Навигация</h3>
+<div class="footer-links">
+<a class="footer-link" href="services.html" data-t="nav_services">Услуги</a>
+<a class="footer-link" href="team.html" data-t="nav_team">Команда</a>
+<a class="footer-link" href="order.html" data-t="nav_order">Заказать</a>
+<a class="footer-link" href="contact.html" data-t="nav_contact">Контакты</a>
+</div>
+</div>
+<div class="footer-col">
+<h3 class="footer-heading" data-t="footer_account_heading">Аккаунт</h3>
+<div class="footer-links">
+<a class="footer-link" href="login.html" data-t="nav_login">Войти</a>
+<a class="footer-link" href="register.html" data-t="nav_register">Регистрация</a>
+</div>
+</div>
+<div class="footer-col">
+<h3 class="footer-heading" data-t="footer_docs_heading">Документы</h3>
+<div class="footer-links">
+<a class="footer-link" href="privacy-policy.html" data-t="footer_privacy">Политика конфиденциальности</a>
+<a class="footer-link" href="terms-of-service.html" data-t="footer_terms">Условия использования</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copyright">© <span data-current-year>2026</span> TURAN STUDIO. <span data-t="footer_rights">Все права защищены.</span></span>
+<div class="footer-legal-links">
+<a href="privacy-policy.html" data-t="footer_privacy">Политика конфиденциальности</a>
+<a href="terms-of-service.html" data-t="footer_terms">Условия использования</a>
+</div>
+</div>
+</div>
+</footer>
+<div class="cookie-banner" data-cookie-banner data-visible="false">
+<p class="cookie-banner-text"><span data-t="cookie_text">Мы используем файлы cookie для улучшения работы сайта. Подробнее в</span> <a href="privacy-policy.html" data-t="cookie_link">политике конфиденциальности</a>.</p>
+<div class="cookie-banner-actions">
+<button class="btn btn-primary" type="button" data-cookie-accept data-t="cookie_accept">Понятно</button>
+</div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script src="../js/firebase/firebase-config.js"></script>
+<script src="../js/firebase/auth.js"></script>
+<script src="../js/i18n/translations.js"></script>
+<script src="../js/i18n/i18n-engine.js"></script>
+<script src="../js/firebase/order-webhook.js"></script>
+<script src="../js/utils/cookie-consent.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

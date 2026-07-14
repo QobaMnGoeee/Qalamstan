@@ -1,0 +1,64 @@
+<svg viewBox="0 0 600 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Иллюстрация: екі разработчик көк-алтын блоктардан құрылым жинап жатыр">
+<ellipse cx="300" cy="440" rx="230" ry="26" fill="var(--color-blue-tint)"/>
+<path d="M120 130 A180 180 0 0 1 480 130" stroke="var(--color-line)" stroke-width="2" stroke-dasharray="3 10" fill="none"/>
+<path d="M258 30 L268 50 L288 56 L268 62 L258 82 L248 62 L228 56 L248 50 Z" fill="var(--color-gold)"/>
+<circle cx="150" cy="80" r="5" fill="var(--color-gold)" opacity="0.6"/>
+<circle cx="470" cy="100" r="4" fill="var(--color-blue)" opacity="0.5"/>
+<circle cx="490" cy="190" r="3" fill="var(--color-gold)" opacity="0.7"/>
+
+<g>
+<rect x="256" y="308" width="88" height="88" rx="16" fill="var(--color-blue)"/>
+<rect x="266" y="318" width="68" height="68" rx="10" fill="var(--color-blue-deep)" opacity="0.3"/>
+<circle cx="282" cy="336" r="3.5" fill="var(--color-blue-tint)"/>
+<circle cx="282" cy="368" r="3.5" fill="var(--color-blue-tint)"/>
+<line x1="282" y1="340" x2="282" y2="364" stroke="var(--color-blue-tint)" stroke-width="2"/>
+</g>
+
+<g>
+<rect x="264" y="228" width="72" height="72" rx="14" fill="var(--color-gold)"/>
+<rect x="272" y="236" width="56" height="56" rx="8" fill="var(--color-gold-deep)" opacity="0.28"/>
+<circle cx="286" cy="252" r="3" fill="#FFF7E6"/>
+<circle cx="314" cy="252" r="3" fill="#FFF7E6"/>
+<line x1="286" y1="256" x2="314" y2="256" stroke="#FFF7E6" stroke-width="2"/>
+</g>
+
+<g>
+<rect x="272" y="164" width="56" height="56" rx="12" fill="var(--color-blue)"/>
+<rect x="280" y="172" width="40" height="40" rx="6" fill="var(--color-blue-deep)" opacity="0.32"/>
+</g>
+
+<g>
+<rect x="120" y="360" width="34" height="34" rx="8" fill="var(--color-gold)" opacity="0.85"/>
+<rect x="98" y="382" width="34" height="34" rx="8" fill="var(--color-blue)" opacity="0.85"/>
+</g>
+
+<g>
+<ellipse cx="185" cy="428" rx="48" ry="8" fill="var(--color-line)" opacity="0.55"/>
+<rect x="153" y="318" width="64" height="92" rx="22" fill="var(--color-blue)"/>
+<path d="M153 350 Q120 358 108 386" stroke="#F2C4A0" stroke-width="15" stroke-linecap="round" fill="none"/>
+<circle cx="185" cy="296" r="26" fill="#F2C4A0"/>
+<path d="M159 288c0-16 12-30 26-30s26 14 26 30c-7-5-16-7-26-7s-19 2-26 7z" fill="#2A1B10"/>
+<circle cx="176" cy="298" r="2.4" fill="#2A1B10"/>
+<circle cx="194" cy="298" r="2.4" fill="#2A1B10"/>
+<path d="M178 307q7 4 14 0" stroke="#2A1B10" stroke-width="2" stroke-linecap="round" fill="none"/>
+<rect x="166" y="404" width="16" height="32" rx="6" fill="var(--color-blue-deep)"/>
+<rect x="188" y="404" width="16" height="32" rx="6" fill="var(--color-blue-deep)"/>
+</g>
+
+<g>
+<ellipse cx="415" cy="428" rx="52" ry="8" fill="var(--color-line)" opacity="0.55"/>
+<path d="M373 434 Q373 372 415 368 Q457 372 457 434 Z" fill="var(--color-gold)"/>
+<path d="M373 400 Q408 390 428 364" stroke="#F2C4A0" stroke-width="16" stroke-linecap="round" fill="none"/>
+<circle cx="255" cy="342" r="9" fill="var(--color-blue)" opacity="0.9"/>
+<circle cx="415" cy="330" r="27" fill="#F2C4A0"/>
+<path d="M388 322c0-17 12-32 27-32s27 15 27 32c-8-6-17-8-27-8s-19 2-27 8z" fill="#3A2410"/>
+<circle cx="406" cy="332" r="2.4" fill="#2A1B10"/>
+<circle cx="424" cy="332" r="2.4" fill="#2A1B10"/>
+<path d="M408 342q7 4 14 0" stroke="#2A1B10" stroke-width="2" stroke-linecap="round" fill="none"/>
+</g>
+
+<circle cx="76" cy="190" r="3" fill="var(--color-gold)" opacity="0.6"/>
+<circle cx="60" cy="250" r="4" fill="var(--color-blue)" opacity="0.4"/>
+<circle cx="530" cy="280" r="3.5" fill="var(--color-gold)" opacity="0.5"/>
+<path d="M520 210 L526 224 L540 228 L526 232 L520 246 L514 232 L500 228 L514 224 Z" fill="var(--color-blue)" opacity="0.5"/>
+</svg>

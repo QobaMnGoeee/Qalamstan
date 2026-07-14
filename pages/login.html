@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вход — TURAN STUDIO</title>
+<meta name="description" content="Войдите в аккаунт TURAN STUDIO, чтобы отслеживать свои заявки.">
+<link rel="canonical" href="https://turanstudio.kz/pages/login.html">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#F7F9FC">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/pages/forms.css">
+</head>
+<body>
+<div class="auth-screen">
+<div class="auth-screen-visual">
+<div class="auth-screen-visual-content">
+<svg viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Иллюстрация: разработчик работает за ноутбуком">
+<ellipse cx="190" cy="308" rx="150" ry="20" fill="rgba(255,255,255,0.14)"/>
+<rect x="110" y="180" width="128" height="13" rx="4" fill="rgba(255,255,255,0.22)"/>
+<path d="M116 180 L124 130 Q126 122 134 122 L246 122 Q254 122 256 130 L264 180 Z" fill="rgba(255,255,255,0.9)"/>
+<rect x="140" y="138" width="80" height="27" rx="4" fill="#0D3E8F" opacity="0.55"/>
+<g>
+<ellipse cx="190" cy="300" rx="42" ry="9" fill="rgba(16,27,51,0.12)"/>
+<rect x="163" y="220" width="43" height="61" rx="18" fill="#FDF3DE"/>
+<circle cx="190" cy="200" r="24" fill="#F2C4A0"/>
+<path d="M166 194c0-15 11-27 24-27s24 12 24 27c-7-4-15-6-24-6s-17 2-24 6z" fill="#2A1B10"/>
+<circle cx="182" cy="202" r="2.2" fill="#2A1B10"/>
+<circle cx="198" cy="202" r="2.2" fill="#2A1B10"/>
+<path d="M183 211q7 4 14 0" stroke="#2A1B10" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M163 236 Q142 244 138 262" stroke="#F2C4A0" stroke-width="10" stroke-linecap="round" fill="none"/>
+<path d="M217 236 Q238 244 242 262" stroke="#F2C4A0" stroke-width="10" stroke-linecap="round" fill="none"/>
+</g>
+<g>
+<rect x="60" y="120" width="27" height="27" rx="8" fill="var(--color-gold)" opacity="0.9"/>
+<circle cx="70" cy="130" r="1.8" fill="#2B1D02"/>
+<circle cx="82" cy="130" r="1.8" fill="#2B1D02"/>
+</g>
+<g>
+<rect x="286" y="150" width="24" height="24" rx="8" fill="rgba(255,255,255,0.9)"/>
+<circle cx="295" cy="159" r="1.6" fill="#0D3E8F"/>
+<circle cx="306" cy="159" r="1.6" fill="#0D3E8F"/>
+</g>
+<path d="M60 210 L66 224 L80 230 L66 236 L60 250 L54 236 L40 230 L54 224 Z" fill="var(--color-gold)" opacity="0.85"/>
+<circle cx="308" cy="230" r="5" fill="rgba(255,255,255,0.7)"/>
+<circle cx="330" cy="110" r="4" fill="var(--color-gold)" opacity="0.7"/>
+<circle cx="46" cy="90" r="3.5" fill="rgba(255,255,255,0.6)"/>
+</svg>
+</div>
+</div>
+<div class="auth-screen-form">
+<div class="auth-form-wrapper">
+<a class="auth-form-brand" href="../index.html">
+</a>
+<div class="auth-tabs">
+<a class="auth-tab active" href="login.html" data-t="auth_login_tab">Вход</a>
+<a class="auth-tab" href="register.html" data-t="auth_register_tab">Регистрация</a>
+</div>
+<h1 class="auth-form-title" data-t="login_title">С возвращением</h1>
+
+<div class="err-msg" id="logErr"></div>
+
+<div class="field">
+<label class="lbl" for="logEmail" data-t="login_email_label">Email</label>
+<input class="inp" type="email" id="logEmail" placeholder="youremail@example.com" autocomplete="email">
+</div>
+<div class="field">
+<label class="lbl" for="logPass" data-t="login_password_label">Пароль</label>
+<div class="password-field-wrap">
+<input class="inp" type="password" id="logPass" data-tp="auth_password_placeholder" placeholder="Пароль" autocomplete="current-password">
+<button class="password-toggle-btn" type="button" data-toggle-password="logPass" aria-label="Показать пароль">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12C2 12 5.5 5.5 12 5.5C18.5 5.5 22 12 22 12C22 12 18.5 18.5 12 18.5C5.5 18.5 2 12 2 12Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+</button>
+</div>
+</div>
+
+<div class="auth-form-actions">
+<button class="btn btn-primary btn-block btn-lg" type="button" id="logBtn" data-t="login_submit">Войти</button>
+</div>
+
+<div class="auth-divider"><span data-t="auth_or_divider">или</span></div>
+
+<button class="google-btn" type="button" id="logGoogleBtn">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+<span data-t="auth_google_btn">Войти через Google</span>
+</button>
+
+<p class="auth-switch"><span data-t="login_switch_text">Нет аккаунта?</span> <a href="register.html" data-t="login_switch_link" style="color:var(--color-blue);font-weight:700">Регистрация</a></p>
+</div>
+</div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script src="../js/firebase/firebase-config.js"></script>
+<script src="../js/i18n/translations.js"></script>
+<script src="../js/i18n/i18n-engine.js"></script>
+<script src="../js/firebase/auth.js"></script>
+</body>
+</html>
