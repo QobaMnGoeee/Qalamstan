@@ -1,5 +1,11 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/.well-known/discord",
+      "destination": "/.well-known/discord"
+    }
+  ],
   "headers": [
     {
       "source": "/.well-known/discord",
