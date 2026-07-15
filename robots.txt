@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://turanstudio.kz/sitemap.xml
+Sitemap: https://turan-studio.vercel.app/sitemap.xml
 Disallow: /pages/login.html
 Disallow: /pages/register.html
+Disallow: /pages/dashboard.html
+Disallow: /pages/admin.html
