@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="js/utils/theme.js"></script>
 <title>TURAN STUDIO — разработка плагинов, серверов и дизайна для Minecraft</title>
-<meta name="google-site-verification" content="oZ8JO8aLktVuhmhA32y4_LQ0XnlpLIxhW_lzxK9rAI8" />
-<meta name="discord-verification" content="f2c39b626c9b41100a1a095a018eea1a959a963c">
 <meta name="description" content="TURAN STUDIO создаёт плагины, серверные сборки, карты и визуальный дизайн для Minecraft-проектов. Оставьте заявку — команда свяжется с вами в течение 24 часов.">
-<link rel="canonical" href="https://turanstudio.kz/">
+<link rel="canonical" href="https://turanstudio.vercel.app/">
 <meta property="og:title" content="TURAN STUDIO — разработка плагинов, серверов и дизайна для Minecraft">
 <meta property="og:description" content="Плагины, серверные сборки, карты и визуальный дизайн для Minecraft-проектов любого масштаба.">
 <meta property="og:image" content="/assets/images/logo/og-image.png">
@@ -30,8 +29,8 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "TURAN STUDIO",
-  "url": "https://turanstudio.kz/",
-  "logo": "https://turanstudio.kz/assets/images/logo/icon-512.png",
+  "url": "https://turanstudio.vercel.app/",
+  "logo": "https://turanstudio.vercel.app/assets/images/logo/icon-512.png",
   "sameAs": [
     "https://discord.gg/turanstudio",
     "https://instagram.com/turanstudio",
@@ -50,17 +49,26 @@
 TURAN STUDIO
 </a>
 <nav class="navbar-links" data-open="false" aria-label="Основная навигация">
+<a class="navbar-link" href="index.html" data-t="nav_home">Главная</a>
+<a class="navbar-link" href="pages/dashboard.html" data-auth-logged-in style="display:none" data-t="nav_dashboard">Дашборд</a>
 <a class="navbar-link" href="pages/services.html" data-t="nav_services">Услуги</a>
-<a class="navbar-link" href="pages/team.html" data-t="nav_team">Команда</a>
 <a class="navbar-link" href="pages/order.html" data-t="nav_order">Заказать</a>
-<a class="navbar-link" href="pages/contact.html" data-t="nav_contact">Контакты</a>
+<a class="navbar-link" href="pages/faq.html" data-t="nav_faq">Вопросы</a>
 <div class="navbar-actions">
 <a class="btn btn-secondary" href="pages/login.html" data-auth-logged-out data-t="nav_login">Войти</a>
 <a class="btn btn-primary" href="pages/register.html" data-auth-logged-out data-t="nav_register">Регистрация</a>
-<button class="btn btn-secondary" type="button" data-logout-btn data-auth-logged-in style="display:none" data-t="nav_logout">Выйти</button>
+<button class="btn btn-danger-soft" type="button" data-logout-btn data-auth-logged-in style="display:none" data-t="nav_logout">Выйти</button>
 </div>
 </nav>
 <div class="navbar-actions">
+<button class="notif-bell" type="button" id="notifBellBtn" data-auth-logged-in style="display:none" aria-label="Уведомления">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 9.5C18 7.5 17 4 12 4C7 4 6 7.5 6 9.5C6 14.5 4 16 4 16H20C20 16 18 14.5 18 9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 19C9.5 20.5 10.6 21.5 12 21.5C13.4 21.5 14.5 20.5 14.5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+<span class="notif-badge" id="notifBadge" style="display:none">0</span>
+</button>
+<button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><path d="M12 3V5.2M12 18.8V21M21 12H18.8M5.2 12H3M18.1 5.9L16.5 7.5M7.5 16.5L5.9 18.1M18.1 18.1L16.5 16.5M7.5 7.5L5.9 5.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 14.5C18.9 15 17.7 15.3 16.5 15.3C11.9 15.3 8.2 11.6 8.2 7C8.2 5.8 8.5 4.6 9 3.5C5.5 4.6 3 7.9 3 11.8C3 16.6 6.9 20.5 11.7 20.5C15.5 20.5 18.7 18.1 20 14.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</button>
 <div class="lang-switch">
 <button class="lang-switch-trigger" type="button" data-lang-trigger aria-expanded="false" aria-haspopup="true">
 <span data-lang-current-label>RU</span>
@@ -82,10 +90,73 @@ TURAN STUDIO
 <section class="hero">
 <div class="container hero-grid">
 <div class="hero-text">
+<span class="eyebrow hero-eyebrow" data-t="hero_eyebrow">Казахстан · Minecraft-студия</span>
 <h1 class="hero-title"><span data-t="hero_title">Строим миры,</span> <span class="hero-title-accent" data-t="hero_title_accent">которые запоминаются</span></h1>
+<p class="hero-desc" data-t="hero_desc">TURAN STUDIO создаёт плагины, серверные сборки, карты и визуальный дизайн для Minecraft-проектов любого масштаба — от идеи до запуска.</p>
 <div class="hero-actions">
-<a class="btn btn-primary btn-lg" href="pages/order.html" data-t="hero_cta_order">Заказать проект</a>
+<a class="btn btn-primary btn-lg" href="pages/order.html" data-t="hero_cta_order">Оставить заявку</a>
 <a class="btn btn-secondary btn-lg" href="pages/services.html" data-t="hero_cta_services">Смотреть услуги</a>
+</div>
+</div>
+<div class="hero-illo">
+<svg viewBox="0 0 600 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Иллюстрация: два разработчика собирают структуру из сине-золотых блоков">
+<ellipse cx="300" cy="440" rx="230" ry="26" fill="var(--color-blue-tint)"/>
+<path d="M120 130 A180 180 0 0 1 480 130" stroke="var(--color-line)" stroke-width="2" stroke-dasharray="3 10" fill="none"/>
+<path d="M258 30 L268 50 L288 56 L268 62 L258 82 L248 62 L228 56 L248 50 Z" fill="var(--color-gold)"/>
+<circle cx="150" cy="80" r="5" fill="var(--color-gold)" opacity="0.6"/>
+<circle cx="470" cy="100" r="4" fill="var(--color-blue)" opacity="0.5"/>
+<circle cx="490" cy="190" r="3" fill="var(--color-gold)" opacity="0.7"/>
+<g>
+<rect x="256" y="308" width="70" height="70" rx="16" fill="var(--color-blue)"/>
+<rect x="266" y="318" width="54" height="54" rx="10" fill="var(--color-blue-deep)" opacity="0.3"/>
+<circle cx="282" cy="336" r="3.5" fill="var(--color-blue-tint)"/>
+<circle cx="282" cy="368" r="3.5" fill="var(--color-blue-tint)"/>
+<line x1="282" y1="340" x2="282" y2="364" stroke="var(--color-blue-tint)" stroke-width="2"/>
+</g>
+<g>
+<rect x="264" y="228" width="58" height="58" rx="14" fill="var(--color-gold)"/>
+<rect x="272" y="236" width="45" height="45" rx="8" fill="var(--color-gold-deep)" opacity="0.28"/>
+<circle cx="286" cy="252" r="3" fill="#FFF7E6"/>
+<circle cx="314" cy="252" r="3" fill="#FFF7E6"/>
+<line x1="286" y1="256" x2="314" y2="256" stroke="#FFF7E6" stroke-width="2"/>
+</g>
+<g>
+<rect x="272" y="164" width="45" height="45" rx="12" fill="var(--color-blue)"/>
+<rect x="280" y="172" width="32" height="32" rx="6" fill="var(--color-blue-deep)" opacity="0.32"/>
+</g>
+<g>
+<rect x="120" y="360" width="27" height="27" rx="8" fill="var(--color-gold)" opacity="0.85"/>
+<rect x="98" y="382" width="27" height="27" rx="8" fill="var(--color-blue)" opacity="0.85"/>
+</g>
+<g>
+<ellipse cx="185" cy="428" rx="48" ry="8" fill="var(--color-line)" opacity="0.55"/>
+<rect x="153" y="318" width="51" height="74" rx="22" fill="var(--color-blue)"/>
+<path d="M153 350 Q120 358 108 386" stroke="#F2C4A0" stroke-width="12" stroke-linecap="round" fill="none"/>
+<circle cx="185" cy="296" r="26" fill="#F2C4A0"/>
+<path d="M159 288c0-16 12-30 26-30s26 14 26 30c-7-5-16-7-26-7s-19 2-26 7z" fill="#2A1B10"/>
+<circle cx="176" cy="298" r="2.4" fill="#2A1B10"/>
+<circle cx="194" cy="298" r="2.4" fill="#2A1B10"/>
+<path d="M178 307q7 4 14 0" stroke="#2A1B10" stroke-width="2" stroke-linecap="round" fill="none"/>
+<rect x="166" y="404" width="13" height="26" rx="6" fill="var(--color-blue-deep)"/>
+<rect x="188" y="404" width="13" height="26" rx="6" fill="var(--color-blue-deep)"/>
+</g>
+<g>
+<ellipse cx="415" cy="428" rx="52" ry="8" fill="var(--color-line)" opacity="0.55"/>
+<path d="M373 434 Q373 372 415 368 Q457 372 457 434 Z" fill="var(--color-gold)"/>
+<path d="M373 400 Q408 390 428 364" stroke="#F2C4A0" stroke-width="13" stroke-linecap="round" fill="none"/>
+<circle cx="255" cy="342" r="9" fill="var(--color-blue)" opacity="0.9"/>
+<circle cx="415" cy="330" r="27" fill="#F2C4A0"/>
+<path d="M388 322c0-17 12-32 27-32s27 15 27 32c-8-6-17-8-27-8s-19 2-27 8z" fill="#3A2410"/>
+<circle cx="406" cy="332" r="2.4" fill="#2A1B10"/>
+<circle cx="424" cy="332" r="2.4" fill="#2A1B10"/>
+<path d="M408 342q7 4 14 0" stroke="#2A1B10" stroke-width="2" stroke-linecap="round" fill="none"/>
+</g>
+<circle cx="76" cy="190" r="3" fill="var(--color-gold)" opacity="0.6"/>
+<circle cx="60" cy="250" r="4" fill="var(--color-blue)" opacity="0.4"/>
+<circle cx="530" cy="280" r="3.5" fill="var(--color-gold)" opacity="0.5"/>
+<path d="M520 210 L526 224 L540 228 L526 232 L520 246 L514 232 L500 228 L514 224 Z" fill="var(--color-blue)" opacity="0.5"/>
+</svg>
+</div>
 </div>
 </section>
 <section class="section services-overview">
@@ -195,6 +266,7 @@ TURAN STUDIO
 <div class="mission-text">
 <span class="eyebrow" data-t="mission_eyebrow">Наша миссия</span>
 <h2 class="mission-title" data-t="mission_title">Не просто заказ, а полноценное сообщество</h2>
+<p class="mission-desc" data-t="mission_desc">Мы создаём пространство, где разработчики, билдеры, дизайнеры, ютуберы и киберспортсмены могут заявить о себе — через качественные проекты и масштабные турниры.</p>
 <div class="mission-points">
 <div class="mission-point">
 <span class="mission-point-icon" aria-hidden="true">
@@ -226,7 +298,7 @@ TURAN STUDIO
 <h2 class="cta-banner-title" data-t="cta_title">Запустим ваш проект уже сегодня</h2>
 <p class="cta-banner-desc" data-t="cta_desc">Опишите задачу — команда ответит в течение 24 часов.</p>
 <div class="cta-banner-actions">
-<a class="btn btn-gold btn-lg" href="pages/order.html" data-t="cta_btn">Заказать проект</a>
+<a class="btn btn-gold btn-lg" href="pages/order.html" data-t="cta_btn">Оставить заявку</a>
 </div>
 </div>
 </div>
@@ -261,9 +333,7 @@ TURAN STUDIO
 <h3 class="footer-heading" data-t="footer_nav_heading">Навигация</h3>
 <div class="footer-links">
 <a class="footer-link" href="pages/services.html" data-t="nav_services">Услуги</a>
-<a class="footer-link" href="pages/team.html" data-t="nav_team">Команда</a>
 <a class="footer-link" href="pages/order.html" data-t="nav_order">Заказать</a>
-<a class="footer-link" href="pages/contact.html" data-t="nav_contact">Контакты</a>
 </div>
 </div>
 <div class="footer-col">
@@ -301,6 +371,7 @@ TURAN STUDIO
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
 <script src="js/firebase/firebase-config.js"></script>
 <script src="js/firebase/auth.js"></script>
+<script src="js/firebase/notifications.js"></script>
 <script src="js/i18n/translations.js"></script>
 <script src="js/i18n/i18n-engine.js"></script>
 <script src="js/utils/cookie-consent.js"></script>

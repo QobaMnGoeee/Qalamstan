@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../js/utils/theme.js"></script>
+<title>Админ-панель — TURAN STUDIO</title>
+<meta name="description" content="Панель управления заявками TURAN STUDIO.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F7F9FC">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/components/navbar.css">
+<link rel="stylesheet" href="../css/components/footer.css">
+<link rel="stylesheet" href="../css/pages/inner-pages.css">
+<link rel="stylesheet" href="../css/pages/dashboard.css">
+<link rel="stylesheet" href="../css/pages/forms.css">
+<link rel="stylesheet" href="../css/pages/admin.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Перейти к содержимому</a>
+<header class="site-header">
+<div class="container navbar">
+<a class="navbar-brand" href="../index.html">
+<img class="navbar-brand-mark" src="../assets/images/logo/logo-icon.png" alt="TURAN STUDIO" width="29" height="29">
+TURAN STUDIO
+</a>
+<nav class="navbar-links" data-open="false" aria-label="Основная навигация">
+<a class="navbar-link" href="../index.html">Главная</a>
+<a class="navbar-link" href="dashboard.html">Дашборд</a>
+<div class="navbar-actions">
+<button class="btn btn-danger-soft" type="button" data-logout-btn>Выйти</button>
+</div>
+</nav>
+<button class="navbar-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+<span class="navbar-toggle-icon"></span>
+</button>
+</div>
+</header>
+<main id="main-content">
+<div class="page-header">
+<div class="container">
+<span class="eyebrow">Admin</span>
+<h1 class="page-header-title">Админ-панель</h1>
+</div>
+</div>
+
+<div class="container" style="padding-block:38px">
+
+<div class="admin-no-access" id="adminNoAccess" style="display:none">
+<div class="order-login-gate">
+<div class="order-login-gate-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9V13M12 17H12.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+</div>
+<h2 class="order-login-gate-title">У вас нет доступа к этой странице</h2>
+</div>
+</div>
+
+<div id="adminContent" style="display:none">
+<div class="dashboard-grid">
+<div class="dashboard-main">
+<h2 class="dashboard-section-title">Все заявки</h2>
+<div class="admin-filter-bar">
+<button class="filter-chip" type="button" data-admin-filter="all" aria-pressed="true">Все</button>
+<button class="filter-chip" type="button" data-admin-filter="new" aria-pressed="false">На рассмотрении</button>
+<button class="filter-chip" type="button" data-admin-filter="in_progress" aria-pressed="false">В работе</button>
+<button class="filter-chip" type="button" data-admin-filter="done" aria-pressed="false">Завершено</button>
+</div>
+<div id="adminOrdersList"></div>
+<div class="dashboard-empty" id="adminOrdersEmpty" style="display:none">
+<p>Заявок пока нет</p>
+</div>
+</div>
+<div class="dashboard-side">
+<div class="admin-notif-panel">
+<h2 class="dashboard-section-title">Отправить уведомление</h2>
+<div class="field">
+<label class="lbl" for="adminUserSelect">Заявка / пользователь</label>
+<div class="order-select-wrap">
+<select class="inp" id="adminUserSelect"></select>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<div class="field" style="margin-top:13px">
+<label class="lbl" for="adminMessageText">Сообщение</label>
+<textarea class="inp inp-area" id="adminMessageText" placeholder="Текст сообщения для пользователя..."></textarea>
+</div>
+<div class="err-msg" id="adminNotifErr" style="margin-top:13px"></div>
+<button class="btn btn-primary btn-block" type="button" id="adminSendNotifBtn" style="margin-top:13px">Отправить</button>
+<div class="admin-notif-sent" id="adminNotifSent">Уведомление отправлено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script src="../js/firebase/firebase-config.js"></script>
+<script src="../js/firebase/auth.js"></script>
+<script src="../js/i18n/translations.js"></script>
+<script src="../js/i18n/i18n-engine.js"></script>
+<script src="../js/firebase/order-webhook.js"></script>
+<script src="../js/firebase/notifications.js"></script>
+<script src="../js/firebase/dashboard.js"></script>
+<script src="../js/firebase/admin.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

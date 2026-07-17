@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../js/utils/theme.js"></script>
 <title>Регистрация — TURAN STUDIO</title>
 <meta name="description" content="Создайте аккаунт TURAN STUDIO, чтобы отслеживать свои заявки и общаться с командой.">
 <link rel="canonical" href="https://turanstudio.kz/pages/register.html">
@@ -18,53 +19,21 @@
 <div class="auth-screen">
 <div class="auth-screen-visual">
 <div class="auth-screen-visual-content">
-<svg viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Иллюстрация: разработчик приветствует нового участника">
-<ellipse cx="190" cy="308" rx="150" ry="20" fill="rgba(255,255,255,0.14)"/>
-<circle cx="190" cy="140" r="70" fill="rgba(255,255,255,0.08)"/>
-<g>
-<ellipse cx="140" cy="300" rx="34" ry="8" fill="rgba(16,27,51,0.1)"/>
-<rect x="118" y="228" width="35" height="53" rx="16" fill="#FDF3DE"/>
-<circle cx="140" cy="212" r="20" fill="#F2C4A0"/>
-<path d="M120 207c0-13 9-23 20-23s20 10 20 23c-6-4-13-5-20-5s-14 1-20 5z" fill="#2A1B10"/>
-<circle cx="133" cy="213" r="2" fill="#2A1B10"/>
-<circle cx="147" cy="213" r="2" fill="#2A1B10"/>
-<path d="M134 221q6 3 12 0" stroke="#2A1B10" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-<path d="M118 240 Q100 250 96 268" stroke="#F2C4A0" stroke-width="9" stroke-linecap="round" fill="none"/>
-<path d="M162 240 Q180 232 192 216" stroke="#F2C4A0" stroke-width="9" stroke-linecap="round" fill="none"/>
-</g>
-<g>
-<ellipse cx="245" cy="300" rx="34" ry="8" fill="rgba(16,27,51,0.1)"/>
-<rect x="223" y="228" width="35" height="53" rx="16" fill="var(--color-gold)"/>
-<circle cx="245" cy="212" r="20" fill="#E8B98C"/>
-<path d="M225 206c0-13 9-24 20-24s20 11 20 24c-6-4-13-5-20-5s-14 1-20 5z" fill="#1A100A"/>
-<circle cx="238" cy="213" r="2" fill="#1A100A"/>
-<circle cx="252" cy="213" r="2" fill="#1A100A"/>
-<path d="M239 221q6 3 12 0" stroke="#1A100A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-<path d="M223 240 Q205 232 193 216" stroke="#E8B98C" stroke-width="9" stroke-linecap="round" fill="none"/>
-<path d="M267 240 Q285 250 289 268" stroke="#E8B98C" stroke-width="9" stroke-linecap="round" fill="none"/>
-</g>
-<path d="M190 70 L198 90 L218 96 L198 102 L190 122 L182 102 L162 96 L182 90 Z" fill="var(--color-gold)"/>
-<circle cx="80" cy="150" r="4" fill="rgba(255,255,255,0.6)"/>
-<circle cx="310" cy="160" r="3.5" fill="var(--color-gold)" opacity="0.7"/>
-<circle cx="60" cy="230" r="3" fill="rgba(255,255,255,0.5)"/>
-</svg>
+<p class="auth-screen-visual-desc" data-t="register_visual_desc">Создавайте заявки, следите за статусом и общайтесь с командой.</p>
 </div>
 </div>
 <div class="auth-screen-form">
 <div class="auth-form-wrapper">
-<a class="auth-form-brand" href="../index.html">
-</a>
 <div class="auth-tabs">
 <a class="auth-tab" href="login.html" data-t="auth_login_tab">Вход</a>
 <a class="auth-tab active" href="register.html" data-t="auth_register_tab">Регистрация</a>
 </div>
 <h1 class="auth-form-title" data-t="register_title">Создать аккаунт</h1>
-
 <div class="err-msg" id="regErr"></div>
 
 <div class="field">
 <label class="lbl" for="regName" data-t="register_name_label">Ваше имя</label>
-<input class="inp" type="text" id="regName" placeholder="Моя Имя..." autocomplete="name">
+<input class="inp" type="text" id="regName" placeholder="Ваше имя" autocomplete="name">
 </div>
 <div class="field">
 <label class="lbl" for="regEmail" data-t="register_email_label">Email</label>

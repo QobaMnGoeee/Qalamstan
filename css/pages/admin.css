@@ -1,0 +1,70 @@
+.admin-filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 19px;
+}
+
+.admin-order-row {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 13px;
+  padding: 17px 19px;
+  margin-bottom: 10px;
+}
+
+.admin-order-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 13px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.admin-order-meta {
+  font-size: 12.5px;
+  color: var(--color-ink-faint);
+}
+
+.admin-order-field {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  margin-bottom: 3px;
+}
+
+.admin-order-field strong {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.admin-status-select {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1.2px solid var(--color-line);
+  background-color: var(--color-surface);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-notif-panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 13px;
+  padding: 21px;
+  position: sticky;
+  top: 90px;
+}
+
+.admin-notif-sent {
+  display: none;
+  margin-top: 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-success);
+  text-align: center;
+}
+
+.admin-notif-sent.show {
+  display: block;
+}

@@ -1,0 +1,122 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 51px;
+  align-items: start;
+}
+
+.dashboard-section-title {
+  font-size: 19px;
+  margin-bottom: 19px;
+}
+
+.order-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 13px;
+  padding: 19px 21px;
+  margin-bottom: 13px;
+}
+
+.order-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 13px;
+  margin-bottom: 10px;
+}
+
+.order-card-service {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.order-status-pill {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.order-status-pill.status-new {
+  background-color: var(--color-gold-tint);
+  color: var(--color-gold-deep);
+}
+
+.order-status-pill.status-in_progress {
+  background-color: var(--color-blue-tint);
+  color: var(--color-blue-deep);
+}
+
+.order-status-pill.status-done {
+  background-color: var(--color-success-tint);
+  color: var(--color-success);
+}
+
+.order-card-desc {
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+  margin-bottom: 10px;
+}
+
+.order-card-date {
+  font-size: 11.5px;
+  color: var(--color-ink-faint);
+}
+
+.dashboard-empty {
+  text-align: center;
+  padding: 38px 19px;
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-line);
+  border-radius: 13px;
+}
+
+.dashboard-empty p {
+  font-size: 14px;
+}
+
+.notif-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 13px;
+  padding: 16px 17px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.notif-card.unread {
+  border-color: var(--color-blue);
+  background-color: var(--color-blue-tint);
+}
+
+.notif-card-from {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-blue);
+  margin-bottom: 6px;
+}
+
+.notif-card-text {
+  font-size: 13.5px;
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+.notif-card-date {
+  font-size: 11px;
+  color: var(--color-ink-faint);
+  margin-top: 8px;
+}
+
+@media (max-width: 1023px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

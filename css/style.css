@@ -22,6 +22,8 @@
   --color-success: #1F9A6E;
   --color-success-tint: #E4F6EF;
 
+  --color-surface-rgb: 255, 255, 255;
+
   --font-display: "Sora", "Segoe UI", sans-serif;
   --font-body: "Manrope", "Segoe UI", sans-serif;
 
@@ -53,6 +55,39 @@
   --transition-slow: 460ms ease;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #0F1420;
+  --color-surface: #171D2C;
+  --color-surface-alt: #1C2333;
+  --color-ink: #EDF0F7;
+  --color-ink-soft: #A2ABC2;
+  --color-ink-faint: #6B7590;
+
+  --color-blue: #4E8CF0;
+  --color-blue-deep: #7FADF5;
+  --color-blue-tint: #1E2C47;
+
+  --color-gold: #E8B84A;
+  --color-gold-deep: #F2CB6E;
+  --color-gold-tint: #33290F;
+
+  --color-line: #2A3245;
+  --color-danger: #E5695C;
+  --color-danger-tint: #3A1D1B;
+  --color-success: #3FBE8E;
+  --color-success-tint: #16332A;
+
+  --shadow-sm: 0 3px 12px -4px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 32px -8px rgba(0, 0, 0, 0.5);
+  --shadow-blue-glow: 0 12px 32px -10px rgba(78, 140, 240, 0.4);
+
+  --color-surface-rgb: 23, 29, 44;
+}
+
+:root[data-theme="dark"] body {
+  color-scheme: dark;
 }
 
 *,
@@ -90,6 +125,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 img,
@@ -258,6 +294,17 @@ select {
 .btn-secondary:hover {
   border-color: var(--color-blue);
   color: var(--color-blue);
+}
+
+.btn-danger-soft {
+  background-color: var(--color-danger-tint);
+  color: var(--color-danger);
+  border-color: transparent;
+}
+
+.btn-danger-soft:hover {
+  background-color: var(--color-danger);
+  color: #FFFFFF;
 }
 
 .btn-ghost {

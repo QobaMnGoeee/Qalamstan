@@ -26,7 +26,7 @@
   font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #df0900d6;
+  color: var(--color-ink-faint);
   margin-bottom: var(--space-4);
   text-transform: uppercase;
 }
@@ -62,10 +62,10 @@
 TURAN STUDIO
 </a>
 <nav class="navbar-links" data-open="false" aria-label="Основная навигация">
+<a class="navbar-link" href="index.html" data-t="nav_home">Главная</a>
+<a class="navbar-link" href="pages/dashboard.html" data-auth-logged-in style="display:none" data-t="nav_dashboard">Дашборд</a>
 <a class="navbar-link" href="pages/services.html">Услуги</a>
-<a class="navbar-link" href="pages/team.html">Команда</a>
 <a class="navbar-link" href="pages/order.html">Заказать</a>
-<a class="navbar-link" href="pages/contact.html">Контакты</a>
 </nav>
 <button class="navbar-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
 <span class="navbar-toggle-icon"></span>
@@ -80,7 +80,7 @@ TURAN STUDIO
 <p class="not-found-desc">Страница удалена, перемещена или никогда не существовала. Вернитесь на главную страницу.</p>
 <div class="not-found-actions">
 <a class="btn btn-primary" href="index.html">На главную</a>
-<a class="btn btn-secondary" href="pages/contact.html">Сообщить о проблеме</a>
+<a class="btn btn-secondary" href="mailto:hello@turanstudio.kz">Сообщить о проблеме</a>
 </div>
 </div>
 </section>

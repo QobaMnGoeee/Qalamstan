@@ -1,4 +1,4 @@
-const TURAN_DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1526338225491411130/XJ0Ynl26V8NoLInSma3gpg34bI4Y3JAPiZXWhuotUWfF6bar1DtVa-uAdJoaf6qe-76J";
+const TURAN_DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1525946124853317722/1lwF-t2ctWEDX2BOpRQ0PvZPNvhpUl1zAlNV8Hnd4YyxlLJjDVWbrivxw0NQBvfxEYND";
 
 const TURAN_SERVICE_LABELS = {
   plugin: { ru: "Разработка плагина", kz: "Плагин жасау", en: "Plugin development" },
@@ -23,7 +23,7 @@ function turanEscapeForDiscord(value) {
 async function turanSendOrderToDiscord(order) {
   const embed = {
     title: "Поступил новый заказ!",
-    color: 14024668,
+    color: 1794772,
     fields: [
       { name: "Имя", value: turanEscapeForDiscord(order.name) || "—", inline: true },
       { name: "Контакт", value: turanEscapeForDiscord(order.contact) || "—", inline: true },

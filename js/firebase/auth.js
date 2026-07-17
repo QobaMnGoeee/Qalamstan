@@ -181,25 +181,35 @@ function turanShowVerifyBanner() {
     banner = document.createElement("div");
     banner.id = "verifyBanner";
     banner.className = "verify-banner";
+    banner.setAttribute("data-visible", "false");
     banner.innerHTML = '<span data-t="verify_banner">' + t("verify_banner") + '</span><button type="button" id="verifyResendBtn" data-t="verify_resend">' + t("verify_resend") + "</button>";
     document.body.insertBefore(banner, document.body.firstChild.nextSibling);
 
-    document.getElementById("verifyResendBtn").addEventListener("click", async () => {
+    document.getElementById("verifyResendBtn").addEventListener("click", async (event) => {
+      const btn = event.currentTarget;
       try {
         await turanCurrentUser.sendEmailVerification();
+        btn.textContent = t("verify_sent");
+        window.setTimeout(() => {
+          btn.textContent = t("verify_resend");
+        }, 4000);
       } catch (error) {
         return;
       }
     });
-  }
 
-  banner.style.display = "flex";
+    window.setTimeout(() => {
+      banner.setAttribute("data-visible", "true");
+    }, 600);
+  } else {
+    banner.setAttribute("data-visible", "true");
+  }
 }
 
 function turanHideVerifyBanner() {
   const banner = document.getElementById("verifyBanner");
   if (banner) {
-    banner.style.display = "none";
+    banner.setAttribute("data-visible", "false");
   }
 }
 

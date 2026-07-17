@@ -278,32 +278,7 @@
   cursor: pointer;
 }
 
-.verify-banner {
-  position: sticky;
-  top: 58px;
-  z-index: 49;
-  background-color: var(--color-gold);
-  color: #2B1D02;
-  padding: 10px 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
-  font-size: 11px;
-  font-weight: 700;
-  text-align: center;
-}
 
-.verify-banner button {
-  background-color: rgba(0, 0, 0, 0.14);
-  border: none;
-  border-radius: var(--radius-pill);
-  padding: 6px 13px;
-  font-weight: 700;
-  font-size: 10px;
-  color: inherit;
-  flex-shrink: 0;
-}
 
 /* Order form (Заказать) */
 .order-section {
@@ -487,4 +462,45 @@ select.inp {
   .order-form-panel {
     padding: var(--space-5);
   }
+}
+
+.order-login-gate {
+  text-align: center;
+  padding: 51px 26px;
+}
+
+.order-login-gate-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: var(--color-blue-tint);
+  color: var(--color-blue);
+  margin-bottom: 19px;
+}
+
+.order-login-gate-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.order-login-gate-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.order-login-gate-desc {
+  font-size: 14px;
+  max-width: 38ch;
+  margin-inline: auto;
+}
+
+.order-login-gate-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 26px;
+  flex-wrap: wrap;
 }
