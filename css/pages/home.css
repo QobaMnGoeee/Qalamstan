@@ -63,7 +63,8 @@
   position: relative;
 }
 
-.hero-illo svg {
+.hero-illo svg,
+.hero-illo img {
   width: 100%;
   height: auto;
 }
