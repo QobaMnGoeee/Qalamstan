@@ -1,4 +1,4 @@
-const TURAN_DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1525946124853317722/1lwF-t2ctWEDX2BOpRQ0PvZPNvhpUl1zAlNV8Hnd4YyxlLJjDVWbrivxw0NQBvfxEYND";
+const TURAN_DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1527973786467565648/2xYg961r8U1nElUc9uhD1ZbGBT00EM5cLK0EjGB6UxtLVkGrA7tJLtWUdKII5qITyS9s";
 
 const TURAN_SERVICE_LABELS = {
   plugin: { ru: "Разработка плагина", kz: "Плагин жасау", en: "Plugin development" },
