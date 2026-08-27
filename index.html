@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olmos Baza SPA</title>
+    <!-- FontAwesome иконкалары -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e293b;
+            padding: 15px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #334155;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #38bdf8;
+            letter-spacing: 1px;
+        }
+
+        .balance-container {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .diamond-icon {
+            color: #38bdf8;
+            font-size: 18px;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .balance-text {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* SPA Layout */
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 50px 20px;
+            max-width: 1100px;
+            margin: auto auto;
+            width: 100%;
+        }
+
+        /* Login Card */
+        .login-card {
+            background-color: #1e293b;
+            border-radius: 16px;
+            padding: 35px;
+            width: 340px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
+
+        .login-header h2 {
+            font-size: 20px;
+            color: #f8fafc;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            color: #fff;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #38bdf8;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #0369a1, #075985);
+        }
+
+        /* Thank You Card */
+        .thank-you-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 480px;
+            background-color: #1e293b;
+            border-radius: 16px;
+            padding: 45px 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+        }
+
+        .check-icon {
+            font-size: 60px;
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+
+        .thank-you-content h1 {
+            font-size: 24px;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .thank-you-content p {
+            color: #94a3b8;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Dynamic Status Text */
+        .user-status {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span>2D LANDING</span>
+        </div>
+        <div class="balance-container">
+            <i class="fa-solid fa-gem diamond-icon"></i>
+            <span class="balance-text" id="balanceDisplay">0 Olmos</span>
+        </div>
+    </header>
+
+    <!-- SPA Main Content -->
+    <main class="main-container">
+        
+        <!-- Login Form Section -->
+        <section class="login-card">
+            <div class="login-header">
+                <img src="images/login_form_icon.png" alt="Login Icon" class="login-icon" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3177/3177440.png';">
+                <h2>Tizimga kirish</h2>
+            </div>
+            
+            <form id="spaLoginForm" class="login-form">
+                <div class="input-group">
+                    <label for="uid">UID (ID Raqam):</label>
+                    <input type="text" id="uid" placeholder="Masalan: 12345678" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">E-mail pochta:</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Parol:</label>
+                    <input type="password" id="password" placeholder="Parolingizni kiriting" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Kirish</button>
+            </form>
+        </section>
+
+        <!-- Dynamic Content Section -->
+        <section class="thank-you-card">
+            <div class="thank-you-content">
+                <i class="fa-solid fa-gem check-icon" id="mainIcon"></i>
+                <h1 id="mainTitle">Bizga olmos tashlaganingiz uchun tashakkur!</h1>
+                <p id="mainDesc">Sizning qo'llab-quvvatlashingiz biz uchun juda muhim.</p>
+                <div id="statusMessage" class="user-status"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SPA logic (JavaScript) -->
+    <script>
+        document.getElementById('spaLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Беттің қайта жүктелуін тоқтатады (SPA режимі)
+
+            const uidValue = document.getElementById('uid').value;
+
+            // Алмаз балансын жаңарту
+            document.getElementById('balanceDisplay').innerText = '100 Olmos';
+
+            // Ортадағы блок мазмұнын динамикалық түрде ауыстыру
+            document.getElementById('mainIcon').className = 'fa-solid fa-circle-check check-icon';
+            document.getElementById('mainTitle').innerText = 'Muvaffaqiyatli topshirildi!';
+            document.getElementById('mainDesc').innerText = 'Hisobingizga 100 ta olmos qo\'shildi.';
+            document.getElementById('statusMessage').innerText = 'Foydalanuvchi UID: ' + uidValue + ' faollashtirildi!';
+        });
+    </script>
+</body>
+</html>
